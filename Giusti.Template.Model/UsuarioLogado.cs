@@ -8,5 +8,6 @@ namespace Giusti.Template.Model
 {
     class UsuarioLogado
     {
+
     }
 }
