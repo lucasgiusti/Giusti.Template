@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Giusti.Template.Model
 {
-    class Class1
+    class UsuarioLogado
     {
-
     }
 }
