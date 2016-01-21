@@ -17,6 +17,7 @@ namespace Giusti.Template.Web.Controllers
     public class UsuarioController: ApiBase
     {
         UsuarioBusiness biz = new UsuarioBusiness();
+        
 
         /// <summary>
         /// Retorna todos os usuários
@@ -24,6 +25,7 @@ namespace Giusti.Template.Web.Controllers
         /// <returns></returns>
         public List<Usuario> Get()
         {
+            bizBase = biz;
 
             List<Usuario> ResultadoBusca = new List<Usuario>();
             try
@@ -42,7 +44,7 @@ namespace Giusti.Template.Web.Controllers
             }
             catch (UnauthorizedAccessException)
             {
-                GeraErro(HttpStatusCode.Unauthorized, bizCommon.serviceResult);
+                GeraErro(HttpStatusCode.Unauthorized, biz.serviceResult);
             }
             catch (Exception ex)
             {

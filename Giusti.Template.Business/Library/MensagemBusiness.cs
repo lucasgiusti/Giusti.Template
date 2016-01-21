@@ -10,15 +10,14 @@ namespace Giusti.Template.Business
 {
     public static class MensagemBusiness
     {
-        public static string RetornaMensagens(string CodMensagem)
+        public static string RetornaMensagens(string codMensagem)
         {
             ResourceManager Mensagem = new ResourceManager("Giusti.Template.Business.Resource.Mensagem", Assembly.GetExecutingAssembly());
-            return Mensagem.GetString(CodMensagem, System.Threading.Thread.CurrentThread.CurrentUICulture);
+            return Mensagem.GetString(codMensagem, System.Threading.Thread.CurrentThread.CurrentUICulture);
         }
-
-        public static string RetornaMensagens(string CodMensagem, string[] Complementos)
+        public static string RetornaMensagens(string codMensagem, string[] complementos)
         {
-            return String.Format(RetornaMensagens(CodMensagem), Complementos);
+            return String.Format(RetornaMensagens(codMensagem), complementos);
         }
     }
 }

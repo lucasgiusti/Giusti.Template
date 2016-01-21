@@ -18,7 +18,7 @@ namespace Giusti.Template.Web.Library
     /// </summary>
     public abstract partial class ApiBase : ApiController
     {
-        protected CommonBusiness bizCommon = new CommonBusiness();
+        public BusinessBase bizBase { get; set; }
 
         #region Return Ok for DELETE
 
@@ -152,10 +152,6 @@ namespace Giusti.Template.Web.Library
             return RetornaTokenDescriptografado().Name;
         }
 
-        /// <summary>
-        /// RetornaRotinasUsuario
-        /// </summary>
-        /// <returns></returns>
         protected string[] RetornaRotinasUsuario()
         {
             string userData = RetornaTokenDescriptografado().UserData;
@@ -181,8 +177,8 @@ namespace Giusti.Template.Web.Library
         /// <param name="funcionalidade"></param>
         protected void VerificaAutenticacao(string token, string codigoFuncionalidade, string funcionalidade)
         {
-            bizCommon.VerificaAutenticacao(token, codigoFuncionalidade, funcionalidade);
-            if (!bizCommon.IsValid())
+            bizBase.VerificaAutenticacao(token, codigoFuncionalidade, funcionalidade);
+            if (!bizBase.IsValid())
                 throw new UnauthorizedAccessException();
         }
 
@@ -212,7 +208,7 @@ namespace Giusti.Template.Web.Library
                 UsuarioBusiness bizUsuario = new UsuarioBusiness();
                 Usuario usuario = bizUsuario.RetornaUsuario_Email(emailAutenticado);
 
-                bizCommon.SalvaLog(new Log() { Acao = tipoAcao.ToString(), Funcionalidade = nomeFuncionalidade, DataInclusao = DateTime.Now, OrigemAcesso = RetornaUserAgent(), RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
+                bizBase.SalvaLog(new Log() { Acao = tipoAcao.ToString(), Funcionalidade = nomeFuncionalidade, DataInclusao = DateTime.Now, OrigemAcesso = RetornaUserAgent(), RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
             }
             catch
             {
