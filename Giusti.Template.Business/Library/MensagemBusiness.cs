@@ -12,7 +12,7 @@ namespace Giusti.Template.Business
     {
         public static string RetornaMensagens(string CodMensagem)
         {
-            ResourceManager Mensagem = new ResourceManager("Giusti.Template.Business.Resources.Mensagem", Assembly.GetExecutingAssembly());
+            ResourceManager Mensagem = new ResourceManager("Giusti.Template.Business.Resource.Mensagem", Assembly.GetExecutingAssembly());
             return Mensagem.GetString(CodMensagem, System.Threading.Thread.CurrentThread.CurrentUICulture);
         }
 

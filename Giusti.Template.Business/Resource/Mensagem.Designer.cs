@@ -86,14 +86,5 @@ namespace Giusti.Template.Business.Resource {
                 return ResourceManager.GetString("Autenticacao_NecessarioAutenticacao", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Token vazio.
-        /// </summary>
-        internal static string Autenticacao_TokenVazio {
-            get {
-                return ResourceManager.GetString("Autenticacao_TokenVazio", resourceCulture);
-            }
-        }
     }
 }

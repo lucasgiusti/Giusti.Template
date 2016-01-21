@@ -126,7 +126,4 @@
   <data name="Autenticacao_NecessarioAutenticacao" xml:space="preserve">
     <value>Necessário autenticação</value>
   </data>
-  <data name="Autenticacao_TokenVazio" xml:space="preserve">
-    <value>Token vazio</value>
-  </data>
 </root>

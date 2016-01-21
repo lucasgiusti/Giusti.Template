@@ -9,12 +9,12 @@ namespace Giusti.Template.Model.Results
     public class ServiceResult
     {
         public bool Success { get; set; }
-        public List<string> Messages { get; set; }
+        public List<ServiceResultMessage> Messages { get; set; }
 
         public ServiceResult()
         {
             Success = true;
-            Messages = new List<string>();
+            Messages = new List<ServiceResultMessage>();
         }
     }
 }

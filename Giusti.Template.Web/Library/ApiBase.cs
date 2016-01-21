@@ -62,7 +62,7 @@ namespace Giusti.Template.Web.Library
             ServiceResult serviceResult = new ServiceResult();
 
             serviceResult.Success = false;
-            serviceResult.Messages.Add(UtilitarioBusiness.RetornaExceptionMessages(ex));
+            serviceResult.Messages.Add( new ServiceResultMessage() { Message = UtilitarioBusiness.RetornaExceptionMessages(ex) });
 
             var json = JsonConvert.SerializeObject(serviceResult);
             HttpResponseMessage response = this.Request.CreateResponse(statusCode, json);
@@ -83,7 +83,7 @@ namespace Giusti.Template.Web.Library
             ServiceResult serviceResult = new ServiceResult();
 
             serviceResult.Success = false;
-            serviceResult.Messages.Add(UtilitarioBusiness.RetornaExceptionMessages(ex));
+            serviceResult.Messages.Add( new ServiceResultMessage() { Message = UtilitarioBusiness.RetornaExceptionMessages(ex) });
 
             var json = JsonConvert.SerializeObject(serviceResult);
             HttpResponseMessage response = this.Request.CreateErrorResponse(statusCode, json);
@@ -115,9 +115,6 @@ namespace Giusti.Template.Web.Library
             string token = string.Empty;
             if (Request.Headers.Authorization != null)
                 token = Request.Headers.Authorization.Parameter;
-
-            if (token == string.Empty)
-                throw new UnauthorizedAccessException(MensagemBusiness.RetornaMensagens("Autenticacao_TokenVazio"));
 
             return token;
         }

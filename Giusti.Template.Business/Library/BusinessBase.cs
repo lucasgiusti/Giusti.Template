@@ -26,7 +26,7 @@ namespace Giusti.Template.Business.Library
         {
             foreach (ValidationResult result in results)
             {
-                serviceResult.Messages.Add(result.Message);
+                serviceResult.Messages.Add(new ServiceResultMessage() { Message = result.Message });
                 serviceResult.Success = false;
             }
         }
@@ -37,6 +37,10 @@ namespace Giusti.Template.Business.Library
         public bool IsValid()
         {
             return serviceResult.Success;
+        }
+        public void IncluiErro(string codigoMensagemErro)
+        {
+            IncluiErroBusiness(codigoMensagemErro, false);
         }
         protected void IncluiErroBusiness(string codigoMensagemErro)
         {
@@ -51,9 +55,9 @@ namespace Giusti.Template.Business.Library
         }
         protected void IncluiMensagemErroBusiness(string mensagemErro)
         {
-            ServiceResult resultado = new ServiceResult();
-            resultado.Success = false;
-            resultado.Messages.Add(mensagemErro);
+            serviceResult = new ServiceResult();
+            serviceResult.Success = false;
+            serviceResult.Messages.Add(new ServiceResultMessage() { Message = mensagemErro });
         }
         
         #endregion

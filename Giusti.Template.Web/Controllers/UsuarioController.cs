@@ -24,6 +24,7 @@ namespace Giusti.Template.Web.Controllers
         /// <returns></returns>
         public List<Usuario> Get()
         {
+
             List<Usuario> ResultadoBusca = new List<Usuario>();
             try
             {
@@ -41,7 +42,7 @@ namespace Giusti.Template.Web.Controllers
             }
             catch (UnauthorizedAccessException)
             {
-                GeraErro(HttpStatusCode.Unauthorized, biz.serviceResult);
+                GeraErro(HttpStatusCode.Unauthorized, bizCommon.serviceResult);
             }
             catch (Exception ex)
             {

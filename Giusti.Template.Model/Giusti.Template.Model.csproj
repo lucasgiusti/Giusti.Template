@@ -53,6 +53,7 @@
       <DependentUpon>MensagemModelo.resx</DependentUpon>
     </Compile>
     <Compile Include="Results\ServiceResult.cs" />
+    <Compile Include="Results\ServiceResultMessage.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioLogado.cs" />
   </ItemGroup>
