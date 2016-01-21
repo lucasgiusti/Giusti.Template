@@ -18,7 +18,7 @@ namespace Giusti.Template.Web.Library
     /// </summary>
     public abstract partial class ApiBase : ApiController
     {
-        protected ServiceBusiness biz = new ServiceBusiness();
+        protected CommonBusiness bizCommon = new CommonBusiness();
 
         #region Return Ok for DELETE
 
@@ -184,8 +184,8 @@ namespace Giusti.Template.Web.Library
         /// <param name="funcionalidade"></param>
         protected void VerificaAutenticacao(string token, string codigoFuncionalidade, string funcionalidade)
         {
-            biz.VerificaAutenticacao(token, codigoFuncionalidade, funcionalidade);
-            if (!biz.IsValid())
+            bizCommon.VerificaAutenticacao(token, codigoFuncionalidade, funcionalidade);
+            if (!bizCommon.IsValid())
                 throw new UnauthorizedAccessException();
         }
 
@@ -211,9 +211,11 @@ namespace Giusti.Template.Web.Library
                 IPAddress[] ip = Dns.GetHostAddresses(nomeMaquina);
                 ipMaquina = ip[1].ToString();
                 string emailAutenticado = RetornaEmailAutenticado();
-                Usuario usuario = biz.RetornaUsuario_Email(emailAutenticado);
 
-                biz.SalvaLog(new Log() { Acao = tipoAcao.ToString(), Funcionalidade = nomeFuncionalidade, DataInclusao = DateTime.Now, OrigemAcesso = RetornaUserAgent(), RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
+                UsuarioBusiness bizUsuario = new UsuarioBusiness();
+                Usuario usuario = bizUsuario.RetornaUsuario_Email(emailAutenticado);
+
+                bizCommon.SalvaLog(new Log() { Acao = tipoAcao.ToString(), Funcionalidade = nomeFuncionalidade, DataInclusao = DateTime.Now, OrigemAcesso = RetornaUserAgent(), RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
             }
             catch
             {

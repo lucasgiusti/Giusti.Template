@@ -56,7 +56,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Mensagem.resx</DependentUpon>
     </Compile>
-    <Compile Include="ServiceBusiness.cs" />
+    <Compile Include="CommonBusiness.cs" />
+    <Compile Include="UsuarioBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Giusti.Template.Data\Giusti.Template.Data.csproj">

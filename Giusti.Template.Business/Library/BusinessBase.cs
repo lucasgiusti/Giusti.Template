@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using Giusti.Template.Model.Results;
 using Microsoft.Practices.EnterpriseLibrary.Validation;
+using Giusti.Template.Model;
+using Giusti.Template.Data;
+using System.Web.Security;
 
 namespace Giusti.Template.Business.Library
 {
     public abstract class BusinessBase
     {
+        #region Validacao
+
         public ServiceResult serviceResult = new ServiceResult();
         protected void ValidateService(object entity)
         {
@@ -33,5 +38,24 @@ namespace Giusti.Template.Business.Library
         {
             return serviceResult.Success;
         }
+        protected void IncluiErroBusiness(string codigoMensagemErro)
+        {
+            IncluiErroBusiness(codigoMensagemErro, false);
+        }
+        protected void IncluiErroBusiness(string codigoMensagemErro, bool mensagemPersonalizada)
+        {
+            if (mensagemPersonalizada)
+                IncluiMensagemErroBusiness(codigoMensagemErro);
+            else
+                IncluiMensagemErroBusiness(MensagemBusiness.RetornaMensagens(codigoMensagemErro));
+        }
+        protected void IncluiMensagemErroBusiness(string mensagemErro)
+        {
+            ServiceResult resultado = new ServiceResult();
+            resultado.Success = false;
+            resultado.Messages.Add(mensagemErro);
+        }
+        
+        #endregion
     }
 }

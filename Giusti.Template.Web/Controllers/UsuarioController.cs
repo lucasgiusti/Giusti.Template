@@ -1,4 +1,5 @@
-﻿using Giusti.Template.Model;
+﻿using Giusti.Template.Business;
+using Giusti.Template.Model;
 using Giusti.Template.Model.Dominio;
 using Giusti.Template.Web.Library;
 using System;
@@ -15,6 +16,8 @@ namespace Giusti.Template.Web.Controllers
     /// </summary>
     public class UsuarioController: ApiBase
     {
+        UsuarioBusiness biz = new UsuarioBusiness();
+
         /// <summary>
         /// Retorna todos os usuários
         /// </summary>
