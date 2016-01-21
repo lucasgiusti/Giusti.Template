@@ -126,4 +126,13 @@
   <data name="Autenticacao_NecessarioAutenticacao" xml:space="preserve">
     <value>Necessário autenticação</value>
   </data>
+  <data name="Usuario_ExcluiUsuarioOK" xml:space="preserve">
+    <value>Usuário excluído com sucesso</value>
+  </data>
+  <data name="Usuario_NaoEncontrado" xml:space="preserve">
+    <value>Usuário não encontrado</value>
+  </data>
+  <data name="Usuario_SalvaUsuarioOK" xml:space="preserve">
+    <value>Usuário salvo com sucesso</value>
+  </data>
 </root>

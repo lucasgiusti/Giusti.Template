@@ -73,7 +73,7 @@ namespace Giusti.Template.Business.Library
             ValidaRegrasNegocioLog(itemGravar);
             if (IsValid())
             {
-                using (ServiceData data = new ServiceData())
+                using (UsuarioData data = new UsuarioData())
                 {
                     data.SalvaLog(itemGravar);
                 }

@@ -5,27 +5,26 @@ using System.Text;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Reflection;
+using Giusti.Template.Model;
 
 namespace Giusti.Template.Data.Library
 {
     public abstract partial class DataBase : IDisposable
     {
+        #region Base
+
         public DataBase()
         {
             this.Context = new EntityContext("Sistema");
 
             this.Context.Database.Connection.ConnectionString = RetornaConexao();
         }
-
         ~DataBase()
         {
             Dispose(false);
         }
-
         protected EntityContext Context { get; private set; }
-
         private bool Disposed { get; set; }
-
         public void CommitChanges()
         {
             if (this.Context != null)
@@ -33,13 +32,11 @@ namespace Giusti.Template.Data.Library
                 Context.SaveChanges();
             }
         }
-
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
         protected virtual void Dispose(bool disposing)
         {
             if (!Disposed)
@@ -52,7 +49,6 @@ namespace Giusti.Template.Data.Library
                 this.Disposed = true;
             }
         }
-
         protected void AtualizaPropriedades<T>(T classeEF, T classePoco) where T : class
         {
             ObjectContext objectContext = ((IObjectContextAdapter)Context).ObjectContext;
@@ -75,7 +71,6 @@ namespace Giusti.Template.Data.Library
                 }
             }
         }
-
         protected object VerificaValorNulo<T>(T valor)
         {
             if (valor == null)
@@ -83,7 +78,6 @@ namespace Giusti.Template.Data.Library
             else
                 return valor;
         }
-
         protected T AjustaValorObjeto<T>(object valorBanco)
         {
             if (valorBanco == null || valorBanco == DBNull.Value)
@@ -98,7 +92,6 @@ namespace Giusti.Template.Data.Library
                 return (T)valorBanco;
 
         }
-
         protected decimal? AjustaValorDecimal(object valorBanco)
         {
             if (valorBanco == null || valorBanco == DBNull.Value)
@@ -106,10 +99,29 @@ namespace Giusti.Template.Data.Library
             else
                 return Convert.ToDecimal(valorBanco);
         }
-
         private string RetornaConexao()
         {
             return System.Configuration.ConfigurationManager.AppSettings["ConexaoBanco"];
         }
+
+        #endregion
+
+        #region Log
+
+        public void SalvaLog(Log itemGravar)
+        {
+            Log itemBase = Context.Loges
+            .Where(f => f.Id == itemGravar.Id).FirstOrDefault();
+            if (itemBase == null)
+            {
+                itemBase = Context.Loges.Create();
+                Context.Entry<Log>(itemBase).State = System.Data.Entity.EntityState.Added;
+            }
+            AtualizaPropriedades<Log>(itemBase, itemGravar);
+            Context.SaveChanges();
+            itemGravar.Id = itemBase.Id;
+        }
+
+        #endregion
     }
 }

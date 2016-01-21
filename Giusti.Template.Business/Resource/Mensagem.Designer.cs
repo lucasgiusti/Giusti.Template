@@ -86,5 +86,32 @@ namespace Giusti.Template.Business.Resource {
                 return ResourceManager.GetString("Autenticacao_NecessarioAutenticacao", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuário excluído com sucesso.
+        /// </summary>
+        internal static string Usuario_ExcluiUsuarioOK {
+            get {
+                return ResourceManager.GetString("Usuario_ExcluiUsuarioOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuário não encontrado.
+        /// </summary>
+        internal static string Usuario_NaoEncontrado {
+            get {
+                return ResourceManager.GetString("Usuario_NaoEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuário salvo com sucesso.
+        /// </summary>
+        internal static string Usuario_SalvaUsuarioOK {
+            get {
+                return ResourceManager.GetString("Usuario_SalvaUsuarioOK", resourceCulture);
+            }
+        }
     }
 }

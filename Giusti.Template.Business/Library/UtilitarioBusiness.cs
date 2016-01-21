@@ -11,12 +11,12 @@ namespace Giusti.Template.Business.Library
 {
     public class UtilitarioBusiness
     {
-        public static void GravaArquivoTexto(string Path, bool Append, string Conteudo)
+        public static void GravaArquivoTexto(string path, bool append, string conteudo)
         {
-            StreamWriter writer = new StreamWriter(Path, Append, System.Text.Encoding.UTF8);
+            StreamWriter writer = new StreamWriter(path, append, System.Text.Encoding.UTF8);
             try
             {
-                writer.Write(Conteudo);
+                writer.Write(conteudo);
                 writer.Flush();
             }
             finally
@@ -24,21 +24,18 @@ namespace Giusti.Template.Business.Library
                 writer.Close();
             }
         }
-
-        public static void GravaLog(string Path, string Mensagem)
+        public static void GravaLog(string path, string mensagem)
         {
-            Path += "LOG" + " " + DateTime.Today.Date.ToShortDateString().Replace("/", "-").Replace(" ", "").Replace("00:00:00", "") + ".txt";
-            GravaArquivoTexto(Path, true, Mensagem);
+            path += "LOG" + " " + DateTime.Today.Date.ToShortDateString().Replace("/", "-").Replace(" ", "").Replace("00:00:00", "") + ".txt";
+            GravaArquivoTexto(path, true, mensagem);
         }
-
-        public static string RetornaChaveConfig(string Nome)
+        public static string RetornaChaveConfig(string nome)
         {
-            if (ConfigurationManager.AppSettings[Nome] != null)
-                return ConfigurationManager.AppSettings[Nome].ToString();
+            if (ConfigurationManager.AppSettings[nome] != null)
+                return ConfigurationManager.AppSettings[nome].ToString();
             else
                 return null;
         }
-
         public static string RetornaExceptionMessages(Exception e, string msgs = "")
         {
             if (e == null) return string.Empty;

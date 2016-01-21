@@ -28,13 +28,13 @@ namespace Giusti.Template.Model
             if (Funcionalidade == null)
             {
                 ValidationResult result =
-                      new ValidationResult(Resource.MensagemModelo.Log_Funcionalidade, this, "Funcionalidade", null, null);
+                      new ValidationResult(Resource.Mensagem.Log_Funcionalidade, this, "Funcionalidade", null, null);
                 results.AddResult(result);
             }
             else if (Funcionalidade.Length > 50)
             {
                 ValidationResult result =
-                      new ValidationResult(Resource.MensagemModelo.Log_Funcionalidade_Tamanho, this, "Funcionalidade", null, null);
+                      new ValidationResult(Resource.Mensagem.Log_Funcionalidade_Tamanho, this, "Funcionalidade", null, null);
                 results.AddResult(result);
             }
         }
@@ -46,13 +46,13 @@ namespace Giusti.Template.Model
             if (Acao == null)
             {
                 ValidationResult result =
-                      new ValidationResult(Resource.MensagemModelo.Log_Acao, this, "Acao", null, null);
+                      new ValidationResult(Resource.Mensagem.Log_Acao, this, "Acao", null, null);
                 results.AddResult(result);
             }
             else if (Acao.Length > 20)
             {
                 ValidationResult result =
-                      new ValidationResult(Resource.MensagemModelo.Log_Acao_Tamanho, this, "Acao", null, null);
+                      new ValidationResult(Resource.Mensagem.Log_Acao_Tamanho, this, "Acao", null, null);
                 results.AddResult(result);
             }
         }
@@ -64,13 +64,13 @@ namespace Giusti.Template.Model
             if (OrigemAcesso == null)
             {
                 ValidationResult result =
-                      new ValidationResult(Resource.MensagemModelo.Log_OrigemAcesso, this, "OrigemAcesso", null, null);
+                      new ValidationResult(Resource.Mensagem.Log_OrigemAcesso, this, "OrigemAcesso", null, null);
                 results.AddResult(result);
             }
             else if (OrigemAcesso.Length > 250)
             {
                 ValidationResult result =
-                      new ValidationResult(Resource.MensagemModelo.Log_OrigemAcesso_Tamanho, this, "OrigemAcesso", null, null);
+                      new ValidationResult(Resource.Mensagem.Log_OrigemAcesso_Tamanho, this, "OrigemAcesso", null, null);
                 results.AddResult(result);
             }
         }
@@ -82,13 +82,13 @@ namespace Giusti.Template.Model
             if (IpMaquina == null)
             {
                 ValidationResult result =
-                      new ValidationResult(Resource.MensagemModelo.Log_IpMaquina, this, "IpMaquina", null, null);
+                      new ValidationResult(Resource.Mensagem.Log_IpMaquina, this, "IpMaquina", null, null);
                 results.AddResult(result);
             }
             else if (IpMaquina.Length > 50)
             {
                 ValidationResult result =
-                      new ValidationResult(Resource.MensagemModelo.Log_IpMaquina_Tamanho, this, "IpMaquina", null, null);
+                      new ValidationResult(Resource.Mensagem.Log_IpMaquina_Tamanho, this, "IpMaquina", null, null);
                 results.AddResult(result);
             }
         }
