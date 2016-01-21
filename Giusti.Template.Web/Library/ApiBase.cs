@@ -60,15 +60,9 @@ namespace Giusti.Template.Web.Library
         protected HttpResponseMessage RetornaMensagemErro(HttpStatusCode statusCode, Exception ex)
         {
             ServiceResult serviceResult = new ServiceResult();
-            List<Messages> mensagens = new List<Messages>();
-
-            string erroCompleto = UtilitarioBusiness.RetornaExceptionMessages(ex);
-            List<string> description = new List<string>();
-            description.Add(erroCompleto);
-            mensagens.Add(new Messages() { Description = description });
 
             serviceResult.Success = false;
-            serviceResult.Messages = mensagens;
+            serviceResult.Messages.Add(UtilitarioBusiness.RetornaExceptionMessages(ex));
 
             var json = JsonConvert.SerializeObject(serviceResult);
             HttpResponseMessage response = this.Request.CreateResponse(statusCode, json);
@@ -87,15 +81,10 @@ namespace Giusti.Template.Web.Library
         protected void GeraErro(HttpStatusCode statusCode, Exception ex)
         {
             ServiceResult serviceResult = new ServiceResult();
-            List<Messages> mensagens = new List<Messages>();
-
-            string erroCompleto = UtilitarioBusiness.RetornaExceptionMessages(ex);
-            List<string> description = new List<string>();
-            description.Add(erroCompleto);
-            mensagens.Add(new Messages() { Description = description });
 
             serviceResult.Success = false;
-            serviceResult.Messages = mensagens;
+            serviceResult.Messages.Add(UtilitarioBusiness.RetornaExceptionMessages(ex));
+
             var json = JsonConvert.SerializeObject(serviceResult);
             HttpResponseMessage response = this.Request.CreateErrorResponse(statusCode, json);
             throw new HttpResponseException(response);

@@ -19,13 +19,9 @@ namespace Giusti.Template.Business.Library
         }
         protected virtual void AddValidationResults(ValidationResults results)
         {
-            Messages message;
-
             foreach (ValidationResult result in results)
             {
-                message = new Messages();
-                message.Description.Add(result.Message);
-                serviceResult.Messages.Add(message);
+                serviceResult.Messages.Add(result.Message);
                 serviceResult.Success = false;
             }
         }

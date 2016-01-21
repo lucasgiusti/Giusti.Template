@@ -118,11 +118,9 @@ namespace Giusti.Template.Business
         }
         private void AdicionaMensagemErroBusiness(string mensagemErro)
         {
-            Messages msgs = new Messages();
-            msgs.Description = new List<string>(new string[] { mensagemErro });
             ServiceResult resultado = new ServiceResult();
             resultado.Success = false;
-            resultado.Messages.Add(msgs);
+            resultado.Messages.Add(mensagemErro);
         }
 
         #endregion
