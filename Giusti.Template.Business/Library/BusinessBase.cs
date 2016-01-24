@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Giusti.Template.Model.Results;
 using Microsoft.Practices.EnterpriseLibrary.Validation;
 using Giusti.Template.Model;

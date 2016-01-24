@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Giusti.Template.Model.Results;
 using Giusti.Template.Business.Library;
 using Giusti.Template.Data;
 using Giusti.Template.Model;
-using System.Web.Security;
 
 namespace Giusti.Template.Business
 {
@@ -65,7 +62,7 @@ namespace Giusti.Template.Business
         {
             LimpaValidacao();
             ValidateService(itemGravar);
-            ValidaRegrasNegocioUsuario(itemGravar);
+            ValidaRegrasSalvar(itemGravar);
             if (IsValid())
             {
                 using (UsuarioData data = new UsuarioData())
@@ -81,7 +78,7 @@ namespace Giusti.Template.Business
         {
             LimpaValidacao();
             ValidateService(itemGravar);
-            ValidaRegrasExclusaoUsuario(itemGravar);
+            ValidaRegrasExcluir(itemGravar);
             if (IsValid())
             {
                 using (UsuarioData data = new UsuarioData())
@@ -94,11 +91,11 @@ namespace Giusti.Template.Business
             }
         }
 
-        public void ValidaRegrasNegocioUsuario(Usuario itemGravar)
+        public void ValidaRegrasSalvar(Usuario itemGravar)
         {
 
         }
-        public void ValidaRegrasExclusaoUsuario(Usuario itemGravar)
+        public void ValidaRegrasExcluir(Usuario itemGravar)
         {
             ValidaExistenciaUsuario(itemGravar);
         }

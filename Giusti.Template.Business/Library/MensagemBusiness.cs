@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Giusti.Template.Business.Library;
 using System.Resources;
 using System.Reflection;
 

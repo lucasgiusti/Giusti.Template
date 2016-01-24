@@ -1,10 +1,6 @@
 ﻿using Microsoft.Practices.EnterpriseLibrary.Validation;
 using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Giusti.Template.Model
 {
@@ -16,11 +12,8 @@ namespace Giusti.Template.Model
         }
 
         public int? Id { get; set; }
-
         public int? UsuarioId { get; set; }
-
         public int? RegistroId { get; set; }
-
         public string Funcionalidade { get; set; }
         [SelfValidation]
         private void ValidarFuncionalidade(ValidationResults results)
@@ -38,7 +31,6 @@ namespace Giusti.Template.Model
                 results.AddResult(result);
             }
         }
-
         public string Acao { get; set; }
         [SelfValidation]
         private void ValidarAcao(ValidationResults results)
@@ -56,7 +48,6 @@ namespace Giusti.Template.Model
                 results.AddResult(result);
             }
         }
-
         public string OrigemAcesso { get; set; }
         [SelfValidation]
         private void ValidarOrigemAcesso(ValidationResults results)
@@ -74,7 +65,6 @@ namespace Giusti.Template.Model
                 results.AddResult(result);
             }
         }
-
         public string IpMaquina { get; set; }
         [SelfValidation]
         private void ValidarIpMaquina(ValidationResults results)
@@ -92,9 +82,7 @@ namespace Giusti.Template.Model
                 results.AddResult(result);
             }
         }
-
         public Usuario Usuario { get; set; }
-
         public DateTime? DataInclusao { get; set; }
         public Log Clone()
         {
