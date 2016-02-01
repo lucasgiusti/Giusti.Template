@@ -97,9 +97,9 @@ namespace Giusti.Template.Business
         }
         public void ValidaRegrasExcluir(Usuario itemGravar)
         {
-            ValidaExistenciaUsuario(itemGravar);
+            ValidaExistencia(itemGravar);
         }
-        public void ValidaExistenciaUsuario(Usuario itemGravar)
+        public void ValidaExistencia(Usuario itemGravar)
         {
             if (itemGravar == null)
             {
