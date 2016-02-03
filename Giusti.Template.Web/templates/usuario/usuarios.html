@@ -1,0 +1,15 @@
+﻿<div class="row" ng-init="getUsuarios()">
+    <div class="span10">
+        <h2>{{heading}}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="span10">
+        <table class="table table-hover">
+            <tr ng-repeat="usuario in usuarios">
+                <td><a href="/{{usuario.id}}">{{usuario.nome}}</a></td>
+                <td><a href="/{{usuario.id}}">{{usuario.situacao | Situacao}}</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
