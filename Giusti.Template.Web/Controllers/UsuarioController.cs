@@ -28,6 +28,8 @@ namespace Giusti.Template.Web.Controllers
             List<Usuario> ResultadoBusca = new List<Usuario>();
             try
             {
+                throw new Exception("erro de teste");
+
                 //API
                 ResultadoBusca = new List<Usuario>(biz.RetornaUsuarios());
 

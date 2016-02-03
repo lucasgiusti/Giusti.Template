@@ -1,9 +1,8 @@
-﻿app.controller('usuarioController', function ($scope, $http, $window, $location, $uibModal, $routeParams) {
+﻿app.controller('usuarioController', function ($scope, $http, $window, toasterAlert, $location, $uibModal, $routeParams) {
 
     var mensagemExcluir = 'Deseja realmente excluir o usuario [NOMEUSUARIO] ?';
     var mensagemSalvo = 'Usuário salvo com sucesso.';
     $scope.heading = 'Usuários';
-    $scope.alerts = [];
     $scope.usuarios = [];
 
     //GET API
@@ -14,7 +13,7 @@
             $scope.usuarios = data;
             $scope.total = $scope.usuarios.length;
         }).error(function (jqxhr, textStatus) {
-            $scope.showAlert(jqxhr.message);
+            toasterAlert.showAlert(jqxhr.message);
         })
     };
 
@@ -27,7 +26,7 @@
         $http.get(url + '/' + $scope.id).success(function (data) {
             $scope.usuario = data;
         }).error(function (jqxhr, textStatus) {
-            $scope.showAlert(jqxhr.message);
+            toasterAlert.showAlert(jqxhr.message);
         });
     };
 
@@ -37,9 +36,9 @@
         $http.post(url, JSON.stringify($scope.usuario)).success(function (id) {
             $scope.id = id;
             $scope.getUsuario();
-            $scope.showAlert(JSON.stringify([{ type: "info", msgs: [{ msg: mensagemSalvo }] }]));
+            toasterAlert.showAlert(JSON.stringify([{ type: "info", msgs: [{ msg: mensagemSalvo }] }]));
         }).error(function (jqxhr, textStatus) {
-            $scope.showAlert(jqxhr.message);
+            toasterAlert.showAlert(jqxhr.message);
         });
     };
 
@@ -48,9 +47,9 @@
 
         $http.put(url + '/' + $scope.id, JSON.stringify($scope.usuario)).success(function (data) {
             $scope.usuario = data;
-            $scope.showAlert(JSON.stringify([{ type: "info", msgs: [{ msg: mensagemSalvo }] }]));
+            toasterAlert.showAlert(JSON.stringify([{ type: "info", msgs: [{ msg: mensagemSalvo }] }]));
         }).error(function (jqxhr, textStatus) {
-            $scope.showAlert(jqxhr.message);
+            toasterAlert.showAlert(jqxhr.message);
         });
     };
 
@@ -58,10 +57,10 @@
     $scope.deleteUsuario = function () {
 
         $http.delete(url + '/' + $scope.usuario.codigo).success(function (result) {
-            $scope.showAlert(result);
-            $scope.usuarios.splice($scope.usuarios.indexOf($scope.usuario), 1);
+            toasterAlert.showAlert(result);
+            toasterAlert.usuarios.splice($scope.usuarios.indexOf($scope.usuario), 1);
         }).error(function (result) {
-            $scope.showAlert(result);
+            toasterAlert.showAlert(result);
         });
     };
 
@@ -88,18 +87,6 @@
         modalInstance.result.then(function () {
             $scope.deleteUsuario();
         });
-    };
-
-    //ALERT
-    $scope.closeAlert = function () {
-        $scope.alerts = [];
-    };
-    $scope.showAlert = function (alerts) {
-        try {
-            $scope.alerts = JSON.parse(alerts);
-        } catch (e) {
-            $scope.alerts = [{ type: "danger", msgs: [{ msg: alerts }] }];
-        }
     };
 
     //PAGINATION
