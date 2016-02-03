@@ -10,7 +10,7 @@ using Giusti.Template.Model.Dominio;
 using System.Web;
 using Giusti.Template.Business;
 
-namespace Giusti.Template.Web.Controllers
+namespace Giusti.Template.Web.Controllers.Api
 {
     /// <summary>
     /// Usuário

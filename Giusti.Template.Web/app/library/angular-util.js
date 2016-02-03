@@ -30,22 +30,19 @@ app.factory('toasterAlert', function (toaster) {
         showAlert: function (alert) {
             try {
                 var alert = JSON.parse(alert);
-                var typeAlert = alert.Success ? "info" : "error";
-                toaster.pop({
-                    type: typeAlert,
-                    body: 'toaster-template-html',
-                    bodyOutputType: 'directive',
-                    directiveData: alert
-                });
+                this.show(alert);
             } catch (e) {
                 var alert = { Sucess: "error", Messages: [{ Message: alert }] };
-                toaster.pop({
-                    type: "error",
-                    body: 'toaster-template-html',
-                    bodyOutputType: 'directive',
-                    directiveData: alert
-                });
+                this.show(alert);
             }
+        },
+        show: function(alert){
+        toaster.pop({
+            type: alert.Success ? "info" : "error",
+            body: 'toaster-template-html',
+            bodyOutputType: 'directive',
+            directiveData: alert
+            });
         }
     }
 });

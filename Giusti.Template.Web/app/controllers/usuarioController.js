@@ -1,9 +1,10 @@
 ﻿app.controller('usuarioController', function ($scope, $http, $window, toasterAlert, $location, $uibModal, $routeParams) {
 
     var mensagemExcluir = 'Deseja realmente excluir o usuario [NOMEUSUARIO] ?';
-    var mensagemSalvo = 'Usuário salvo com sucesso.';
+    var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Usuário salvo com sucesso.' }] });
     $scope.heading = 'Usuários';
     $scope.usuarios = [];
+    $scope.usuario = null;
 
     //GET API
     var url = 'api/usuario';
@@ -36,7 +37,7 @@
         $http.post(url, JSON.stringify($scope.usuario)).success(function (id) {
             $scope.id = id;
             $scope.getUsuario();
-            toasterAlert.showAlert(JSON.stringify([{ type: "info", msgs: [{ msg: mensagemSalvo }] }]));
+            toasterAlert.showAlert(mensagemSalvo);
         }).error(function (jqxhr, textStatus) {
             toasterAlert.showAlert(jqxhr.message);
         });
@@ -47,7 +48,7 @@
 
         $http.put(url + '/' + $scope.id, JSON.stringify($scope.usuario)).success(function (data) {
             $scope.usuario = data;
-            toasterAlert.showAlert(JSON.stringify([{ type: "info", msgs: [{ msg: mensagemSalvo }] }]));
+            toasterAlert.showAlert(mensagemSalvo);
         }).error(function (jqxhr, textStatus) {
             toasterAlert.showAlert(jqxhr.message);
         });
@@ -66,7 +67,7 @@
 
     //ADD USUARIO
     $scope.addUsuario = function () {
-        $scope.usuario = { codigo: null, perfils: [], ativo: true };
+        $scope.usuario = { id: null };
     };
 
     //MODAL DELETE
@@ -76,7 +77,7 @@
 
         var modalInstance = $uibModal.open({
             animation: true,
-            templateUrl: '/templates/modalConfirm.html',
+            templateUrl: 'app/templates/modalConfirm.html',
             controller: 'modalConfirmInstanceController',
             resolve: {
                 dadosModalConfirm: function () {
