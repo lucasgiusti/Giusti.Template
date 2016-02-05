@@ -61,6 +61,33 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acesso excluído com sucesso.
+        /// </summary>
+        internal static string Acesso_ExcluiAcessoOK {
+            get {
+                return ResourceManager.GetString("Acesso_ExcluiAcessoOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acesso não encontrado.
+        /// </summary>
+        internal static string Acesso_NaoEncontrado {
+            get {
+                return ResourceManager.GetString("Acesso_NaoEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acesso salvo com sucesso.
+        /// </summary>
+        internal static string Acesso_SalvaAcessoOK {
+            get {
+                return ResourceManager.GetString("Acesso_SalvaAcessoOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O usuário {0} não tem permissão de acesso à funcionalidade {1}.
         /// </summary>
         internal static string Autenticacao_AcessoNegado {
@@ -84,6 +111,33 @@ namespace Giusti.Template.Business.Resource {
         internal static string Autenticacao_NecessarioAutenticacao {
             get {
                 return ResourceManager.GetString("Autenticacao_NecessarioAutenticacao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Funcionalidade excluída com sucesso.
+        /// </summary>
+        internal static string Funcionalidade_ExcluiFuncionalidadeOK {
+            get {
+                return ResourceManager.GetString("Funcionalidade_ExcluiFuncionalidadeOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A funcionalidade não pode ser excluída pois está associada a um perfil ou tem uma funcionalidade filho.
+        /// </summary>
+        internal static string Funcionalidade_FuncionalidadeUtilizada {
+            get {
+                return ResourceManager.GetString("Funcionalidade_FuncionalidadeUtilizada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Funcionalidade salva com sucesso.
+        /// </summary>
+        internal static string Funcionalidade_SalvaFuncionalidadeOK {
+            get {
+                return ResourceManager.GetString("Funcionalidade_SalvaFuncionalidadeOK", resourceCulture);
             }
         }
         

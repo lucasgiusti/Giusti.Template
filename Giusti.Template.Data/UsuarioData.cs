@@ -8,8 +8,6 @@ namespace Giusti.Template.Data
 {
     public class UsuarioData : DataBase
     {
-        #region Usuario
-
         public Usuario RetornaUsuario_Id(int id)
         {
             IQueryable<Usuario> query = Context.Usuarios;
@@ -50,7 +48,5 @@ namespace Giusti.Template.Data
             Context.Entry<Usuario>(itemExcluir).State = System.Data.Entity.EntityState.Deleted;
             Context.SaveChanges();
         }
-
-        #endregion
     }
 }

@@ -9,8 +9,6 @@ namespace Giusti.Template.Business
 {
     public class UsuarioBusiness : BusinessBase
     {
-        #region Usuario
-
         public Usuario RetornaUsuario_Id(int id)
         {
             LimpaValidacao();
@@ -108,7 +106,5 @@ namespace Giusti.Template.Business
                 serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_NaoEncontrado") });
             }
         }
-
-        #endregion
     }
 }

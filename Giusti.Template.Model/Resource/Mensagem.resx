@@ -117,40 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Log_Acao" xml:space="preserve">
-    <value>O campo Acao é obrigatório</value>
-  </data>
-  <data name="Log_Acao_Tamanho" xml:space="preserve">
-    <value>O tamanho do campo Acao excedeu o limite</value>
-  </data>
-  <data name="Log_DataInclusao" xml:space="preserve">
-    <value>O campo DataInclusao é obrigatório</value>
-  </data>
-  <data name="Log_Funcionalidade" xml:space="preserve">
-    <value>O campo Funcionalidade é obrigatório</value>
-  </data>
-  <data name="Log_Funcionalidade_Tamanho" xml:space="preserve">
-    <value>O tamanho do campo Funcionalidade excedeu o limite</value>
-  </data>
-  <data name="Log_IpMaquina" xml:space="preserve">
-    <value>O campo IpMaquina é obrigatório</value>
-  </data>
-  <data name="Log_IpMaquina_Tamanho" xml:space="preserve">
-    <value>O tamanho do campo IpMaquina excedeu o limite</value>
-  </data>
-  <data name="Log_LogId" xml:space="preserve">
-    <value>O campo LogId é obrigatório</value>
-  </data>
-  <data name="Log_OrigemAcesso" xml:space="preserve">
-    <value>O campo OrigemAcesso é obrigatório</value>
-  </data>
-  <data name="Log_OrigemAcesso_Tamanho" xml:space="preserve">
-    <value>O tamanho do campo OrigemAcesso excedeu o limite</value>
-  </data>
-  <data name="Log_RegistroId" xml:space="preserve">
-    <value>O campo RegistroId é obrigatório</value>
-  </data>
-  <data name="Log_UsuarioId" xml:space="preserve">
-    <value>O campo UsuarioId é obrigatório</value>
-  </data>
 </root>

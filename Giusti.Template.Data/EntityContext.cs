@@ -19,12 +19,18 @@ namespace Giusti.Template.Data
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Log> Loges { get; set; }
+        public DbSet<Funcionalidade> Funcionalidades { get; set; }
+        public DbSet<Perfil> Perfis { get; set; }
+        public DbSet<Acesso> Acessos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Database.SetInitializer<EntityContext>(null);
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
             modelBuilder.Configurations.Add(new LogConfiguration());
+            modelBuilder.Configurations.Add(new FuncionalidadeConfiguration());
+            modelBuilder.Configurations.Add(new PerfilConfiguration());
+            modelBuilder.Configurations.Add(new AcessoConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }
