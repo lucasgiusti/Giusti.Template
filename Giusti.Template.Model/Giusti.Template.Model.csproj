@@ -43,12 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dominio\Constantes.cs" />
     <Compile Include="PerfilFuncionalidade.cs" />
     <Compile Include="Dominio\enumTipoAcao.cs" />
     <Compile Include="Dominio\Funcionalidade.cs" />
     <Compile Include="Funcionalidade.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Perfil.cs" />
+    <Compile Include="PerfilUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource\Mensagem.Designer.cs">
       <AutoGen>True</AutoGen>

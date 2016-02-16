@@ -144,6 +144,30 @@
   <data name="PerfilFuncionalidade_SalvaAcessoOK" xml:space="preserve">
     <value>PerfilFuncionalidade salvo com sucesso</value>
   </data>
+  <data name="PerfilUsuario_ExcluiPerfilUsuarioOK" xml:space="preserve">
+    <value>PerfilUsuario excluído com sucesso</value>
+  </data>
+  <data name="PerfilUsuario_NaoEncontrado" xml:space="preserve">
+    <value>PerfilUsuario não encontrado</value>
+  </data>
+  <data name="PerfilUsuario_SalvaPerfilUsuarioOK" xml:space="preserve">
+    <value>PerfilUsuario salvo com sucesso</value>
+  </data>
+  <data name="Perfil_CadastroUtilizado" xml:space="preserve">
+    <value>O Perfil não pode ser excluído pois está associado a um usuário</value>
+  </data>
+  <data name="Perfil_ExcluiPerfilOK" xml:space="preserve">
+    <value>Perfil excluído com sucesso</value>
+  </data>
+  <data name="Perfil_NaoEncontrado" xml:space="preserve">
+    <value>Perfil não encontrado</value>
+  </data>
+  <data name="Perfil_SalvaPerfilOK" xml:space="preserve">
+    <value>Perfil salvo com sucesso</value>
+  </data>
+  <data name="Perfil_SemPermissaoEdicaoExclusao" xml:space="preserve">
+    <value>O perfil não pode ser editado nem excluído</value>
+  </data>
   <data name="Usuario_ExcluiUsuarioOK" xml:space="preserve">
     <value>Usuário excluído com sucesso</value>
   </data>

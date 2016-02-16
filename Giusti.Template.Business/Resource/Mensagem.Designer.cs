@@ -115,6 +115,51 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O Perfil não pode ser excluído pois está associado a um usuário.
+        /// </summary>
+        internal static string Perfil_CadastroUtilizado {
+            get {
+                return ResourceManager.GetString("Perfil_CadastroUtilizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Perfil excluído com sucesso.
+        /// </summary>
+        internal static string Perfil_ExcluiPerfilOK {
+            get {
+                return ResourceManager.GetString("Perfil_ExcluiPerfilOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Perfil não encontrado.
+        /// </summary>
+        internal static string Perfil_NaoEncontrado {
+            get {
+                return ResourceManager.GetString("Perfil_NaoEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Perfil salvo com sucesso.
+        /// </summary>
+        internal static string Perfil_SalvaPerfilOK {
+            get {
+                return ResourceManager.GetString("Perfil_SalvaPerfilOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O perfil não pode ser editado nem excluído.
+        /// </summary>
+        internal static string Perfil_SemPermissaoEdicaoExclusao {
+            get {
+                return ResourceManager.GetString("Perfil_SemPermissaoEdicaoExclusao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PerfilFuncionalidade excluído com sucesso.
         /// </summary>
         internal static string PerfilFuncionalidade_ExcluiAcessoOK {
@@ -138,6 +183,33 @@ namespace Giusti.Template.Business.Resource {
         internal static string PerfilFuncionalidade_SalvaAcessoOK {
             get {
                 return ResourceManager.GetString("PerfilFuncionalidade_SalvaAcessoOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PerfilUsuario excluído com sucesso.
+        /// </summary>
+        internal static string PerfilUsuario_ExcluiPerfilUsuarioOK {
+            get {
+                return ResourceManager.GetString("PerfilUsuario_ExcluiPerfilUsuarioOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PerfilUsuario não encontrado.
+        /// </summary>
+        internal static string PerfilUsuario_NaoEncontrado {
+            get {
+                return ResourceManager.GetString("PerfilUsuario_NaoEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PerfilUsuario salvo com sucesso.
+        /// </summary>
+        internal static string PerfilUsuario_SalvaPerfilUsuarioOK {
+            get {
+                return ResourceManager.GetString("PerfilUsuario_SalvaPerfilUsuarioOK", resourceCulture);
             }
         }
         

@@ -117,6 +117,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\UsuarioController.cs" />
+    <Compile Include="Controllers\Api\PerfilController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -126,7 +127,10 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\modalConfirmController.js" />
+    <Content Include="app\controllers\perfilController.js" />
     <Content Include="app\controllers\usuarioController.js" />
+    <Content Include="app\templates\perfil\perfil-add.html" />
+    <Content Include="app\templates\perfil\perfis.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

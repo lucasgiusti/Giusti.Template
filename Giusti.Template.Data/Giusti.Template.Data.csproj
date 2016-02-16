@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\PerfilUsuarioConfiguration.cs" />
+    <Compile Include="PerfilData.cs" />
     <Compile Include="PerfilFuncionalidadeData.cs" />
     <Compile Include="Configuration\PerfilFuncionalidadeConfiguration.cs" />
     <Compile Include="Configuration\FuncionalidadeConfiguration.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Configuration\UsuarioConfiguration.cs" />
     <Compile Include="EntityContext.cs" />
     <Compile Include="FuncionalidadeData.cs" />
+    <Compile Include="PerfilUsuarioData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Library\DataBase.cs" />
     <Compile Include="UsuarioData.cs" />

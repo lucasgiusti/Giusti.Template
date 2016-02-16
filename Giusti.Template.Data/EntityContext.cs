@@ -22,6 +22,7 @@ namespace Giusti.Template.Data
         public DbSet<Funcionalidade> Funcionalidades { get; set; }
         public DbSet<Perfil> Perfis { get; set; }
         public DbSet<PerfilFuncionalidade> PerfilFuncionalidades { get; set; }
+        public DbSet<PerfilUsuario> PerfilUsuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -31,6 +32,7 @@ namespace Giusti.Template.Data
             modelBuilder.Configurations.Add(new FuncionalidadeConfiguration());
             modelBuilder.Configurations.Add(new PerfilConfiguration());
             modelBuilder.Configurations.Add(new PerfilFuncionalidadeConfiguration());
+            modelBuilder.Configurations.Add(new PerfilUsuarioConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -96,7 +96,6 @@ namespace Giusti.Template.Business
         {
             if (itemGravar == null)
             {
-                serviceResult = new ServiceResult();
                 serviceResult.Success = false;
                 serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("PerfilFuncionalidade_NaoEncontrado") });
             }

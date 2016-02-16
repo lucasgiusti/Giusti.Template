@@ -1,10 +1,10 @@
-﻿app.controller('modalConfirmInstanceController', function ($scope, $modalInstance, dadosModalConfirm) {
+﻿app.controller('modalConfirmInstanceController', function ($scope, $uibModalInstance, dadosModalConfirm) {
     $scope.dadosModalConfirm = dadosModalConfirm;
     $scope.confirmar = function () {
-        $modalInstance.close();
+        $uibModalInstance.close();
     };
 
     $scope.cancelar = function () {
-        $modalInstance.dismiss('cancel');
+        $uibModalInstance.dismiss('cancel');
     };
 });

@@ -91,17 +91,20 @@ namespace Giusti.Template.Business
 
         public void ValidaRegrasSalvar(Usuario itemGravar)
         {
+            if (IsValid())
+            {
 
+            }
         }
         public void ValidaRegrasExcluir(Usuario itemGravar)
         {
-            ValidaExistencia(itemGravar);
+            if (IsValid())
+                ValidaExistencia(itemGravar);
         }
         public void ValidaExistencia(Usuario itemGravar)
         {
             if (itemGravar == null)
             {
-                serviceResult = new ServiceResult();
                 serviceResult.Success = false;
                 serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_NaoEncontrado") });
             }
