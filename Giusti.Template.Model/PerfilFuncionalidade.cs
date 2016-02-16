@@ -10,9 +10,9 @@ using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 namespace Giusti.Template.Model
 {
 
-    public partial class Acesso
+    public partial class PerfilFuncionalidade
     {
-        public Acesso()
+        public PerfilFuncionalidade()
         {
         }
         public int? Id { get; set; }

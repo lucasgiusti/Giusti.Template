@@ -7,16 +7,16 @@ using Giusti.Template.Model;
 
 namespace Giusti.Template.Data.Configuration
 {
-    public partial class AcessoConfiguration : EntityTypeConfiguration<Acesso>
+    public partial class PerfilFuncionalidadeConfiguration : EntityTypeConfiguration<PerfilFuncionalidade>
     {
-        public AcessoConfiguration()
+        public PerfilFuncionalidadeConfiguration()
         {
             string Schema = System.Configuration.ConfigurationManager.AppSettings["Schema"];
             if (string.IsNullOrEmpty(Schema))
 
-                this.ToTable("Acesso");
+                this.ToTable("PerfilFuncionalidade");
             else
-                this.ToTable("Acesso", Schema);
+                this.ToTable("PerfilFuncionalidade", Schema);
             this.HasKey(i => new { i.Id });
             this.Property(i => i.Id).HasColumnName("Id");
             this.Property(i => i.PerfilId).HasColumnName("PerfilId");

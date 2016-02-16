@@ -61,33 +61,6 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Acesso excluído com sucesso.
-        /// </summary>
-        internal static string Acesso_ExcluiAcessoOK {
-            get {
-                return ResourceManager.GetString("Acesso_ExcluiAcessoOK", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Acesso não encontrado.
-        /// </summary>
-        internal static string Acesso_NaoEncontrado {
-            get {
-                return ResourceManager.GetString("Acesso_NaoEncontrado", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Acesso salvo com sucesso.
-        /// </summary>
-        internal static string Acesso_SalvaAcessoOK {
-            get {
-                return ResourceManager.GetString("Acesso_SalvaAcessoOK", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to O usuário {0} não tem permissão de acesso à funcionalidade {1}.
         /// </summary>
         internal static string Autenticacao_AcessoNegado {
@@ -138,6 +111,33 @@ namespace Giusti.Template.Business.Resource {
         internal static string Funcionalidade_SalvaFuncionalidadeOK {
             get {
                 return ResourceManager.GetString("Funcionalidade_SalvaFuncionalidadeOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PerfilFuncionalidade excluído com sucesso.
+        /// </summary>
+        internal static string PerfilFuncionalidade_ExcluiAcessoOK {
+            get {
+                return ResourceManager.GetString("PerfilFuncionalidade_ExcluiAcessoOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PerfilFuncionalidade não encontrado.
+        /// </summary>
+        internal static string PerfilFuncionalidade_NaoEncontrado {
+            get {
+                return ResourceManager.GetString("PerfilFuncionalidade_NaoEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PerfilFuncionalidade salvo com sucesso.
+        /// </summary>
+        internal static string PerfilFuncionalidade_SalvaAcessoOK {
+            get {
+                return ResourceManager.GetString("PerfilFuncionalidade_SalvaAcessoOK", resourceCulture);
             }
         }
         

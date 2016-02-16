@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Acesso.cs" />
+    <Compile Include="PerfilFuncionalidade.cs" />
     <Compile Include="Dominio\enumTipoAcao.cs" />
     <Compile Include="Dominio\Funcionalidade.cs" />
     <Compile Include="Funcionalidade.cs" />

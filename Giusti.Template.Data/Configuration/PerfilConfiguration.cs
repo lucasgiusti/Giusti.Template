@@ -21,7 +21,7 @@ namespace Giusti.Template.Data.Configuration
             this.HasKey(i => new { i.Id });
             this.Property(i => i.Id).HasColumnName("Id");
             this.Property(i => i.Nome).HasColumnName("Nome");
-            this.HasMany(i => i.Acessos).WithRequired().HasForeignKey(d => d.PerfilId);
+            this.HasMany(i => i.PerfilFuncionalidades).WithRequired().HasForeignKey(d => d.PerfilId);
 
         }
     }

@@ -50,8 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcessoData.cs" />
-    <Compile Include="Configuration\AcessoConfiguration.cs" />
+    <Compile Include="PerfilFuncionalidadeData.cs" />
+    <Compile Include="Configuration\PerfilFuncionalidadeConfiguration.cs" />
     <Compile Include="Configuration\FuncionalidadeConfiguration.cs" />
     <Compile Include="Configuration\LogConfiguration.cs" />
     <Compile Include="Configuration\PerfilConfiguration.cs" />

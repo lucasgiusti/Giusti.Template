@@ -71,16 +71,16 @@ namespace Giusti.Template.Business
 
         private void ValidaRegrasExcluir(Funcionalidade itemGravar)
         {
-            IList<Acesso> AcessosAssociados = new List<Acesso>();
-            AcessoBusiness bizAcesso = new AcessoBusiness();
-            AcessosAssociados = bizAcesso.RetornaAcessos_PerfilId_FuncionalidadeId(null, itemGravar.Id);
+            IList<PerfilFuncionalidade> PerfilFuncionalidadesAssociadas = new List<PerfilFuncionalidade>();
+            PerfilFuncionalidadeBusiness bizPerfilFuncionalidade = new PerfilFuncionalidadeBusiness();
+            PerfilFuncionalidadesAssociadas = bizPerfilFuncionalidade.RetornaPerfilFuncionalidades_PerfilId_FuncionalidadeId(null, itemGravar.Id);
 
             List<Funcionalidade> FuncionalidadeAssociadas = new List<Funcionalidade>();
             using (FuncionalidadeData data = new FuncionalidadeData())
             {
                 FuncionalidadeAssociadas = new List<Funcionalidade>(data.RetornaFuncionalidades_FuncionalidadeIdPai(itemGravar.Id));
             }
-            if (AcessosAssociados.Count > 0 || FuncionalidadeAssociadas.Count > 0)
+            if (PerfilFuncionalidadesAssociadas.Count > 0 || FuncionalidadeAssociadas.Count > 0)
             {
                 serviceResult = new ServiceResult();
                 serviceResult.Success = false;

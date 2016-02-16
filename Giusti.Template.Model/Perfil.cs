@@ -17,6 +17,6 @@ namespace Giusti.Template.Model
         }
         public int? Id { get; set; }
         public string Nome { get; set; }
-        public IList<Acesso> Acessos { get; set; }
+        public IList<PerfilFuncionalidade> PerfilFuncionalidades { get; set; }
     }
 }

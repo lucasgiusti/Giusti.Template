@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcessoBusiness.cs" />
+    <Compile Include="PerfilFuncionalidadeBusiness.cs" />
     <Compile Include="FuncionalidadeBusiness.cs" />
     <Compile Include="Library\BusinessBase.cs" />
     <Compile Include="Library\MensagemBusiness.cs" />
