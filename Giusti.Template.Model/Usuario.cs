@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Giusti.Template.Model
 {
@@ -15,6 +16,7 @@ namespace Giusti.Template.Model
         public int? Situacao { get; set; }
         public DateTime? DataInclusao { get; set; }
         public DateTime? DataAlteracao { get; set; }
+        public IList<PerfilUsuario> Perfis { get; set; }
         public Usuario Clone()
         {
             return (Usuario)this.MemberwiseClone();

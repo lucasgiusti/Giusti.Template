@@ -26,6 +26,7 @@
 
         $http.get(url + '/' + $scope.id).success(function (data) {
             $scope.usuario = data;
+            $scope.getPerfils();
         }).error(function (jqxhr, textStatus) {
             toasterAlert.showAlert(jqxhr.message);
         });
@@ -57,7 +58,7 @@
     //DELETE API
     $scope.deleteUsuario = function () {
 
-        $http.delete(url + '/' + $scope.usuario.codigo).success(function (result) {
+        $http.delete(url + '/' + $scope.usuario.id).success(function (result) {
             toasterAlert.showAlert(result);
             toasterAlert.usuarios.splice($scope.usuarios.indexOf($scope.usuario), 1);
         }).error(function (result) {
@@ -67,7 +68,8 @@
 
     //ADD USUARIO
     $scope.addUsuario = function () {
-        $scope.usuario = { id: null };
+        $scope.usuario = { id: null, perfils: [], situacao: '1' };
+        $scope.getPerfils();
     };
 
     //MODAL DELETE
@@ -89,6 +91,28 @@
             $scope.deleteUsuario();
         });
     };
+
+    var urlPerfil = 'api/perfil';
+    $scope.getPerfils = function () {
+
+        $http.get(urlPerfil).success(function (data) {
+            $scope.perfilsDisponiveis = data;
+
+            angular.forEach(data, function (perfil, key) {
+                perfil.usuarioPossui = false;
+                angular.forEach($scope.usuario.perfils, function (perfilUsuario, key) {
+                    if (perfilUsuario.perfilId == perfil.id) {
+                        perfil.usuarioPossui = true;
+                    }
+                });
+            });
+
+
+
+        }).error(function (jqxhr, textStatus) {
+            toasterAlert.showAlert(jqxhr.message);
+        })
+    }
 
     //PAGINATION
     $scope.total = 0;

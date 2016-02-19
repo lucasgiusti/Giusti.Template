@@ -134,6 +134,9 @@
     <Content Include="app\templates\perfil\perfil-edit.html" />
     <Content Include="app\templates\perfil\perfil-view.html" />
     <Content Include="app\templates\perfil\perfis.html" />
+    <Content Include="app\templates\usuario\usuario-add.html" />
+    <Content Include="app\templates\usuario\usuario-edit.html" />
+    <Content Include="app\templates\usuario\usuario-view.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

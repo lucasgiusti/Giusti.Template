@@ -8,13 +8,24 @@
     };
 });
 
-app.filter('Situacao', function () {
+app.filter('SituacaoString', function () {
     return function (input) {
-        if (input == '0') {
+        if (input == '1') {
             return 'Ativo';
         }
-        else if (input == '1') {
+        else if (input == '0') {
             return 'Inativo';
+        }
+    };
+});
+
+app.filter('SituacaoBool', function () {
+    return function (input) {
+        if (input == '0') {
+            return false;
+        }
+        else if (input == '1') {
+            return true;
         }
     };
 });
