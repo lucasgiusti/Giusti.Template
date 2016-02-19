@@ -59,5 +59,23 @@ namespace Giusti.Template.Model.Resource {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo nome é obrigatório.
+        /// </summary>
+        internal static string Perfil_Nome {
+            get {
+                return ResourceManager.GetString("Perfil_Nome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O tamanho do campo nome excedeu o limite.
+        /// </summary>
+        internal static string Perfil_NomeTamanho {
+            get {
+                return ResourceManager.GetString("Perfil_NomeTamanho", resourceCulture);
+            }
+        }
     }
 }

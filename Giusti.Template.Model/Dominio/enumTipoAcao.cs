@@ -1,6 +1,6 @@
 ﻿namespace Giusti.Template.Model.Dominio
 {
-    public enum enumTipoAcao
+    public enum EnumTipoAcao
     {
         Incluir,
         Alterar,

@@ -1,5 +1,6 @@
 ﻿<div>
-    <form class="form-horizontal" data-ng-init="addPerfil()">
+
+    <form class="form-horizontal" data-ng-init="getPerfil()">
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-10">
                 <legend>{{heading}}</legend>
@@ -42,7 +43,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <a href="/perfil" class="btn btn-warning">Voltar</a>
-                <a class="btn btn-primary btn-large" ng-click="postPerfil()">Salvar</a>
+                <a class="btn btn-primary btn-large" ng-click="putPerfil()">Salvar</a>
             </div>
         </div>
     </form>

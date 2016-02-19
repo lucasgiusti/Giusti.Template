@@ -115,6 +115,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Api\FuncionalidadeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\UsuarioController.cs" />
     <Compile Include="Controllers\Api\PerfilController.cs" />
@@ -130,6 +131,8 @@
     <Content Include="app\controllers\perfilController.js" />
     <Content Include="app\controllers\usuarioController.js" />
     <Content Include="app\templates\perfil\perfil-add.html" />
+    <Content Include="app\templates\perfil\perfil-edit.html" />
+    <Content Include="app\templates\perfil\perfil-view.html" />
     <Content Include="app\templates\perfil\perfis.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

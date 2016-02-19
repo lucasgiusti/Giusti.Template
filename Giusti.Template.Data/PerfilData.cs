@@ -23,10 +23,12 @@ namespace Giusti.Template.Data
         }
         public void SalvaPerfil(Perfil itemGravar)
         {
-            Perfil itemBase = Context.Perfis.Where(f => f.Id == itemGravar.Id).FirstOrDefault();
+            Perfil itemBase = Context.Perfis.Include("PerfilFuncionalidades").Where(f => f.Id == itemGravar.Id).FirstOrDefault();
             if (itemBase == null)
             {
                 itemBase = Context.Perfis.Create();
+                itemBase.PerfilFuncionalidades = new List<PerfilFuncionalidade>();
+
                 Context.Entry<Perfil>(itemBase).State = System.Data.Entity.EntityState.Added;
             }
             AtualizaPropriedades<Perfil>(itemBase, itemGravar);

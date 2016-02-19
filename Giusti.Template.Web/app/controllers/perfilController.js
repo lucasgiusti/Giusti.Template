@@ -18,6 +18,51 @@
         })
     };
 
+    // GET API
+    $scope.getPerfil = function () {
+        if (!angular.isUndefined($routeParams.id)) {
+            $scope.id = $routeParams.id;
+        }
+
+        $http.get(url + '/' + $scope.id).success(function (data) {
+            $scope.perfil = data;
+            $scope.getFuncionalidades();
+        }).error(function (jqxhr, textStatus) {
+            toasterAlert.showAlert(jqxhr.message);
+        });
+    };
+
+    //POST API
+    $scope.postPerfil = function () {
+        $scope.perfil.perfilFuncionalidades = [];
+        angular.forEach($scope.funcionalidadesDisponiveis, function (funcionalidade, key) {
+            $scope.preencheFuncionalidadesPerfil(funcionalidade);
+        });
+
+        $http.post(url + "/", $scope.perfil).success(function (id) {
+            $scope.id = id;
+            $scope.getPerfil();
+            toasterAlert.showAlert(mensagemSalvo);
+        }).error(function (jqxhr, textStatus) {
+            toasterAlert.showAlert(jqxhr.message);
+        });
+    };
+
+    //PUT API
+    $scope.putPerfil = function () {
+        $scope.perfil.perfilFuncionalidades = [];
+        angular.forEach($scope.funcionalidadesDisponiveis, function (funcionalidade, key) {
+            $scope.preencheFuncionalidadesPerfil(funcionalidade);
+        });
+
+        $http.put(url + "/" + $scope.id, JSON.stringify($scope.perfil)).success(function (data) {
+            $scope.perfil = data;
+            toasterAlert.showAlert(mensagemSalvo);
+        }).error(function (jqxhr, textStatus) {
+            toasterAlert.showAlert(jqxhr.message);
+        });
+    };
+
     //DELETE API
     $scope.deletePerfil = function () {
 
@@ -48,6 +93,81 @@
             $scope.deletePerfil();
         });
     };
+
+    //ADD
+    $scope.addPerfil = function () {
+        $scope.perfil = { id: null, perfilFuncionalidades: [] };
+        $scope.getFuncionalidades();
+    };
+
+    var urlFuncionalidade = 'api/funcionalidade';
+    $scope.getFuncionalidades = function () {
+        $http.get(urlFuncionalidade).success(function (data) {
+
+            $scope.funcionalidadesDisponiveis = data;
+
+            angular.forEach($scope.funcionalidadesDisponiveis, function (funcionalidade, key) {
+                $scope.verificaPerfilPossui(funcionalidade);
+            });
+
+        }).error(function (jqxhr, textStatus) {
+            toasterAlert.showAlert(jqxhr.message);
+        })
+    }
+
+    $scope.verificaPerfilPossui = function (funcionalidade) {
+
+        funcionalidade.perfilPossui = false;
+        angular.forEach($scope.perfil.perfilFuncionalidades, function (perfilFuncionalidade, key) {
+            if (perfilFuncionalidade.funcionalidadeId == funcionalidade.id) {
+                funcionalidade.perfilPossui = true;
+            }
+        });
+
+        if (funcionalidade.funcionalidadesFilho) {
+            angular.forEach(funcionalidade.funcionalidadesFilho, function (funcionalidade, key) {
+                $scope.verificaPerfilPossui(funcionalidade);
+            });
+        }
+    }
+
+    $scope.verificaCheckPaiFilhos = function (funcionalidade) {
+        if (funcionalidade.perfilPossui) {
+            $scope.marcaFuncionalidadePai($scope.funcionalidadesDisponiveis, funcionalidade.funcionalidadeIdPai);
+        }
+        else {
+            $scope.desmarcaFuncionalidadesFilho(funcionalidade);
+        }
+    }
+
+    $scope.marcaFuncionalidadePai = function (funcionalidades, funcionalidadeIdPai) {
+        angular.forEach(funcionalidades, function (funcionalidade, key) {
+            if (funcionalidade.id == funcionalidadeIdPai) {
+                funcionalidade.perfilPossui = true;
+                $scope.marcaFuncionalidadePai($scope.funcionalidadesDisponiveis, funcionalidade.funcionalidadeIdPai);
+            }
+            else {
+                $scope.marcaFuncionalidadePai(funcionalidade.funcionalidadesFilho, funcionalidadeIdPai);
+            }
+        });
+    }
+
+    $scope.desmarcaFuncionalidadesFilho = function (funcionalidade) {
+        funcionalidade.perfilPossui = false;
+        angular.forEach(funcionalidade.funcionalidadesFilho, function (funcionalidadeFilho, key) {
+            $scope.desmarcaFuncionalidadesFilho(funcionalidadeFilho);
+        });
+    }
+
+    $scope.preencheFuncionalidadesPerfil = function (funcionalidade) {
+        if (funcionalidade.perfilPossui) {
+            $scope.perfil.perfilFuncionalidades.push({ funcionalidadeId: funcionalidade.id });
+        }
+
+        angular.forEach(funcionalidade.funcionalidadesFilho, function (funcionalidade, key) {
+            $scope.preencheFuncionalidadesPerfil(funcionalidade);
+        });
+    }
 
     //PAGINATION
     $scope.total = 0;

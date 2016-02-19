@@ -117,4 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Perfil_Nome" xml:space="preserve">
+    <value>O campo nome é obrigatório</value>
+  </data>
+  <data name="Perfil_NomeTamanho" xml:space="preserve">
+    <value>O tamanho do campo nome excedeu o limite</value>
+  </data>
 </root>
