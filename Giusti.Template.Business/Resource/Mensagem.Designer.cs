@@ -115,7 +115,7 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O Perfil não pode ser excluído pois está associado a um usuário.
+        ///   Looks up a localized string similar to O perfil não pode ser excluído pois está associado a um usuário.
         /// </summary>
         internal static string Perfil_CadastroUtilizado {
             get {
@@ -138,6 +138,15 @@ namespace Giusti.Template.Business.Resource {
         internal static string Perfil_NaoEncontrado {
             get {
                 return ResourceManager.GetString("Perfil_NaoEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo nome é obrigatório.
+        /// </summary>
+        internal static string Perfil_Nome {
+            get {
+                return ResourceManager.GetString("Perfil_Nome", resourceCulture);
             }
         }
         
@@ -214,6 +223,33 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Já existe um usuário com o email informado.
+        /// </summary>
+        internal static string Usuario_CadastroDuplicado {
+            get {
+                return ResourceManager.GetString("Usuario_CadastroDuplicado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O usuário não pode ser excluído pois está associado a um perfil ou já efetuou login no sistema.
+        /// </summary>
+        internal static string Usuario_CadastroUtilizado {
+            get {
+                return ResourceManager.GetString("Usuario_CadastroUtilizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo email é obrigatório.
+        /// </summary>
+        internal static string Usuario_Email {
+            get {
+                return ResourceManager.GetString("Usuario_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usuário excluído com sucesso.
         /// </summary>
         internal static string Usuario_ExcluiUsuarioOK {
@@ -232,11 +268,47 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O campo nome é obrigatório.
+        /// </summary>
+        internal static string Usuario_Nome {
+            get {
+                return ResourceManager.GetString("Usuario_Nome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usuário salvo com sucesso.
         /// </summary>
         internal static string Usuario_SalvaUsuarioOK {
             get {
                 return ResourceManager.GetString("Usuario_SalvaUsuarioOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo senha é obrigatório.
+        /// </summary>
+        internal static string Usuario_Senha {
+            get {
+                return ResourceManager.GetString("Usuario_Senha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo confirmação de senha é obrigatório.
+        /// </summary>
+        internal static string Usuario_SenhaConfirmacao {
+            get {
+                return ResourceManager.GetString("Usuario_SenhaConfirmacao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo confirmação de senha é inválido.
+        /// </summary>
+        internal static string Usuario_SenhaConfirmacao_Incorreta {
+            get {
+                return ResourceManager.GetString("Usuario_SenhaConfirmacao_Incorreta", resourceCulture);
             }
         }
     }

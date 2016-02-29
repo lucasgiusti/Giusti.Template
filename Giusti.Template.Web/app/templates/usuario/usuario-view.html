@@ -14,7 +14,7 @@
             <div class="col-sm-offset-3 col-sm-1">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="usuario.situacao | SituacaoBool" disabled> Ativo
+                        <input type="checkbox" ng-model="usuario.ativo" disabled> Ativo
                     </label>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="perfil in perfilsDisponiveis">
+                        <tr ng-repeat="perfil in perfisDisponiveis">
                             <td><input type="checkbox" ng-model="perfil.usuarioPossui" disabled /></td>
                             <td>{{perfil.nome}}</td>
                         </tr>

@@ -62,8 +62,19 @@ namespace Giusti.Template.Business.Library
 
         #region Log
 
-        private void ValidaRegrasNegocioLog(Log itemGravar)
+        public bool ExisteLog_UsuarioId(int id)
         {
+            LimpaValidacao();
+            bool RetornoAcao = false;
+            if (IsValid())
+            {
+                using (UsuarioData data = new UsuarioData())
+                {
+                    RetornoAcao = data.ExisteLog_UsuarioId(id);
+                }
+            }
+
+            return RetornoAcao;
         }
         public void SalvaLog(Log itemGravar)
         {
@@ -76,6 +87,10 @@ namespace Giusti.Template.Business.Library
                     data.SalvaLog(itemGravar);
                 }
             }
+        }
+
+        private void ValidaRegrasNegocioLog(Log itemGravar)
+        {
         }
 
         #endregion

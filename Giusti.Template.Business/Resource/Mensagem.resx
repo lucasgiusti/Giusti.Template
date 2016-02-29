@@ -154,7 +154,7 @@
     <value>PerfilUsuario salvo com sucesso</value>
   </data>
   <data name="Perfil_CadastroUtilizado" xml:space="preserve">
-    <value>O Perfil não pode ser excluído pois está associado a um usuário</value>
+    <value>O perfil não pode ser excluído pois está associado a um usuário</value>
   </data>
   <data name="Perfil_ExcluiPerfilOK" xml:space="preserve">
     <value>Perfil excluído com sucesso</value>
@@ -162,11 +162,23 @@
   <data name="Perfil_NaoEncontrado" xml:space="preserve">
     <value>Perfil não encontrado</value>
   </data>
+  <data name="Perfil_Nome" xml:space="preserve">
+    <value>O campo nome é obrigatório</value>
+  </data>
   <data name="Perfil_SalvaPerfilOK" xml:space="preserve">
     <value>Perfil salvo com sucesso</value>
   </data>
   <data name="Perfil_SemPermissaoEdicaoExclusao" xml:space="preserve">
     <value>O perfil não pode ser editado nem excluído</value>
+  </data>
+  <data name="Usuario_CadastroDuplicado" xml:space="preserve">
+    <value>Já existe um usuário com o email informado</value>
+  </data>
+  <data name="Usuario_CadastroUtilizado" xml:space="preserve">
+    <value>O usuário não pode ser excluído pois está associado a um perfil ou já efetuou login no sistema</value>
+  </data>
+  <data name="Usuario_Email" xml:space="preserve">
+    <value>O campo email é obrigatório</value>
   </data>
   <data name="Usuario_ExcluiUsuarioOK" xml:space="preserve">
     <value>Usuário excluído com sucesso</value>
@@ -174,7 +186,19 @@
   <data name="Usuario_NaoEncontrado" xml:space="preserve">
     <value>Usuário não encontrado</value>
   </data>
+  <data name="Usuario_Nome" xml:space="preserve">
+    <value>O campo nome é obrigatório</value>
+  </data>
   <data name="Usuario_SalvaUsuarioOK" xml:space="preserve">
     <value>Usuário salvo com sucesso</value>
+  </data>
+  <data name="Usuario_Senha" xml:space="preserve">
+    <value>O campo senha é obrigatório</value>
+  </data>
+  <data name="Usuario_SenhaConfirmacao" xml:space="preserve">
+    <value>O campo confirmação de senha é obrigatório</value>
+  </data>
+  <data name="Usuario_SenhaConfirmacao_Incorreta" xml:space="preserve">
+    <value>O campo confirmação de senha é inválido</value>
   </data>
 </root>

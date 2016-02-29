@@ -18,9 +18,10 @@ namespace Giusti.Template.Data.Configuration
             this.Property(i => i.Nome).HasColumnName("Nome");
             this.Property(i => i.Email).HasColumnName("Email");
             this.Property(i => i.Senha).HasColumnName("Senha");
-            this.Property(i => i.Situacao).HasColumnName("Situacao");
+            this.Property(i => i.Ativo).HasColumnName("Ativo");
             this.Property(i => i.DataInclusao).HasColumnName("DataInclusao");
             this.Property(i => i.DataAlteracao).HasColumnName("DataAlteracao");
+            this.Ignore(i => i.SenhaConfirmacao);
         }
     }
 }

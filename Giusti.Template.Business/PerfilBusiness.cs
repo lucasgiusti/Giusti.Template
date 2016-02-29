@@ -73,19 +73,23 @@ namespace Giusti.Template.Business
 
         public void ValidaRegrasSalvar(Perfil itemGravar)
         {
-            if (IsValid())
-            {
-                if (itemGravar.Id == (int)Constantes.PerfilMasterId)
-                {
-                    serviceResult.Success = false;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_SemPermissaoEdicaoExclusao") });
-                }
-            }
-
             if (IsValid() && itemGravar.Id.HasValue)
             {
-                Perfil itemAlterar = RetornaPerfil_Id((int)itemGravar.Id);
-                ValidaExistencia(itemAlterar);
+                Perfil itemBase = RetornaPerfil_Id((int)itemGravar.Id);
+                ValidaExistencia(itemBase);
+            }
+
+            if (IsValid() && itemGravar.Id == (int)Constantes.PerfilMasterId)
+            {
+                serviceResult.Success = false;
+                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_SemPermissaoEdicaoExclusao") });
+            }
+
+
+            if (IsValid() && string.IsNullOrEmpty(itemGravar.Nome.Trim()))
+            {
+                serviceResult.Success = false;
+                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_Nome") });
             }
         }
         public void ValidaRegrasExcluir(Perfil itemGravar)
@@ -93,13 +97,10 @@ namespace Giusti.Template.Business
             if (IsValid())
                 ValidaExistencia(itemGravar);
 
-            if (IsValid())
+            if (IsValid() && itemGravar.Id == (int)Constantes.PerfilMasterId)
             {
-                if (itemGravar.Id == (int)Constantes.PerfilMasterId)
-                {
-                    serviceResult.Success = false;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_SemPermissaoEdicaoExclusao") });
-                }
+                serviceResult.Success = false;
+                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_SemPermissaoEdicaoExclusao") });
             }
 
             if (IsValid())

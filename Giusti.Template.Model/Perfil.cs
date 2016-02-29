@@ -14,20 +14,15 @@ namespace Giusti.Template.Model
     {
         public Perfil()
         {
+            PerfilFuncionalidades = new List<PerfilFuncionalidade>();
         }
         public int? Id { get; set; }
 
         public string Nome { get; set; }
         [SelfValidation]
-        private void ValidarNome(Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResults results)
+        private void ValidaNome(Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResults results)
         {
-            if (Nome == null)
-            {
-                Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResult result =
-                      new Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResult(Resource.Mensagem.Perfil_Nome, this, "Nome", null, null);
-                results.AddResult(result);
-            }
-            else if (Nome.Length > 50)
+            if (Nome != null && Nome.Length > 50)
             {
                 Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResult result =
                       new Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResult(Resource.Mensagem.Perfil_NomeTamanho, this, "Nome", null, null);

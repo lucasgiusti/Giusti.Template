@@ -107,6 +107,13 @@ namespace Giusti.Template.Data.Library
 
         #region Log
 
+        public bool ExisteLog_UsuarioId(int usuarioId)
+        {
+            IQueryable<Log> query = Context.Loges;
+
+            query = query.Where(d => d.UsuarioId == usuarioId);
+            return query.Any();
+        }
         public void SalvaLog(Log itemGravar)
         {
             Log itemBase = Context.Loges

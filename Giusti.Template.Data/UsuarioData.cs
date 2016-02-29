@@ -10,7 +10,7 @@ namespace Giusti.Template.Data
     {
         public Usuario RetornaUsuario_Id(int id)
         {
-            IQueryable<Usuario> query = Context.Usuarios;
+            IQueryable<Usuario> query = Context.Usuarios.Include("Perfis");
 
             query = query.Where(d => d.Id == id);
             return query.FirstOrDefault();

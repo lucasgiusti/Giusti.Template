@@ -33,6 +33,8 @@ namespace Giusti.Template.Web.Controllers.Api
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
+
+                ResultadoBusca.ForEach(a => a.Senha = null);
             }
             catch (InvalidDataException)
             {
@@ -65,6 +67,9 @@ namespace Giusti.Template.Web.Controllers.Api
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
+
+                if (ResultadoBusca != null)
+                    ResultadoBusca.Senha = null;
             }
             catch (InvalidDataException)
             {
@@ -95,6 +100,12 @@ namespace Giusti.Template.Web.Controllers.Api
                 biz.SalvaUsuario(itemSalvar);
                 if (!biz.IsValid())
                     throw new InvalidDataException();
+
+                if (itemSalvar != null)
+                {
+                    itemSalvar.Senha = null;
+                    itemSalvar.SenhaConfirmacao = null;
+                }
             }
             catch (InvalidDataException)
             {
@@ -124,6 +135,12 @@ namespace Giusti.Template.Web.Controllers.Api
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
+
+                if (itemSalvar != null)
+                {
+                    itemSalvar.Senha = null;
+                    itemSalvar.SenhaConfirmacao = null;
+                }
             }
             catch (InvalidDataException)
             {

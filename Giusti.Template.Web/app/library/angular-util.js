@@ -8,24 +8,13 @@
     };
 });
 
-app.filter('SituacaoString', function () {
+app.filter('SimNao', function () {
     return function (input) {
-        if (input == '1') {
-            return 'Ativo';
+        if (input == true) {
+            return 'Sim';
         }
-        else if (input == '0') {
-            return 'Inativo';
-        }
-    };
-});
-
-app.filter('SituacaoBool', function () {
-    return function (input) {
-        if (input == '0') {
-            return false;
-        }
-        else if (input == '1') {
-            return true;
+        else if (input == false) {
+            return 'Não';
         }
     };
 });

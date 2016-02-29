@@ -96,7 +96,7 @@
 
     //ADD
     $scope.addPerfil = function () {
-        $scope.perfil = { id: null, perfilFuncionalidades: [] };
+        $scope.perfil = { };
         $scope.getFuncionalidades();
     };
 
