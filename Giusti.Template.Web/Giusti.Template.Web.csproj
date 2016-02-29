@@ -127,13 +127,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\modalConfirmController.js" />
     <Content Include="app\controllers\perfilController.js" />
+    <Content Include="app\controllers\signinController.js" />
     <Content Include="app\controllers\usuarioController.js" />
+    <Content Include="app\templates\home.html" />
     <Content Include="app\templates\perfil\perfil-add.html" />
     <Content Include="app\templates\perfil\perfil-edit.html" />
     <Content Include="app\templates\perfil\perfil-view.html" />
     <Content Include="app\templates\perfil\perfis.html" />
+    <Content Include="app\templates\signin.html" />
     <Content Include="app\templates\usuario\usuario-add.html" />
     <Content Include="app\templates\usuario\usuario-edit.html" />
     <Content Include="app\templates\usuario\usuario-view.html" />
@@ -141,6 +145,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\signin.css" />
     <Content Include="Content\toaster.css" />
     <Content Include="Content\toaster.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />

@@ -1,5 +1,7 @@
 ﻿var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngCookies', 'toaster'])
     .config(function ($routeProvider, $locationProvider) {
+        $routeProvider.when('/', { templateUrl: '/app/templates/home.html', controller: 'homeController' });
+        $routeProvider.when('/signin', { templateUrl: '/app/templates/signin.html', controller: 'signinController' });
         $routeProvider.when('/perfil', { templateUrl: '/app/templates/perfil/perfis.html', controller: 'perfilController' });
         $routeProvider.when('/perfil/add', { templateUrl: '/app/templates/perfil/perfil-add.html', controller: 'perfilController' });
         $routeProvider.when('/perfil/:id/edit', { templateUrl: '/app/templates/perfil/perfil-edit.html', controller: 'perfilController' });
@@ -10,3 +12,20 @@
         $routeProvider.when('/usuario/:id', { templateUrl: '/app/templates/usuario/usuario-view.html', controller: 'usuarioController' });
         $locationProvider.html5Mode(true);
     });
+
+app.factory('UserService', function ($http, $window, $cookies, $location) {
+    return {
+        getUser: function () {
+            var user = $cookies.get('user');
+            if (user) {
+                return JSON.parse(user);
+            }
+        },
+        verificaLogin: function () {
+            var user = this.getUser();
+            if (!user) {
+               $location.path('\signin');
+            }
+        }
+    };
+});
