@@ -13,12 +13,39 @@
         $locationProvider.html5Mode(true);
     });
 
-app.factory('UserService', function ($http, $window, $cookies, $location) {
+app.factory('UserService', function ($http, $window, $cookies, $location, toasterAlert) {
     return {
         getUser: function () {
             var user = $cookies.get('user');
             if (user) {
                 return JSON.parse(user);
+            }
+        },
+        setUser: function (newUser) {
+            if (newUser) {
+                var urlFuncionalidade = 'api/funcionalidade/GetForMenu';
+
+                var headerAuth = { headers: { 'Authorization': 'Basic ' + newUser.token } };
+
+                $http.get(urlFuncionalidade, headerAuth).success(function (data) {
+                    newUser.menus = data;
+                    $cookies.put('user', JSON.stringify(newUser));
+                    $location.path('');
+                }).error(function (jqxhr, textStatus) {
+                    toasterAlert.showAlert(jqxhr.message);
+                });
+            }
+            else {
+                $cookies.put('user', null);
+            }
+        },
+        getMenus: function () {
+            var user = this.getUser();
+            if (user) {
+                return user.menus;
+            }
+            else {
+                return [];
             }
         },
         verificaLogin: function () {

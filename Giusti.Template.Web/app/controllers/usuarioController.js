@@ -1,13 +1,15 @@
-﻿app.controller('usuarioController', function ($scope, $http, $window, toasterAlert, $location, $uibModal, $routeParams) {
+﻿app.controller('usuarioController', function ($scope, $http, $window, toasterAlert, $location, $uibModal, $routeParams, UserService) {
 
     var mensagemExcluir = 'Deseja realmente excluir o usuário [NOMEUSUARIO] ?';
     var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Usuário salvo com sucesso.' }] });
+    var url = 'api/usuario';
+    var urlPerfil = 'api/perfil';
+
     $scope.heading = 'Usuários';
     $scope.usuarios = [];
     $scope.usuario = null;
 
-    //GET API
-    var url = 'api/usuario';
+    //APIs
     $scope.getUsuarios = function () {
 
         $http.get(url).success(function (data) {
@@ -18,7 +20,6 @@
         })
     };
 
-    // GET API
     $scope.getUsuario = function () {
         if (!angular.isUndefined($routeParams.id)) {
             $scope.id = $routeParams.id;
@@ -32,7 +33,6 @@
         });
     };
 
-    //POST API
     $scope.postUsuario = function () {
         $scope.preenchePerfisUsuario();
 
@@ -45,7 +45,6 @@
         });
     };
 
-    //PUT API
     $scope.putUsuario = function () {
         $scope.preenchePerfisUsuario();
 
@@ -57,7 +56,6 @@
         });
     };
 
-    //DELETE API
     $scope.deleteUsuario = function () {
 
         $http.delete(url + '/' + $scope.usuario.id).success(function (result) {
@@ -68,43 +66,6 @@
         });
     };
 
-    //MODAL DELETE
-    $scope.openModalDelete = function (usuario) {
-        $scope.usuario = usuario;
-        $scope.dadosModalConfirm = { 'titulo': 'Excluir', 'mensagem': mensagemExcluir.replace('[NOMEUSUARIO]', $scope.usuario.nome) };
-
-        var modalInstance = $uibModal.open({
-            animation: true,
-            templateUrl: 'app/templates/modalConfirm.html',
-            controller: 'modalConfirmInstanceController',
-            resolve: {
-                dadosModalConfirm: function () {
-                    return $scope.dadosModalConfirm;
-                }
-            }
-        });
-        modalInstance.result.then(function () {
-            $scope.deleteUsuario();
-        });
-    };
-
-    //ADD USUARIO
-    $scope.addUsuario = function () {
-        $scope.usuario = { ativo: 1 };
-        $scope.getPerfis();
-    };
-
-
-    $scope.preenchePerfisUsuario = function () {
-        $scope.usuario.perfis = [];
-        angular.forEach($scope.perfisDisponiveis, function (perfil, key) {
-            if (perfil.usuarioPossui) {
-                $scope.usuario.perfis.push({ perfilId: perfil.id });
-            }
-        });
-    }
-
-    var urlPerfil = 'api/perfil';
     $scope.getPerfis = function () {
 
         $http.get(urlPerfil).success(function (data) {
@@ -125,6 +86,40 @@
         }).error(function (jqxhr, textStatus) {
             toasterAlert.showAlert(jqxhr.message);
         })
+    }
+
+    //Utils
+    $scope.addUsuario = function () {
+        $scope.usuario = { ativo: 1 };
+        $scope.getPerfis();
+    };
+
+    $scope.openModalDelete = function (usuario) {
+        $scope.usuario = usuario;
+        $scope.dadosModalConfirm = { 'titulo': 'Excluir', 'mensagem': mensagemExcluir.replace('[NOMEUSUARIO]', $scope.usuario.nome) };
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'app/templates/modalConfirm.html',
+            controller: 'modalConfirmInstanceController',
+            resolve: {
+                dadosModalConfirm: function () {
+                    return $scope.dadosModalConfirm;
+                }
+            }
+        });
+        modalInstance.result.then(function () {
+            $scope.deleteUsuario();
+        });
+    };
+
+    $scope.preenchePerfisUsuario = function () {
+        $scope.usuario.perfis = [];
+        angular.forEach($scope.perfisDisponiveis, function (perfil, key) {
+            if (perfil.usuarioPossui) {
+                $scope.usuario.perfis.push({ perfilId: perfil.id });
+            }
+        });
     }
 
     //PAGINATION

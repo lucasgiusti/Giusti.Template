@@ -27,6 +27,29 @@ namespace Giusti.Template.Data
                 query = query.Where(d => d.FuncionalidadeIdPai == funcionalidadeIdPai);
             return query.ToList();
         }
+        public List<string> RetornaFuncionalidades_UsuarioId(int usuarioId)
+        {
+            List<int?> listFuncionalidades =
+            Context.PerfilUsuarios.Where(d => d.UsuarioId == usuarioId)
+                .Join(Context.Perfis,
+                pu => pu.PerfilId,
+                p => p.Id,
+                (pu, p) => p).SelectMany(p => p.PerfilFuncionalidades).Select(p => p.FuncionalidadeId).Distinct().ToList();
+
+            List<string> listFuncionalidadesStr = new List<string>();
+            foreach (int? funcionalidadeId in listFuncionalidades)
+                listFuncionalidadesStr.Add(funcionalidadeId.ToString());
+            return listFuncionalidadesStr;
+        }
+        public IList<Funcionalidade> RetornarFuncionalidades_UtilizaMenu(int[] funcionalidadesId)
+        {
+            IQueryable<Funcionalidade> query = Context.Funcionalidades;
+            query = query.Where(d => d.UtilizaMenu == true);
+
+            query = query.Where(d => funcionalidadesId.Contains((int)d.Id));
+
+            return query.ToList();
+        }
         public void SalvaFuncionalidade(Funcionalidade itemGravar)
         {
             Funcionalidade itemBase = Context.Funcionalidades.Where(f => f.Id == itemGravar.Id).FirstOrDefault();

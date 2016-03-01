@@ -53,7 +53,6 @@ namespace Giusti.Template.Business.Library
         }
         protected void IncluiMensagemErroBusiness(string mensagemErro)
         {
-            serviceResult = new ServiceResult();
             serviceResult.Success = false;
             serviceResult.Messages.Add(new ServiceResultMessage() { Message = mensagemErro });
         }

@@ -40,12 +40,12 @@
             </div>
             <div class="navbar-collapse collapse" uib-collapse="navbarCollapsed">
                 <ul class="nav navbar-nav">
-                    <li ng-repeat="menu in menus" ng-include="'menuTree'"></li>
+                    <li ng-repeat="menu in UserService.getMenus()" ng-include="'menuTree'"></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown" dropdown>
-                        <a class="dropdown-toggle btn btn-link" data-toggle="dropdown" dropdown-toggle style="border: 0px">
+                    <li class="dropdown" uib-dropdown>
+                        <a class="dropdown-toggle btn btn-link" data-toggle="dropdown" uib-dropdown-toggle style="border: 0px">
                             {{usuarioLogado}}
                         </a>
                         <ul class="dropdown-menu">
@@ -59,8 +59,8 @@
 
     <script type="text/ng-template" id="menuTree">
         <ul class="nav navbar-nav">
-            <li ng-if="menu.funcionalidadesFilho" class="dropdown" dropdown style="cursor:pointer">
-                <a class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>{{menu.nome}}</a>
+            <li ng-if="menu.funcionalidadesFilho" class="dropdown" uib-dropdown style="cursor:pointer">
+                <a class="dropdown-toggle" data-toggle="dropdown" uib-dropdown-toggle>{{menu.nome}}</a>
                 <ul class="dropdown-menu liLink">
                     <li ng-repeat="menu in menu.funcionalidadesFilho" ng-include="'menuTreeChild'"></li>
                 </ul>
@@ -72,7 +72,7 @@
     </script>
 
     <script type="text/ng-template" id="menuTreeChild">
-        <li class="dropdown-submenu" ng-if="menu.rotinasFilho" style="cursor:pointer">
+        <li class="dropdown-submenu" ng-if="menu.funcionalidadesFilho" style="cursor:pointer">
             <a class="btn btn-link right-caret" style="text-decoration: none;">{{menu.nome}}</a>
             <ul class="dropdown-menu liLink">
                 <li ng-repeat="menu in menu.funcionalidadesFilho" ng-include="'menuTreeChild'"></li>

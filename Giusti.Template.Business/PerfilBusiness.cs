@@ -86,7 +86,7 @@ namespace Giusti.Template.Business
             }
 
 
-            if (IsValid() && string.IsNullOrEmpty(itemGravar.Nome.Trim()))
+            if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.Nome))
             {
                 serviceResult.Success = false;
                 serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_Nome") });

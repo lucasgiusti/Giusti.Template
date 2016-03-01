@@ -29,6 +29,7 @@ namespace Giusti.Template.Data
 
             return query.ToList();
         }
+
         public void SalvaUsuario(Usuario itemGravar)
         {
             Usuario itemBase = Context.Usuarios.Include("Perfis").Where(f => f.Id == itemGravar.Id).FirstOrDefault();

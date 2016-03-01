@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Security;
 
 namespace Giusti.Template.Web.Library
 {
@@ -76,6 +77,33 @@ namespace Giusti.Template.Web.Library
             if (e.InnerException != null)
                 msgs += "\r\nInnerException: " + GetExceptionMessages(e.InnerException);
             return msgs;
+        }
+
+        #endregion
+
+        #region Authentication
+
+        protected string RetornaToken()
+        {
+            string token = string.Empty;
+            if (Request.Headers.Authorization != null)
+                token = Request.Headers.Authorization.Parameter;
+
+            return token;
+        }
+
+        protected string[] RetornaFuncionalidadesUsuario()
+        {
+            string token = RetornaToken();
+            if (string.IsNullOrEmpty(token))
+                return null;
+
+            FormsAuthenticationTicket cookie = FormsAuthentication.Decrypt(token);
+
+            string userData = cookie.UserData;
+            string[] roles = userData.Split(',');
+
+            return roles;
         }
 
         #endregion

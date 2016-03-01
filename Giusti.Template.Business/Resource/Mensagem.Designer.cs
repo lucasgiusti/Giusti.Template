@@ -250,6 +250,15 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email inválido.
+        /// </summary>
+        internal static string Usuario_EmailInvalido {
+            get {
+                return ResourceManager.GetString("Usuario_EmailInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usuário excluído com sucesso.
         /// </summary>
         internal static string Usuario_ExcluiUsuarioOK {
@@ -309,6 +318,15 @@ namespace Giusti.Template.Business.Resource {
         internal static string Usuario_SenhaConfirmacao_Incorreta {
             get {
                 return ResourceManager.GetString("Usuario_SenhaConfirmacao_Incorreta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Senha inválida.
+        /// </summary>
+        internal static string Usuario_SenhaInvalida {
+            get {
+                return ResourceManager.GetString("Usuario_SenhaInvalida", resourceCulture);
             }
         }
     }

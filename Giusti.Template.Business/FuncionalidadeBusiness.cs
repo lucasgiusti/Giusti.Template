@@ -35,6 +35,36 @@ namespace Giusti.Template.Business
             }
             return RetornoAcao;
         }
+        public IList<string> RetornaFuncionalidades_UsuarioId(int usuarioId)
+        {
+            IList<string> RetornoAcao = new List<string>();
+            using (FuncionalidadeData data = new FuncionalidadeData())
+            {
+                RetornoAcao = data.RetornaFuncionalidades_UsuarioId(usuarioId);
+            }
+            return RetornoAcao;
+        }
+        public IList<Funcionalidade> RetornaFuncionalidades_UtilizaMenu(int[] funcionalidadesId)
+        {
+            LimpaValidacao();
+            List<Funcionalidade> RetornoAcao = new List<Funcionalidade>();
+            if (IsValid())
+            {
+                using (FuncionalidadeData data = new FuncionalidadeData())
+                {
+                    RetornoAcao = data.RetornarFuncionalidades_UtilizaMenu(funcionalidadesId).ToList();
+                }
+            }
+
+            RetornoAcao.RemoveAll(a =>
+                    a.FuncionalidadePai != null && a.FuncionalidadePai.UtilizaMenu
+
+                );
+
+            RetiraFuncionalidadesPai(RetornoAcao);
+
+            return RetornoAcao;
+        }
         public void SalvaFuncionalidade(Funcionalidade itemGravar)
         {
             LimpaValidacao();
@@ -86,6 +116,16 @@ namespace Giusti.Template.Business
                 serviceResult.Success = false;
                 serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Funcionalidade_FuncionalidadeUtilizada") });
             }
+        }
+
+        public void RetiraFuncionalidadesPai(List<Funcionalidade> listFuncionalidades)
+        {
+            listFuncionalidades.ForEach(a =>
+            {
+                a.FuncionalidadePai = null;
+                if (a.FuncionalidadesFilho != null)
+                    RetiraFuncionalidadesPai(a.FuncionalidadesFilho.ToList());
+            });
         }
 
     }

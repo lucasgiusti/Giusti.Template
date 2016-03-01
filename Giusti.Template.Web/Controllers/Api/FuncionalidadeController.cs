@@ -54,5 +54,44 @@ namespace Giusti.Template.Web.Controllers.Api
             return ResultadoBusca;
         }
 
+        /// <summary>
+        /// Retora todas as funcionalidades para utilização no menu
+        /// </summary>
+        /// <returns></returns>
+        public List<Funcionalidade> GetForMenu()
+        {
+            List<Funcionalidade> ResultadoBusca = new List<Funcionalidade>();
+            try
+            {
+                //VerificaAutenticacao(Funcionalidade.Rotina_Pesquisa, Funcionalidade.NomeRotina_Pesquisa);
+
+                //API
+                string[] funcionalidadesUsuario = RetornaFuncionalidadesUsuario();
+
+                if (funcionalidadesUsuario != null)
+                {
+                    int[] funcionalidadeId = Array.ConvertAll(funcionalidadesUsuario, int.Parse);
+                    ResultadoBusca = new List<Funcionalidade>(biz.RetornaFuncionalidades_UtilizaMenu(funcionalidadeId));
+                }
+
+                if (!biz.IsValid())
+                    throw new InvalidDataException();
+            }
+            catch (InvalidDataException)
+            {
+                GeraErro(HttpStatusCode.InternalServerError, biz.serviceResult);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                GeraErro(HttpStatusCode.Unauthorized, biz.serviceResult);
+            }
+            catch (Exception ex)
+            {
+                GeraErro(HttpStatusCode.BadRequest, ex);
+            }
+
+            return ResultadoBusca;
+        }
+
     }
 }

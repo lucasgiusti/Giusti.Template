@@ -180,6 +180,9 @@
   <data name="Usuario_Email" xml:space="preserve">
     <value>O campo email é obrigatório</value>
   </data>
+  <data name="Usuario_EmailInvalido" xml:space="preserve">
+    <value>Email inválido</value>
+  </data>
   <data name="Usuario_ExcluiUsuarioOK" xml:space="preserve">
     <value>Usuário excluído com sucesso</value>
   </data>
@@ -200,5 +203,8 @@
   </data>
   <data name="Usuario_SenhaConfirmacao_Incorreta" xml:space="preserve">
     <value>O campo confirmação de senha é inválido</value>
+  </data>
+  <data name="Usuario_SenhaInvalida" xml:space="preserve">
+    <value>Senha inválida</value>
   </data>
 </root>

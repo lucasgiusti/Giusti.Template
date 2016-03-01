@@ -2,12 +2,14 @@
 
     var mensagemExcluir = 'Deseja realmente excluir o perfil [NOMEPERFIL] ?';
     var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Perfil salvo com sucesso.' }] });
+    var url = 'api/perfil';
+    var urlFuncionalidade = 'api/funcionalidade';
+
     $scope.heading = 'Perfis';
     $scope.perfis = [];
     $scope.perfil = null;
 
-    //GET API
-    var url = 'api/perfil';
+    //APIs
     $scope.getPerfis = function () {
 
         $http.get(url).success(function (data) {
@@ -18,7 +20,6 @@
         })
     };
 
-    // GET API
     $scope.getPerfil = function () {
         if (!angular.isUndefined($routeParams.id)) {
             $scope.id = $routeParams.id;
@@ -32,7 +33,6 @@
         });
     };
 
-    //POST API
     $scope.postPerfil = function () {
         $scope.perfil.perfilFuncionalidades = [];
         angular.forEach($scope.funcionalidadesDisponiveis, function (funcionalidade, key) {
@@ -48,7 +48,6 @@
         });
     };
 
-    //PUT API
     $scope.putPerfil = function () {
         $scope.perfil.perfilFuncionalidades = [];
         angular.forEach($scope.funcionalidadesDisponiveis, function (funcionalidade, key) {
@@ -63,7 +62,6 @@
         });
     };
 
-    //DELETE API
     $scope.deletePerfil = function () {
 
         $http.delete(url + '/' + $scope.perfil.id).success(function (result) {
@@ -74,7 +72,26 @@
         });
     };
 
-    //MODAL DELETE
+    $scope.getFuncionalidades = function () {
+        $http.get(urlFuncionalidade).success(function (data) {
+
+            $scope.funcionalidadesDisponiveis = data;
+
+            angular.forEach($scope.funcionalidadesDisponiveis, function (funcionalidade, key) {
+                $scope.verificaPerfilPossui(funcionalidade);
+            });
+
+        }).error(function (jqxhr, textStatus) {
+            toasterAlert.showAlert(jqxhr.message);
+        })
+    }
+
+    //Utils
+    $scope.addPerfil = function () {
+        $scope.perfil = {};
+        $scope.getFuncionalidades();
+    };
+
     $scope.openModalDelete = function (perfil) {
         $scope.perfil = perfil;
         $scope.dadosModalConfirm = { 'titulo': 'Excluir', 'mensagem': mensagemExcluir.replace('[NOMEPERFIL]', $scope.perfil.nome) };
@@ -94,25 +111,14 @@
         });
     };
 
-    //ADD
-    $scope.addPerfil = function () {
-        $scope.perfil = { };
-        $scope.getFuncionalidades();
-    };
+    $scope.preencheFuncionalidadesPerfil = function (funcionalidade) {
+        if (funcionalidade.perfilPossui) {
+            $scope.perfil.perfilFuncionalidades.push({ funcionalidadeId: funcionalidade.id });
+        }
 
-    var urlFuncionalidade = 'api/funcionalidade';
-    $scope.getFuncionalidades = function () {
-        $http.get(urlFuncionalidade).success(function (data) {
-
-            $scope.funcionalidadesDisponiveis = data;
-
-            angular.forEach($scope.funcionalidadesDisponiveis, function (funcionalidade, key) {
-                $scope.verificaPerfilPossui(funcionalidade);
-            });
-
-        }).error(function (jqxhr, textStatus) {
-            toasterAlert.showAlert(jqxhr.message);
-        })
+        angular.forEach(funcionalidade.funcionalidadesFilho, function (funcionalidade, key) {
+            $scope.preencheFuncionalidadesPerfil(funcionalidade);
+        });
     }
 
     $scope.verificaPerfilPossui = function (funcionalidade) {
@@ -159,17 +165,6 @@
         });
     }
 
-    $scope.preencheFuncionalidadesPerfil = function (funcionalidade) {
-        if (funcionalidade.perfilPossui) {
-            $scope.perfil.perfilFuncionalidades.push({ funcionalidadeId: funcionalidade.id });
-        }
-
-        angular.forEach(funcionalidade.funcionalidadesFilho, function (funcionalidade, key) {
-            $scope.preencheFuncionalidadesPerfil(funcionalidade);
-        });
-    }
-
-    //PAGINATION
     $scope.total = 0;
     $scope.currentPage = 1;
     $scope.itemPerPage = 5;
