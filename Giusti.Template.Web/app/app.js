@@ -13,12 +13,25 @@
         $locationProvider.html5Mode(true);
     });
 
+app.run(function ($rootScope) {
+    /*
+        Receive emitted message and broadcast it.
+        Event names must be distinct or browser will blow up!
+    */
+    $rootScope.$on('atualizaHeaderEmit', function (event, args) {
+        $rootScope.$broadcast('atualizaHeaderBroadcast', args);
+    });
+});
+
 app.factory('UserService', function ($http, $window, $cookies, $location, toasterAlert) {
     return {
         getUser: function () {
             var user = $cookies.get('user');
             if (user) {
                 return JSON.parse(user);
+            }
+            else {
+                return null;
             }
         },
         setUser: function (newUser) {
@@ -37,15 +50,6 @@ app.factory('UserService', function ($http, $window, $cookies, $location, toaste
             }
             else {
                 $cookies.put('user', null);
-            }
-        },
-        getMenus: function () {
-            var user = this.getUser();
-            if (user) {
-                return user.menus;
-            }
-            else {
-                return [];
             }
         },
         verificaLogin: function () {

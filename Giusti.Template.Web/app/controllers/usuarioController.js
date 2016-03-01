@@ -1,4 +1,5 @@
 ﻿app.controller('usuarioController', function ($scope, $http, $window, toasterAlert, $location, $uibModal, $routeParams, UserService) {
+    UserService.verificaLogin();
 
     var mensagemExcluir = 'Deseja realmente excluir o usuário [NOMEUSUARIO] ?';
     var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Usuário salvo com sucesso.' }] });
@@ -108,6 +109,7 @@
                 }
             }
         });
+
         modalInstance.result.then(function () {
             $scope.deleteUsuario();
         });

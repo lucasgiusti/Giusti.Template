@@ -5,24 +5,19 @@
     $scope.heading = 'Login';
     $scope.navbarCollapsed = true;
 
-    $scope.menus = UserService.getMenus();
-    var user = UserService.getUser();
-    if (user != null) {
-        $scope.usuarioLogado = user.nome;
-    }
-
-    $scope.CookieDestroy = function () {
-        UserService.setUser(null);
-    }
-
     //APIs
     $scope.postLogin = function () {
-
+        
         $http.post(url, $scope.usuario).success(function (data) {
             UserService.setUser(data);
-            $scope.menus = UserService.getMenus();
+            $scope.$emit('atualizaHeaderEmit', data);
         }).error(function (jqxhr, textStatus) {
             toasterAlert.showAlert(jqxhr.message);
         });
+    };
+
+    $scope.cookieDestroy = function () {
+        UserService.setUser(null);
+        $scope.$emit('atualizaHeaderEmit', null);
     };
 });

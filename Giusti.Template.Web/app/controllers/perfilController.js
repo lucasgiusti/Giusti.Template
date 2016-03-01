@@ -1,4 +1,5 @@
-﻿app.controller('perfilController', function ($scope, $http, $window, toasterAlert, $location, $uibModal, $routeParams) {
+﻿app.controller('perfilController', function ($scope, $http, $window, toasterAlert, $location, $uibModal, $routeParams, UserService) {
+    UserService.verificaLogin();
 
     var mensagemExcluir = 'Deseja realmente excluir o perfil [NOMEPERFIL] ?';
     var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Perfil salvo com sucesso.' }] });
