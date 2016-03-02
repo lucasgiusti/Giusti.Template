@@ -146,6 +146,11 @@ namespace Giusti.Template.Business
             ValidaRegrasGerarNovaSenha(ref itemGravar);
             if (IsValid())
             {
+                string novaSenha = string.Empty;
+                novaSenha = PasswordHash.GenerateRandomPassword();
+                itemGravar.Senha = novaSenha;
+                itemGravar.SenhaConfirmacao = novaSenha;
+
                 ValidateService(itemGravar);
                 ValidaRegrasSalvar(itemGravar);
                 if (IsValid())
@@ -154,6 +159,8 @@ namespace Giusti.Template.Business
                     {
                         data.SalvaUsuario(itemGravar);
                         IncluiSucessoBusiness("Usuario_NovaSenhaGeradaOK");
+
+                        GeraEmailEsqueciSenha(itemGravar, novaSenha);
                     }
                 }
             }
@@ -294,14 +301,7 @@ namespace Giusti.Template.Business
                     IncluiErroBusiness("Usuario_EmailInvalido");
 
                 if (IsValid())
-                {
-                    string novaSenha = string.Empty;
-                    novaSenha = PasswordHash.GenerateRandomPassword();
-
-                    itemBase.Senha = novaSenha;
-                    itemBase.SenhaConfirmacao = novaSenha;
                     itemGravar = itemBase;
-                }
             }
         }
         public void ValidaExistencia(Usuario itemGravar)
@@ -323,6 +323,11 @@ namespace Giusti.Template.Business
             {
                 throw new Exception(ex.Message, ex);
             }
+        }
+        public void GeraEmailEsqueciSenha(Usuario itemGravar, string novaSenha)
+        {
+            EmailBusiness biz = new EmailBusiness();
+            biz.GeraEmailEsqueciSenha(itemGravar, novaSenha);
         }
 
     }

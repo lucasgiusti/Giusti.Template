@@ -10,6 +10,9 @@ namespace Giusti.Template.Model.Dominio
     {
         public static readonly int PerfilMasterId = 1;
 
+        public static string AssuntoEmailEsqueciSenha = "Giusti.Template - Nova Senha de Acesso";
+        public static string CorpoEmailEsqueciSenha = "Olá <b>{0}</b>,<br /><br />Você solicitou uma nova senha de acesso ao sistema.<br /><br />A sua nova senha é: <b>{1}</b><br /><br /><br />Giusti.Template";
+
         public static readonly string FuncionalidadePerfil = "2";
         public static readonly string FuncionalidadePerfilConsulta = "3";
         public static readonly string FuncionalidadePerfilEdicao = "4";

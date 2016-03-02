@@ -50,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\EmailConfiguration.cs" />
     <Compile Include="Configuration\PerfilUsuarioConfiguration.cs" />
+    <Compile Include="EmailData.cs" />
     <Compile Include="LogData.cs" />
     <Compile Include="PerfilData.cs" />
     <Compile Include="PerfilFuncionalidadeData.cs" />

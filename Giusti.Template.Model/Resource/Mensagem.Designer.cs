@@ -61,6 +61,33 @@ namespace Giusti.Template.Model.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O tamanho do campo assunto excedeu o limite.
+        /// </summary>
+        internal static string Email_AssuntoTamanho {
+            get {
+                return ResourceManager.GetString("Email_AssuntoTamanho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O tamanho do campo email excedeu o limite.
+        /// </summary>
+        internal static string Email_CorpoTamanho {
+            get {
+                return ResourceManager.GetString("Email_CorpoTamanho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O tamanho do campo destinatário excedeu o limite.
+        /// </summary>
+        internal static string Email_DestinatarioTamanho {
+            get {
+                return ResourceManager.GetString("Email_DestinatarioTamanho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O tamanho do campo nome excedeu o limite.
         /// </summary>
         internal static string Perfil_NomeTamanho {

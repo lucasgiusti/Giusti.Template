@@ -19,6 +19,7 @@ namespace Giusti.Template.Data
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Log> Logs { get; set; }
+        public DbSet<Email> Emails { get; set; }
         public DbSet<Funcionalidade> Funcionalidades { get; set; }
         public DbSet<Perfil> Perfis { get; set; }
         public DbSet<PerfilFuncionalidade> PerfilFuncionalidades { get; set; }
@@ -29,6 +30,7 @@ namespace Giusti.Template.Data
             Database.SetInitializer<EntityContext>(null);
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
             modelBuilder.Configurations.Add(new LogConfiguration());
+            modelBuilder.Configurations.Add(new EmailConfiguration());
             modelBuilder.Configurations.Add(new FuncionalidadeConfiguration());
             modelBuilder.Configurations.Add(new PerfilConfiguration());
             modelBuilder.Configurations.Add(new PerfilFuncionalidadeConfiguration());

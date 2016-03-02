@@ -88,6 +88,15 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email salvo com sucesso.
+        /// </summary>
+        internal static string Email_SalvaEmailOK {
+            get {
+                return ResourceManager.GetString("Email_SalvaEmailOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Funcionalidade excluída com sucesso.
         /// </summary>
         internal static string Funcionalidade_ExcluiFuncionalidadeOK {

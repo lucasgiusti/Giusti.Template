@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailBusiness.cs" />
     <Compile Include="Library\PasswordHash.cs" />
     <Compile Include="LogBusiness.cs" />
     <Compile Include="PerfilBusiness.cs" />
