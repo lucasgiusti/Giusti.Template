@@ -62,7 +62,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Mensagem.resx</DependentUpon>
     </Compile>
-    <Compile Include="SigninBusiness.cs" />
     <Compile Include="UsuarioBusiness.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ namespace Giusti.Template.Web.Controllers.Api
     /// </summary>
     public class SigninController : ApiBase
     {
-        SigninBusiness biz = new SigninBusiness();
+        UsuarioBusiness biz = new UsuarioBusiness();
 
         public UsuarioLogado Post([FromBody]Usuario usuario)
         {

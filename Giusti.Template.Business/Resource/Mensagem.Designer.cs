@@ -331,6 +331,15 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nova senha gerada com sucesso.
+        /// </summary>
+        internal static string Usuario_NovaSenhaGeradaOK {
+            get {
+                return ResourceManager.GetString("Usuario_NovaSenhaGeradaOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usuário salvo com sucesso.
         /// </summary>
         internal static string Usuario_SalvaUsuarioOK {

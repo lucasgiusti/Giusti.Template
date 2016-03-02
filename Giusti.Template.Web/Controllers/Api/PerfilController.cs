@@ -108,6 +108,10 @@ namespace Giusti.Template.Web.Controllers.Api
             {
                 GeraErro(HttpStatusCode.InternalServerError, biz.serviceResult);
             }
+            catch (UnauthorizedAccessException)
+            {
+                GeraErro(HttpStatusCode.Unauthorized, biz.serviceResult);
+            }
             catch (Exception ex)
             {
                 GeraErro(HttpStatusCode.BadRequest, ex);

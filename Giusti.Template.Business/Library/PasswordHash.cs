@@ -63,23 +63,17 @@ namespace Giusti.Template.Business.Library
 
         public static string GenerateRandomPassword()
         {
-            string password = string.Empty;
-
-            Random rnd = new Random();
-            for (int i = 0; i < 8; i++)
+            Random random = new Random();
+            string input = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            StringBuilder password = new StringBuilder();
+            char ch;
+            for (int i = 0; i < 10; i++)
             {
-                int randomized = rnd.Next(33, 126);
-                if (randomized == 92)
-                {
-                    do
-                    {
-                        randomized = rnd.Next(33, 126);
-                    }
-                    while (randomized == 92);
-                }
-                password += Convert.ToChar(randomized).ToString();
+                ch = input[random.Next(0, input.Length)];
+                password.Append(ch);
             }
-            return password;
+
+            return password.ToString();
         }
     }
 }

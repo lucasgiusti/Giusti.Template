@@ -11,6 +11,7 @@
         $routeProvider.when('/usuario/:id/edit', { templateUrl: '/app/templates/usuario/usuario-edit.html', controller: 'usuarioController' });
         $routeProvider.when('/usuario/:id', { templateUrl: '/app/templates/usuario/usuario-view.html', controller: 'usuarioController' });
         $routeProvider.when('/alterarsenha', { templateUrl: '/app/templates/alterarSenha.html', controller: 'alterarSenhaController' });
+        $routeProvider.when('/esquecisenha', { templateUrl: '/app/templates/esqueciSenha.html', controller: 'esqueciSenhaController' });
         $locationProvider.html5Mode(true);
     });
 

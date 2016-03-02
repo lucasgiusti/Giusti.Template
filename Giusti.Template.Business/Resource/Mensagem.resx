@@ -207,6 +207,9 @@
   <data name="Usuario_NovaSenhaConfirmacao" xml:space="preserve">
     <value>O campo confirmação de nova senha é obrigatório</value>
   </data>
+  <data name="Usuario_NovaSenhaGeradaOK" xml:space="preserve">
+    <value>Nova senha gerada com sucesso</value>
+  </data>
   <data name="Usuario_SalvaUsuarioOK" xml:space="preserve">
     <value>Usuário salvo com sucesso</value>
   </data>

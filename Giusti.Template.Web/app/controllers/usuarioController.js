@@ -2,7 +2,7 @@
     UserService.verificaLogin();
 
     var mensagemExcluir = 'Deseja realmente excluir o usuário [NOMEUSUARIO] ?';
-    var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Usuário salvo com sucesso.' }] });
+    var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Usuário salvo com sucesso' }] });
     var url = 'api/usuario';
     var urlPerfil = 'api/perfil';
     var headerAuth = { headers: { 'Authorization': 'Basic ' + UserService.getUser().token } };

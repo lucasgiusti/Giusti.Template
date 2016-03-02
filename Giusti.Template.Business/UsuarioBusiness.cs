@@ -55,6 +55,45 @@ namespace Giusti.Template.Business
             return RetornoAcao;
         }
 
+        public UsuarioLogado EfetuaLoginSistema(string email, string senha, string ip, string nomeMaquina)
+        {
+            LimpaValidacao();
+            if (string.IsNullOrEmpty(email))
+                IncluiErroBusiness("Usuario_Email");
+
+            if (string.IsNullOrEmpty(senha))
+                IncluiErroBusiness("Usuario_Senha");
+
+            UsuarioLogado retorno = null;
+            if (IsValid())
+            {
+                UsuarioBusiness bizUsuario = new UsuarioBusiness();
+                Usuario itemBase = bizUsuario.RetornaUsuario_Email(email);
+
+                if (itemBase == null)
+                    IncluiErroBusiness("Usuario_EmailInvalido");
+
+                if (IsValid() && !PasswordHash.ValidatePassword(senha, itemBase.Senha))
+                    IncluiErroBusiness("Usuario_SenhaInvalida");
+
+                if (IsValid())
+                {
+                    retorno = new UsuarioLogado();
+                    retorno.Id = itemBase.Id.Value;
+                    retorno.DataHoraAcesso = DateTime.Now;
+                    retorno.Email = itemBase.Email;
+                    retorno.Nome = itemBase.Nome;
+                    retorno.WorkstationId = nomeMaquina;
+
+                    FuncionalidadeBusiness bizFuncionalidade = new FuncionalidadeBusiness();
+                    IList<string> listFuncionalidade = bizFuncionalidade.RetornaFuncionalidades_UsuarioId((int)itemBase.Id);
+
+                    retorno.Token = GeraToken(email, string.Join(",", listFuncionalidade));
+                }
+
+            }
+            return retorno;
+        }
         public void SalvaUsuario(Usuario itemGravar)
         {
             LimpaValidacao();
@@ -97,6 +136,24 @@ namespace Giusti.Template.Business
                     {
                         data.SalvaUsuario(itemGravar);
                         IncluiSucessoBusiness("Usuario_SenhaAlteradaOK");
+                    }
+                }
+            }
+        }
+        public void GeraNovaSenha(Usuario itemGravar)
+        {
+            LimpaValidacao();
+            ValidaRegrasGerarNovaSenha(ref itemGravar);
+            if (IsValid())
+            {
+                ValidateService(itemGravar);
+                ValidaRegrasSalvar(itemGravar);
+                if (IsValid())
+                {
+                    using (UsuarioData data = new UsuarioData())
+                    {
+                        data.SalvaUsuario(itemGravar);
+                        IncluiSucessoBusiness("Usuario_NovaSenhaGeradaOK");
                     }
                 }
             }
@@ -222,10 +279,51 @@ namespace Giusti.Template.Business
                 }
             }
         }
+        public void ValidaRegrasGerarNovaSenha(ref Usuario itemGravar)
+        {
+            LimpaValidacao();
+            if (string.IsNullOrEmpty(itemGravar.Email))
+                IncluiErroBusiness("Usuario_Email");
+
+            if (IsValid())
+            {
+                UsuarioBusiness bizUsuario = new UsuarioBusiness();
+                Usuario itemBase = bizUsuario.RetornaUsuario_Email(itemGravar.Email);
+
+                if (itemBase == null)
+                    IncluiErroBusiness("Usuario_EmailInvalido");
+
+                if (IsValid())
+                {
+                    string novaSenha = string.Empty;
+                    novaSenha = PasswordHash.GenerateRandomPassword();
+
+                    itemBase.Senha = novaSenha;
+                    itemBase.SenhaConfirmacao = novaSenha;
+                    itemGravar = itemBase;
+                }
+            }
+        }
         public void ValidaExistencia(Usuario itemGravar)
         {
             if (itemGravar == null)
                 IncluiErroBusiness("Usuario_NaoEncontrado");
         }
+
+        private string GeraToken(string email, string funcionalidades)
+        {
+            try
+            {
+                FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, email, DateTime.Now, DateTime.Now.AddMinutes(60), false, funcionalidades);
+
+                string ticketCriptografado = FormsAuthentication.Encrypt(authTicket);
+                return ticketCriptografado;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+        }
+
     }
 }
