@@ -34,4 +34,8 @@
             $location.path('\signin');
         });
     };
+
+    $scope.gotoHome = function () {
+        $location.path('');
+    }
 });
