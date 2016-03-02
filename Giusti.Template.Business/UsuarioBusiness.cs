@@ -85,8 +85,8 @@ namespace Giusti.Template.Business
                     retorno.Nome = itemBase.Nome;
                     retorno.WorkstationId = nomeMaquina;
 
-                    FuncionalidadeBusiness bizFuncionalidade = new FuncionalidadeBusiness();
-                    IList<string> listFuncionalidade = bizFuncionalidade.RetornaFuncionalidades_UsuarioId((int)itemBase.Id);
+                    PerfilUsuarioBusiness bizPerfilUsuario = new PerfilUsuarioBusiness();
+                    IList<string> listFuncionalidade = bizPerfilUsuario.RetornaFuncionalidades_UsuarioId((int)itemBase.Id);
 
                     retorno.Token = GeraToken(email, string.Join(",", listFuncionalidade));
                 }

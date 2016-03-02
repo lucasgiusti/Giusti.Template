@@ -46,7 +46,7 @@ namespace Giusti.Template.Web.Controllers.Api
                 if (!biz.IsValid())
                     throw new InvalidDataException();
 
-                GravaLog(EnumTipoAcao.Login, email);
+                GravaLog(EnumTipoAcao.Login.ToString(), email);
             }
             catch (InvalidDataException)
             {

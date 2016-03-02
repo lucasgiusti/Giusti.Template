@@ -128,20 +128,9 @@ namespace Giusti.Template.Web.Library
         /// </summary>
         /// <param name="tipoAcao"></param>
         /// <param name="emailAutenticado"></param>
-        protected void GravaLog(EnumTipoAcao tipoAcao, string emailAutenticado)
+        protected void GravaLog(string funcionalidade, string emailAutenticado)
         {
-            GravaLog(tipoAcao, emailAutenticado, null, null);
-        }
-
-        /// <summary>
-        /// GravaLog
-        /// </summary>
-        /// <param name="tipoAcao"></param>
-        /// <param name="emailAutenticado"></param>
-        /// <param name="funcionalidadeId"></param>
-        protected void GravaLog(EnumTipoAcao tipoAcao, string emailAutenticado, int? funcionalidadeId)
-        {
-            GravaLog(tipoAcao, emailAutenticado, funcionalidadeId, null);
+            GravaLog(funcionalidade, emailAutenticado, null);
         }
 
         /// <summary>
@@ -151,7 +140,7 @@ namespace Giusti.Template.Web.Library
         /// <param name="emailAutenticado"></param>
         /// <param name="funcionalidadeId"></param>
         /// <param name="registroId"></param>
-        protected void GravaLog(EnumTipoAcao tipoAcao, string emailAutenticado, int? funcionalidadeId, int? registroId)
+        protected void GravaLog(string funcionalidade, string emailAutenticado, int? registroId)
         {
             try
             {
@@ -164,7 +153,7 @@ namespace Giusti.Template.Web.Library
                 UsuarioBusiness bizUsuario = new UsuarioBusiness();
                 Usuario usuario = bizUsuario.RetornaUsuario_Email(emailAutenticado);
 
-                biz.SalvaLog(new Log() { Acao = tipoAcao.ToString(), FuncionalidadeId = funcionalidadeId, DataInclusao = DateTime.Now, OrigemAcesso = nomeMaquina, RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
+                biz.SalvaLog(new Log() { Acao = funcionalidade, DataInclusao = DateTime.Now, OrigemAcesso = nomeMaquina, RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
             }
             catch
             {

@@ -10,8 +10,9 @@
         $routeProvider.when('/usuario/add', { templateUrl: '/app/templates/usuario/usuario-add.html', controller: 'usuarioController' });
         $routeProvider.when('/usuario/:id/edit', { templateUrl: '/app/templates/usuario/usuario-edit.html', controller: 'usuarioController' });
         $routeProvider.when('/usuario/:id', { templateUrl: '/app/templates/usuario/usuario-view.html', controller: 'usuarioController' });
-        $routeProvider.when('/alterarsenha', { templateUrl: '/app/templates/alterarSenha.html', controller: 'alterarSenhaController' });
-        $routeProvider.when('/esquecisenha', { templateUrl: '/app/templates/esqueciSenha.html', controller: 'esqueciSenhaController' });
+        $routeProvider.when('/alterarsenha', { templateUrl: '/app/templates/usuario/usuario-alterarSenha.html', controller: 'alterarSenhaController' });
+        $routeProvider.when('/esquecisenha', { templateUrl: '/app/templates/usuario/usuario-esqueciSenha.html', controller: 'esqueciSenhaController' });
+        $routeProvider.when('/log', { templateUrl: '/app/templates/logs/logs.html', controller: 'logController' });
         $locationProvider.html5Mode(true);
     });
 

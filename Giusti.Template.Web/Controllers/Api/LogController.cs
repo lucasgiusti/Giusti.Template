@@ -13,38 +13,28 @@ using Giusti.Template.Business;
 namespace Giusti.Template.Web.Controllers.Api
 {
     /// <summary>
-    /// AlterarSenha
+    /// Log
     /// </summary>
-    public class AlterarSenhaController : ApiBase
+    public class LogController : ApiBase
     {
-        UsuarioBusiness biz = new UsuarioBusiness();
+        LogBusiness biz = new LogBusiness();
 
         /// <summary>
-        /// Altera a senha de um determinado usuário
+        /// Retorna todos os logs
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="itemSalvar"></param>
         /// <returns></returns>
-        public Usuario Put(int id, [FromBody]Usuario itemSalvar)
+        public List<Log> Get()
         {
+            List<Log> ResultadoBusca = new List<Log>();
             try
             {
-                VerificaAutenticacao(Constantes.FuncionalidadeAlterarSenha, Constantes.FuncionalidadeNomeAlterarSenha, biz);
+                VerificaAutenticacao(Constantes.FuncionalidadeLogConsulta, Constantes.FuncionalidadeNomeLogConsulta, biz);
 
                 //API
-                itemSalvar.Id = id;
-                biz.AlteraSenha(itemSalvar);
+                ResultadoBusca = new List<Log>(biz.RetornaLogs());
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
-
-                if (itemSalvar != null)
-                {
-                    itemSalvar.Senha = null;
-                    itemSalvar.SenhaConfirmacao = null;
-                }
-
-                GravaLog(Constantes.FuncionalidadeNomeAlterarSenha, RetornaEmailAutenticado(), itemSalvar.Id);
             }
             catch (InvalidDataException)
             {
@@ -59,7 +49,7 @@ namespace Giusti.Template.Web.Controllers.Api
                 GeraErro(HttpStatusCode.BadRequest, ex);
             }
 
-            return itemSalvar;
+            return ResultadoBusca;
         }
     }
 }

@@ -12,6 +12,20 @@ namespace Giusti.Template.Business
 {
     public class LogBusiness : BusinessBase
     {
+        public IList<Log> RetornaLogs()
+        {
+            LimpaValidacao();
+            IList<Log> RetornoAcao = new List<Log>();
+            if (IsValid())
+            {
+                using (LogData data = new LogData())
+                {
+                    RetornoAcao = data.RetornaLogs();
+                }
+            }
+
+            return RetornoAcao;
+        }
         public bool ExisteLog_UsuarioId(int id)
         {
             LimpaValidacao();

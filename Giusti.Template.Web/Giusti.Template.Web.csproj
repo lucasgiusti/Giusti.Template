@@ -118,6 +118,7 @@
     <Compile Include="Controllers\Api\AlterarSenhaController.cs" />
     <Compile Include="Controllers\Api\EsqueciSenhaController.cs" />
     <Compile Include="Controllers\Api\FuncionalidadeController.cs" />
+    <Compile Include="Controllers\Api\LogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\UsuarioController.cs" />
     <Compile Include="Controllers\Api\PerfilController.cs" />
@@ -134,13 +135,15 @@
     <Content Include="app\controllers\esqueciSenhaController.js" />
     <Content Include="app\controllers\headerController.js" />
     <Content Include="app\controllers\homeController.js" />
+    <Content Include="app\controllers\logController.js" />
     <Content Include="app\controllers\modalConfirmController.js" />
     <Content Include="app\controllers\perfilController.js" />
     <Content Include="app\controllers\signinController.js" />
     <Content Include="app\controllers\usuarioController.js" />
-    <Content Include="app\templates\alterarSenha.html" />
-    <Content Include="app\templates\esquecisenha.html" />
+    <Content Include="app\templates\usuario\usuario-alterarSenha.html" />
+    <Content Include="app\templates\usuario\usuario-esquecisenha.html" />
     <Content Include="app\templates\home.html" />
+    <Content Include="app\templates\logs\logs.html" />
     <Content Include="app\templates\perfil\perfil-add.html" />
     <Content Include="app\templates\perfil\perfil-edit.html" />
     <Content Include="app\templates\perfil\perfil-view.html" />

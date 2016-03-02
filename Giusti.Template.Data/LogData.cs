@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Data;
+using System.Data.Entity;
 using Giusti.Template.Model;
 using Giusti.Template.Data.Library;
 
@@ -8,6 +9,12 @@ namespace Giusti.Template.Data
 {
     public class LogData : DataBase
     {
+        public IList<Log> RetornaLogs()
+        {
+            IQueryable<Log> query = Context.Logs.Include("Usuario").OrderByDescending(a => a.Id);
+
+            return query.ToList();
+        }
         public bool ExisteLog_UsuarioId(int usuarioId)
         {
             IQueryable<Log> query = Context.Logs;
@@ -15,6 +22,7 @@ namespace Giusti.Template.Data
             query = query.Where(d => d.UsuarioId == usuarioId);
             return query.Any();
         }
+
         public void SalvaLog(Log itemGravar)
         {
             Log itemBase = Context.Logs

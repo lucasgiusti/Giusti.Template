@@ -113,7 +113,7 @@ namespace Giusti.Template.Web.Controllers.Api
                     itemSalvar.SenhaConfirmacao = null;
                 }
 
-                GravaLog(EnumTipoAcao.Incluir, RetornaEmailAutenticado(), Convert.ToInt32(Constantes.FuncionalidadeUsuarioInclusao), itemSalvar.Id);
+                GravaLog(Constantes.FuncionalidadeNomeUsuarioInclusao, RetornaEmailAutenticado(), itemSalvar.Id);
             }
             catch (InvalidDataException)
             {
@@ -156,7 +156,7 @@ namespace Giusti.Template.Web.Controllers.Api
                     itemSalvar.SenhaConfirmacao = null;
                 }
 
-                GravaLog(EnumTipoAcao.Incluir, RetornaEmailAutenticado(), Convert.ToInt32(Constantes.FuncionalidadeUsuarioEdicao), itemSalvar.Id);
+                GravaLog(Constantes.FuncionalidadeNomeUsuarioEdicao, RetornaEmailAutenticado(), itemSalvar.Id);
             }
             catch (InvalidDataException)
             {
@@ -195,7 +195,7 @@ namespace Giusti.Template.Web.Controllers.Api
 
                 retorno = RetornaMensagemOk(biz.serviceResult);
 
-                GravaLog(EnumTipoAcao.Incluir, RetornaEmailAutenticado(), Convert.ToInt32(Constantes.FuncionalidadeUsuarioExclusao), itemExcluir.Id);
+                GravaLog(Constantes.FuncionalidadeNomeUsuarioExclusao, RetornaEmailAutenticado(), itemExcluir.Id);
             }
             catch (InvalidDataException)
             {

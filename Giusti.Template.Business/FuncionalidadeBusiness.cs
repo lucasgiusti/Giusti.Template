@@ -35,15 +35,6 @@ namespace Giusti.Template.Business
             }
             return RetornoAcao;
         }
-        public IList<string> RetornaFuncionalidades_UsuarioId(int usuarioId)
-        {
-            IList<string> RetornoAcao = new List<string>();
-            using (FuncionalidadeData data = new FuncionalidadeData())
-            {
-                RetornoAcao = data.RetornaFuncionalidades_UsuarioId(usuarioId);
-            }
-            return RetornoAcao;
-        }
         public IList<Funcionalidade> RetornaFuncionalidades_UtilizaMenu(int[] funcionalidadesId)
         {
             LimpaValidacao();
