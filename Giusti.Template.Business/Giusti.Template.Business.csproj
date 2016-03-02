@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Library\PasswordHash.cs" />
+    <Compile Include="LogBusiness.cs" />
     <Compile Include="PerfilBusiness.cs" />
     <Compile Include="PerfilFuncionalidadeBusiness.cs" />
     <Compile Include="FuncionalidadeBusiness.cs" />

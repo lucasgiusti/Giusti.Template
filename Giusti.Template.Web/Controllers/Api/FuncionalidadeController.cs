@@ -28,6 +28,8 @@ namespace Giusti.Template.Web.Controllers.Api
             List<Funcionalidade> ResultadoBusca = new List<Funcionalidade>();
             try
             {
+                VerificaAutenticacao(Constantes.FuncionalidadeFuncionalidadeConsulta, Constantes.FuncionalidadeNomeFuncionalidadeConsulta, biz);
+
                 //API
                 ResultadoBusca = new List<Funcionalidade>(biz.RetornaFuncionalidades());
 
@@ -63,8 +65,6 @@ namespace Giusti.Template.Web.Controllers.Api
             List<Funcionalidade> ResultadoBusca = new List<Funcionalidade>();
             try
             {
-                //VerificaAutenticacao(Funcionalidade.Rotina_Pesquisa, Funcionalidade.NomeRotina_Pesquisa);
-
                 //API
                 string[] funcionalidadesUsuario = RetornaFuncionalidadesUsuario();
 

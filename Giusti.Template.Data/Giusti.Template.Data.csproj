@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\PerfilUsuarioConfiguration.cs" />
+    <Compile Include="LogData.cs" />
     <Compile Include="PerfilData.cs" />
     <Compile Include="PerfilFuncionalidadeData.cs" />
     <Compile Include="Configuration\PerfilFuncionalidadeConfiguration.cs" />

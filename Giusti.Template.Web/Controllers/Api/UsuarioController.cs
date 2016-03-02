@@ -28,6 +28,8 @@ namespace Giusti.Template.Web.Controllers.Api
             List<Usuario> ResultadoBusca = new List<Usuario>();
             try
             {
+                VerificaAutenticacao(Constantes.FuncionalidadeUsuarioConsulta, Constantes.FuncionalidadeNomeUsuarioConsulta, biz);
+
                 //API
                 ResultadoBusca = new List<Usuario>(biz.RetornaUsuarios());
 
@@ -62,6 +64,8 @@ namespace Giusti.Template.Web.Controllers.Api
             Usuario ResultadoBusca = new Usuario();
             try
             {
+                VerificaAutenticacao(Constantes.FuncionalidadeUsuarioConsulta, Constantes.FuncionalidadeNomeUsuarioConsulta, biz);
+                
                 //API
                 ResultadoBusca = biz.RetornaUsuario_Id(id);
 
@@ -96,6 +100,8 @@ namespace Giusti.Template.Web.Controllers.Api
         {
             try
             {
+                VerificaAutenticacao(Constantes.FuncionalidadeUsuarioInclusao, Constantes.FuncionalidadeNomeUsuarioInclusao, biz);
+
                 //API
                 biz.SalvaUsuario(itemSalvar);
                 if (!biz.IsValid())
@@ -129,6 +135,8 @@ namespace Giusti.Template.Web.Controllers.Api
         {
             try
             {
+                VerificaAutenticacao(Constantes.FuncionalidadeUsuarioEdicao, Constantes.FuncionalidadeNomeUsuarioEdicao, biz);
+
                 //API
                 itemSalvar.Id = id;
                 biz.SalvaUsuario(itemSalvar);
@@ -168,6 +176,8 @@ namespace Giusti.Template.Web.Controllers.Api
             HttpResponseMessage retorno = null;
             try
             {
+                VerificaAutenticacao(Constantes.FuncionalidadeUsuarioExclusao, Constantes.FuncionalidadeNomeUsuarioExclusao, biz);
+
                 //API
                 Usuario itemExcluir = biz.RetornaUsuario_Id(id);
 

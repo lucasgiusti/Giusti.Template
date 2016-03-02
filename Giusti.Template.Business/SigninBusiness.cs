@@ -17,11 +17,11 @@ namespace Giusti.Template.Business
             LimpaValidacao();
             if (string.IsNullOrEmpty(email))
             {
-                IncluiErro("Usuario_Email");
+                IncluiErroBusiness("Usuario_Email");
             }
             if (string.IsNullOrEmpty(senha))
             {
-                IncluiErro("Usuario_Senha");
+                IncluiErroBusiness("Usuario_Senha");
             }
 
             UsuarioLogado retorno = null;
@@ -32,12 +32,12 @@ namespace Giusti.Template.Business
 
                 if (usuario == null)
                 {
-                    IncluiErro("Usuario_EmailInvalido");
+                    IncluiErroBusiness("Usuario_EmailInvalido");
                 }
 
                 if (IsValid() && !PasswordHash.ValidatePassword(senha, usuario.Senha))
                 {
-                    IncluiErro("Usuario_SenhaInvalida");
+                    IncluiErroBusiness("Usuario_SenhaInvalida");
                 }
 
                 if (IsValid())
@@ -52,19 +52,19 @@ namespace Giusti.Template.Business
                     FuncionalidadeBusiness bizFuncionalidade = new FuncionalidadeBusiness();
                     IList<string> listFuncionalidade = bizFuncionalidade.RetornaFuncionalidades_UsuarioId((int)usuario.Id);
 
-                    retorno.Token = GeraToken(email, string.Join(",", listFuncionalidade));
+                    retorno.Token = GeraToken(usuario.Nome, string.Join(",", listFuncionalidade));
                 }
 
             }
             return retorno;
         }
 
-        private string GeraToken(string email, string funcionalidades)
+        private string GeraToken(string nome, string funcionalidades)
         {
             try
             {
                 FormsAuthenticationTicket authTicket =
-                                        new FormsAuthenticationTicket(1, email, DateTime.Now, DateTime.Now.AddMinutes(60), false, funcionalidades);
+                                        new FormsAuthenticationTicket(1, nome, DateTime.Now, DateTime.Now.AddMinutes(60), false, funcionalidades);
 
                 string ticketCriptografado = FormsAuthentication.Encrypt(authTicket);
                 return ticketCriptografado;

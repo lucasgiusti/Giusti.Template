@@ -36,10 +36,6 @@ namespace Giusti.Template.Business.Library
         {
             return serviceResult.Success;
         }
-        public void IncluiErro(string codigoMensagemErro)
-        {
-            IncluiErroBusiness(codigoMensagemErro, false);
-        }
         protected void IncluiErroBusiness(string codigoMensagemErro)
         {
             IncluiErroBusiness(codigoMensagemErro, false);
@@ -59,77 +55,27 @@ namespace Giusti.Template.Business.Library
 
         #endregion
 
-        #region Log
+        #region Autenticação
 
-        public bool ExisteLog_UsuarioId(int id)
-        {
-            LimpaValidacao();
-            bool RetornoAcao = false;
-            if (IsValid())
-            {
-                using (UsuarioData data = new UsuarioData())
-                {
-                    RetornoAcao = data.ExisteLog_UsuarioId(id);
-                }
-            }
-
-            return RetornoAcao;
-        }
-        public void SalvaLog(Log itemGravar)
-        {
-            ValidateService(itemGravar);
-            ValidaRegrasNegocioLog(itemGravar);
-            if (IsValid())
-            {
-                using (UsuarioData data = new UsuarioData())
-                {
-                    data.SalvaLog(itemGravar);
-                }
-            }
-        }
-
-        private void ValidaRegrasNegocioLog(Log itemGravar)
-        {
-        }
-
-        #endregion
-
-        #region Autenticacao
-
-        private string GeraToken(string email, string acesso)
-        {
-            try
-            {
-                FormsAuthenticationTicket authTicket =
-                  new FormsAuthenticationTicket(1, email, DateTime.Now, DateTime.Now.AddMinutes(60), false, acesso);
-
-                string ticketCriptografado = FormsAuthentication.Encrypt(authTicket);
-                return ticketCriptografado;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message, ex);
-            }
-        }
         public void VerificaAutenticacao(string token, string codigoFuncionalidade, string funcionalidade)
         {
             if (string.IsNullOrEmpty(token))
-                IncluiErroBusiness("Autenticacao_NecessarioAutenticacao");
+                IncluiErroBusiness("Usuario_NecessarioAutenticacao");
             else
             {
                 FormsAuthenticationTicket cookie = FormsAuthentication.Decrypt(token);
 
                 if (cookie.Expired)
-                    IncluiErroBusiness("Autenticacao_LoginExpirado");
+                    IncluiErroBusiness("Usuario_LoginExpirado");
 
                 string userData = cookie.UserData;
                 string[] roles = userData.Split(',');
 
                 if (!roles.Any(a => a == codigoFuncionalidade))
-                    IncluiErroBusiness(string.Format(MensagemBusiness.RetornaMensagens("Autenticacao_AcessoNegado"), cookie.Name, funcionalidade), true);
+                    IncluiErroBusiness(string.Format(MensagemBusiness.RetornaMensagens("Usuario_AcessoNegado"), cookie.Name, funcionalidade), true);
             }
         }
-
+        
         #endregion
     }
 }

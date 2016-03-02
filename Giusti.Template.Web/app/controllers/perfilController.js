@@ -5,6 +5,7 @@
     var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Perfil salvo com sucesso.' }] });
     var url = 'api/perfil';
     var urlFuncionalidade = 'api/funcionalidade';
+    var headerAuth = { headers: { 'Authorization': 'Basic ' + UserService.getUser().token } };
 
     $scope.heading = 'Perfis';
     $scope.perfis = [];
@@ -13,7 +14,7 @@
     //APIs
     $scope.getPerfis = function () {
 
-        $http.get(url).success(function (data) {
+        $http.get(url, headerAuth).success(function (data) {
             $scope.perfis = data;
             $scope.total = $scope.perfis.length;
         }).error(function (jqxhr, textStatus) {
@@ -26,7 +27,7 @@
             $scope.id = $routeParams.id;
         }
 
-        $http.get(url + '/' + $scope.id).success(function (data) {
+        $http.get(url + '/' + $scope.id, headerAuth).success(function (data) {
             $scope.perfil = data;
             $scope.getFuncionalidades();
         }).error(function (jqxhr, textStatus) {
@@ -40,7 +41,7 @@
             $scope.preencheFuncionalidadesPerfil(funcionalidade);
         });
 
-        $http.post(url + "/", $scope.perfil).success(function (id) {
+        $http.post(url + "/", $scope.perfil, headerAuth).success(function (id) {
             $scope.id = id;
             $scope.getPerfil();
             toasterAlert.showAlert(mensagemSalvo);
@@ -55,7 +56,7 @@
             $scope.preencheFuncionalidadesPerfil(funcionalidade);
         });
 
-        $http.put(url + "/" + $scope.id, JSON.stringify($scope.perfil)).success(function (data) {
+        $http.put(url + "/" + $scope.id, JSON.stringify($scope.perfil), headerAuth).success(function (data) {
             $scope.perfil = data;
             toasterAlert.showAlert(mensagemSalvo);
         }).error(function (jqxhr, textStatus) {
@@ -65,7 +66,7 @@
 
     $scope.deletePerfil = function () {
 
-        $http.delete(url + '/' + $scope.perfil.id).success(function (result) {
+        $http.delete(url + '/' + $scope.perfil.id, headerAuth).success(function (result) {
             toasterAlert.showAlert(result);
             $scope.perfis.splice($scope.perfis.indexOf($scope.perfil), 1);
         }).error(function (result) {
@@ -74,7 +75,8 @@
     };
 
     $scope.getFuncionalidades = function () {
-        $http.get(urlFuncionalidade).success(function (data) {
+
+        $http.get(urlFuncionalidade, headerAuth).success(function (data) {
 
             $scope.funcionalidadesDisponiveis = data;
 

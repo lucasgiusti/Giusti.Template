@@ -6,6 +6,7 @@ using Giusti.Template.Data;
 using Giusti.Template.Model;
 using System;
 using Giusti.Template.Model.Dominio;
+using System.Web.Security;
 
 namespace Giusti.Template.Business
 {
@@ -53,6 +54,7 @@ namespace Giusti.Template.Business
 
             return RetornoAcao;
         }
+
         public void SalvaUsuario(Usuario itemGravar)
         {
             LimpaValidacao();
@@ -190,10 +192,14 @@ namespace Giusti.Template.Business
                 }
             }
 
-            if (IsValid() && ExisteLog_UsuarioId((int)itemGravar.Id))
+            if (IsValid())
             {
-                serviceResult.Success = false;
-                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_CadastroUtilizado") });
+                LogBusiness biz = new LogBusiness();
+                if (biz.ExisteLog_UsuarioId((int)itemGravar.Id))
+                {
+                    serviceResult.Success = false;
+                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_CadastroUtilizado") });
+                }
             }
 
         }

@@ -5,6 +5,7 @@
     var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Usuário salvo com sucesso.' }] });
     var url = 'api/usuario';
     var urlPerfil = 'api/perfil';
+    var headerAuth = { headers: { 'Authorization': 'Basic ' + UserService.getUser().token } };
 
     $scope.heading = 'Usuários';
     $scope.usuarios = [];
@@ -13,7 +14,7 @@
     //APIs
     $scope.getUsuarios = function () {
 
-        $http.get(url).success(function (data) {
+        $http.get(url, headerAuth).success(function (data) {
             $scope.usuarios = data;
             $scope.total = $scope.usuarios.length;
         }).error(function (jqxhr, textStatus) {
@@ -26,7 +27,7 @@
             $scope.id = $routeParams.id;
         }
 
-        $http.get(url + '/' + $scope.id).success(function (data) {
+        $http.get(url + '/' + $scope.id, headerAuth).success(function (data) {
             $scope.usuario = data;
             $scope.getPerfis();
         }).error(function (jqxhr, textStatus) {
@@ -37,7 +38,7 @@
     $scope.postUsuario = function () {
         $scope.preenchePerfisUsuario();
 
-        $http.post(url, JSON.stringify($scope.usuario)).success(function (id) {
+        $http.post(url, JSON.stringify($scope.usuario), headerAuth).success(function (id) {
             $scope.id = id;
             $scope.getUsuario();
             toasterAlert.showAlert(mensagemSalvo);
@@ -49,7 +50,7 @@
     $scope.putUsuario = function () {
         $scope.preenchePerfisUsuario();
 
-        $http.put(url + '/' + $scope.id, JSON.stringify($scope.usuario)).success(function (data) {
+        $http.put(url + '/' + $scope.id, JSON.stringify($scope.usuario), headerAuth).success(function (data) {
             $scope.usuario = data;
             toasterAlert.showAlert(mensagemSalvo);
         }).error(function (jqxhr, textStatus) {
@@ -59,7 +60,7 @@
 
     $scope.deleteUsuario = function () {
 
-        $http.delete(url + '/' + $scope.usuario.id).success(function (result) {
+        $http.delete(url + '/' + $scope.usuario.id, headerAuth).success(function (result) {
             toasterAlert.showAlert(result);
             $scope.usuarios.splice($scope.usuarios.indexOf($scope.usuario), 1);
         }).error(function (result) {
@@ -69,7 +70,7 @@
 
     $scope.getPerfis = function () {
 
-        $http.get(urlPerfil).success(function (data) {
+        $http.get(urlPerfil, headerAuth).success(function (data) {
             $scope.perfisDisponiveis = data;
 
             angular.forEach(data, function (perfil, key) {

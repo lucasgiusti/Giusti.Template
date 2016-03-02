@@ -171,6 +171,9 @@
   <data name="Perfil_SemPermissaoEdicaoExclusao" xml:space="preserve">
     <value>O perfil não pode ser editado nem excluído</value>
   </data>
+  <data name="Usuario_AcessoNegado" xml:space="preserve">
+    <value>O usuário {0} não tem permissão de acesso a funcionalidade {1}</value>
+  </data>
   <data name="Usuario_CadastroDuplicado" xml:space="preserve">
     <value>Já existe um usuário com o email informado</value>
   </data>
@@ -186,8 +189,14 @@
   <data name="Usuario_ExcluiUsuarioOK" xml:space="preserve">
     <value>Usuário excluído com sucesso</value>
   </data>
+  <data name="Usuario_LoginExpirado" xml:space="preserve">
+    <value>Login expirado, faça a autenticação novamente</value>
+  </data>
   <data name="Usuario_NaoEncontrado" xml:space="preserve">
     <value>Usuário não encontrado</value>
+  </data>
+  <data name="Usuario_NecessarioAutenticacao" xml:space="preserve">
+    <value>Necessário autenticação</value>
   </data>
   <data name="Usuario_Nome" xml:space="preserve">
     <value>O campo nome é obrigatório</value>

@@ -223,6 +223,15 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O usuário {0} não tem permissão de acesso a funcionalidade {1}.
+        /// </summary>
+        internal static string Usuario_AcessoNegado {
+            get {
+                return ResourceManager.GetString("Usuario_AcessoNegado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Já existe um usuário com o email informado.
         /// </summary>
         internal static string Usuario_CadastroDuplicado {
@@ -268,11 +277,29 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login expirado, faça a autenticação novamente.
+        /// </summary>
+        internal static string Usuario_LoginExpirado {
+            get {
+                return ResourceManager.GetString("Usuario_LoginExpirado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usuário não encontrado.
         /// </summary>
         internal static string Usuario_NaoEncontrado {
             get {
                 return ResourceManager.GetString("Usuario_NaoEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Necessário autenticação.
+        /// </summary>
+        internal static string Usuario_NecessarioAutenticacao {
+            get {
+                return ResourceManager.GetString("Usuario_NecessarioAutenticacao", resourceCulture);
             }
         }
         

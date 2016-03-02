@@ -1,4 +1,6 @@
-﻿using Giusti.Template.Model.Results;
+﻿using Giusti.Template.Business;
+using Giusti.Template.Business.Library;
+using Giusti.Template.Model.Results;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -82,6 +84,18 @@ namespace Giusti.Template.Web.Library
         #endregion
 
         #region Authentication
+
+        /// <summary>
+        /// VerificaAutenticacao
+        /// </summary>
+        /// <param name="codigoFuncionalidade"></param>
+        /// <param name="funcionalidade"></param>
+        protected void VerificaAutenticacao(string codigoFuncionalidade, string funcionalidade, BusinessBase biz)
+        {
+            biz.VerificaAutenticacao(RetornaToken(), codigoFuncionalidade, funcionalidade);
+            if (!biz.IsValid())
+                throw new UnauthorizedAccessException();
+        }
 
         protected string RetornaToken()
         {
