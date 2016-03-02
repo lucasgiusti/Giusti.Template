@@ -7,6 +7,7 @@ using Giusti.Template.Model;
 using System;
 using Giusti.Template.Model.Dominio;
 using System.Web.Security;
+using System.Text;
 
 namespace Giusti.Template.Business
 {
@@ -23,6 +24,19 @@ namespace Giusti.Template.Business
             SalvaEmail(email);
         }
 
+        public IList<Email> RetornaEmails(bool Enviado)
+        {
+            LimpaValidacao();
+            IList<Email> RetornoAcao = new List<Email>();
+            if (IsValid())
+            {
+                using (EmailData data = new EmailData())
+                {
+                    RetornoAcao = data.RetornaEmails(Enviado);
+                }
+            }
+            return RetornoAcao;
+        }
         public void SalvaEmail(Email itemGravar)
         {
             LimpaValidacao();
@@ -35,6 +49,32 @@ namespace Giusti.Template.Business
                     data.SalvaEmail(itemGravar);
                     IncluiSucessoBusiness("Email_SalvaEmailOK");
                 }
+            }
+        }
+        
+        public void EnviaEmails()
+        {
+            var emails = RetornaEmails(false);
+            emails.ToList().ForEach(a =>
+            {
+                try
+                {
+                    UtilitarioBusiness.EnviaEmail(UtilitarioBusiness.RetornaChaveConfig("nomeRemetente"), UtilitarioBusiness.RetornaChaveConfig("emailRemetente"), a.Destinatario, a.Assunto, a.Corpo);
+                    a.DataEnvio = DateTime.Now;
+                    a.DataAlteracao = DateTime.Now;
+                    SalvaEmail(a);
+                }
+                catch (Exception ex)
+                {
+                    IncluiErroBusiness(MensagemBusiness.RetornaMensagens("Email_ErroEnvio", new string[] { a.Id.ToString(), UtilitarioBusiness.RetornaExceptionMessages(ex) }), true);
+                }
+            });
+
+            if (!IsValid())
+            {
+                StringBuilder texto = new StringBuilder();
+                serviceResult.Messages.ForEach(a => texto.AppendLine(a.Message));
+                UtilitarioBusiness.GravaArquivoTexto(UtilitarioBusiness.RetornaChaveConfig("caminhoArquivoEmailLogErro") + "\\" + string.Format(UtilitarioBusiness.RetornaChaveConfig("nomeArquivoEmailLogErro"), DateTime.Now.ToString("yyyMMddHHmmss")), false, texto.ToString());
             }
         }
 

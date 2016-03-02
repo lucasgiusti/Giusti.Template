@@ -126,6 +126,9 @@
   <data name="Autenticacao_NecessarioAutenticacao" xml:space="preserve">
     <value>Necessário autenticação</value>
   </data>
+  <data name="Email_ErroEnvio" xml:space="preserve">
+    <value>Erro ao enviar email id {0}. {1}</value>
+  </data>
   <data name="Email_SalvaEmailOK" xml:space="preserve">
     <value>Email salvo com sucesso</value>
   </data>

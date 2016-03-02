@@ -88,6 +88,15 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao enviar email id {0}. {1}.
+        /// </summary>
+        internal static string Email_ErroEnvio {
+            get {
+                return ResourceManager.GetString("Email_ErroEnvio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email salvo com sucesso.
         /// </summary>
         internal static string Email_SalvaEmailOK {

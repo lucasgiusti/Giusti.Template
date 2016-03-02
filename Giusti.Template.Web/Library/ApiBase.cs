@@ -43,7 +43,7 @@ namespace Giusti.Template.Web.Library
         {
             ServiceResult serviceResult = new ServiceResult();
             serviceResult.Success = false;
-            serviceResult.Messages.Add(new ServiceResultMessage() { Message = GetExceptionMessages(ex) });
+            serviceResult.Messages.Add(new ServiceResultMessage() { Message = UtilitarioBusiness.RetornaExceptionMessages(ex) });
 
             var json = JsonConvert.SerializeObject(serviceResult);
             HttpResponseMessage response = this.Request.CreateResponse(statusCode, json);
@@ -58,7 +58,7 @@ namespace Giusti.Template.Web.Library
         {
             ServiceResult serviceResult = new ServiceResult();
             serviceResult.Success = false;
-            serviceResult.Messages.Add(new ServiceResultMessage() { Message = GetExceptionMessages(ex) });
+            serviceResult.Messages.Add(new ServiceResultMessage() { Message = UtilitarioBusiness.RetornaExceptionMessages(ex) });
 
             var json = JsonConvert.SerializeObject(serviceResult);
             HttpResponseMessage response = this.Request.CreateErrorResponse(statusCode, json);
@@ -73,15 +73,6 @@ namespace Giusti.Template.Web.Library
         }
 
         #endregion
-
-        private string GetExceptionMessages(Exception e, string msgs = "")
-        {
-            if (e == null) return string.Empty;
-            if (msgs == "") msgs = e.Message;
-            if (e.InnerException != null)
-                msgs += "\r\nInnerException: " + GetExceptionMessages(e.InnerException);
-            return msgs;
-        }
 
         #endregion
 

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giusti.Template.Business", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giusti.Template.Web", "Giusti.Template.Web\Giusti.Template.Web.csproj", "{BBD0B40A-8220-42D3-8E9C-3061A15F94DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giusti.Template.Service.Mail", "Giusti.Template.Service.Mail\Giusti.Template.Service.Mail.csproj", "{95055489-41AE-4677-BD02-A73E82EFC459}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BBD0B40A-8220-42D3-8E9C-3061A15F94DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBD0B40A-8220-42D3-8E9C-3061A15F94DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBD0B40A-8220-42D3-8E9C-3061A15F94DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95055489-41AE-4677-BD02-A73E82EFC459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95055489-41AE-4677-BD02-A73E82EFC459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95055489-41AE-4677-BD02-A73E82EFC459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95055489-41AE-4677-BD02-A73E82EFC459}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
