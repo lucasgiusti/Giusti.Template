@@ -65,7 +65,7 @@ namespace Giusti.Template.Business
                 using (UsuarioData data = new UsuarioData())
                 {
                     data.SalvaUsuario(itemGravar);
-                    IncluiMensagemSucessoBusiness("Usuario_SalvaUsuarioOK");
+                    IncluiSucessoBusiness("Usuario_SalvaUsuarioOK");
                 }
             }
         }
@@ -79,7 +79,7 @@ namespace Giusti.Template.Business
                 using (UsuarioData data = new UsuarioData())
                 {
                     data.ExcluiUsuario(itemGravar);
-                    IncluiMensagemSucessoBusiness("Usuario_ExcluiUsuarioOK");
+                    IncluiSucessoBusiness("Usuario_ExcluiUsuarioOK");
                 }
             }
         }

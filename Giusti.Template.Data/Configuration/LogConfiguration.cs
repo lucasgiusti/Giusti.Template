@@ -14,7 +14,7 @@ namespace Giusti.Template.Data.Configuration
             else
                 this.ToTable("Log", Schema);
             this.HasKey(i => new { i.Id });
-            this.Property(i => i.Id).HasColumnName("d");
+            this.Property(i => i.Id).HasColumnName("Id");
             this.Property(i => i.UsuarioId).HasColumnName("UsuarioId");
             this.Property(i => i.FuncionalidadeId).HasColumnName("FuncionalidadeId");
             this.Property(i => i.RegistroId).HasColumnName("RegistroId");

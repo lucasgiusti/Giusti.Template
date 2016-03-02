@@ -10,18 +10,18 @@ namespace Giusti.Template.Data
     {
         public bool ExisteLog_UsuarioId(int usuarioId)
         {
-            IQueryable<Log> query = Context.Loges;
+            IQueryable<Log> query = Context.Logs;
 
             query = query.Where(d => d.UsuarioId == usuarioId);
             return query.Any();
         }
         public void SalvaLog(Log itemGravar)
         {
-            Log itemBase = Context.Loges
+            Log itemBase = Context.Logs
             .Where(f => f.Id == itemGravar.Id).FirstOrDefault();
             if (itemBase == null)
             {
-                itemBase = Context.Loges.Create();
+                itemBase = Context.Logs.Create();
                 Context.Entry<Log>(itemBase).State = System.Data.Entity.EntityState.Added;
             }
             AtualizaPropriedades<Log>(itemBase, itemGravar);

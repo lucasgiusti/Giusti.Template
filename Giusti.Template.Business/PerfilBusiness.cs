@@ -38,6 +38,7 @@ namespace Giusti.Template.Business
 
             return RetornoAcao;
         }
+
         public void SalvaPerfil(Perfil itemGravar)
         {
             LimpaValidacao();
@@ -48,7 +49,7 @@ namespace Giusti.Template.Business
                 using (PerfilData data = new PerfilData())
                 {
                     data.SalvaPerfil(itemGravar);
-                    IncluiMensagemSucessoBusiness("Perfil_SalvaPerfilOK");
+                    IncluiSucessoBusiness("Perfil_SalvaPerfilOK");
                 }
             }
         }
@@ -62,7 +63,7 @@ namespace Giusti.Template.Business
                 using (PerfilData data = new PerfilData())
                 {
                     data.ExcluiPerfil(itemGravar);
-                    IncluiMensagemSucessoBusiness("Perfil_ExcluiPerfilOK");
+                    IncluiSucessoBusiness("Perfil_ExcluiPerfilOK");
                 }
             }
         }

@@ -5,6 +5,7 @@
         Incluir,
         Alterar,
         Excluir,
-        Consultar
+        Consultar,
+        Login
     }
 }

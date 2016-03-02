@@ -51,6 +51,7 @@ namespace Giusti.Template.Business
 
             return RetornoAcao;
         }
+
         public void SalvaPerfilFuncionalidade(PerfilFuncionalidade itemGravar)
         {
             LimpaValidacao();
@@ -61,7 +62,7 @@ namespace Giusti.Template.Business
                 using (PerfilFuncionalidadeData data = new PerfilFuncionalidadeData())
                 {
                     data.SalvaPerfilFuncionalidade(itemGravar);
-                    IncluiMensagemSucessoBusiness("PerfilFuncionalidade_SalvaAcessoOK");
+                    IncluiSucessoBusiness("PerfilFuncionalidade_SalvaAcessoOK");
                 }
             }
         }
@@ -75,7 +76,7 @@ namespace Giusti.Template.Business
                 using (PerfilFuncionalidadeData data = new PerfilFuncionalidadeData())
                 {
                     data.ExcluiPerfilFuncionalidade(itemGravar);
-                    IncluiMensagemSucessoBusiness("PerfilFuncionalidade_ExcluiAcessoOK");
+                    IncluiSucessoBusiness("PerfilFuncionalidade_ExcluiAcessoOK");
                 }
             }
         }

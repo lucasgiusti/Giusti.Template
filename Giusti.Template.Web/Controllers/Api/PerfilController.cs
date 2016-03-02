@@ -101,6 +101,8 @@ namespace Giusti.Template.Web.Controllers.Api
                 biz.SalvaPerfil(itemSalvar);
                 if (!biz.IsValid())
                     throw new InvalidDataException();
+
+                GravaLog(EnumTipoAcao.Incluir, RetornaEmailAutenticado(), Convert.ToInt32(Constantes.FuncionalidadePerfilInclusao), itemSalvar.Id);
             }
             catch (InvalidDataException)
             {
@@ -132,6 +134,8 @@ namespace Giusti.Template.Web.Controllers.Api
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
+
+                GravaLog(EnumTipoAcao.Incluir, RetornaEmailAutenticado(), Convert.ToInt32(Constantes.FuncionalidadePerfilEdicao), itemSalvar.Id);
             }
             catch (InvalidDataException)
             {
@@ -169,6 +173,8 @@ namespace Giusti.Template.Web.Controllers.Api
                     throw new InvalidDataException();
 
                 retorno = RetornaMensagemOk(biz.serviceResult);
+
+                GravaLog(EnumTipoAcao.Incluir, RetornaEmailAutenticado(), Convert.ToInt32(Constantes.FuncionalidadePerfilExclusao), itemExcluir.Id);
             }
             catch (InvalidDataException)
             {

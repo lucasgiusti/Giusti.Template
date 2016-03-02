@@ -45,18 +45,18 @@ namespace Giusti.Template.Business
                     FuncionalidadeBusiness bizFuncionalidade = new FuncionalidadeBusiness();
                     IList<string> listFuncionalidade = bizFuncionalidade.RetornaFuncionalidades_UsuarioId((int)usuario.Id);
 
-                    retorno.Token = GeraToken(usuario.Nome, string.Join(",", listFuncionalidade));
+                    retorno.Token = GeraToken(email, string.Join(",", listFuncionalidade));
                 }
 
             }
             return retorno;
         }
 
-        private string GeraToken(string nome, string funcionalidades)
+        private string GeraToken(string email, string funcionalidades)
         {
             try
             {
-                FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, nome, DateTime.Now, DateTime.Now.AddMinutes(60), false, funcionalidades);
+                FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, email, DateTime.Now, DateTime.Now.AddMinutes(60), false, funcionalidades);
 
                 string ticketCriptografado = FormsAuthentication.Encrypt(authTicket);
                 return ticketCriptografado;

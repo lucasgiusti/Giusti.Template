@@ -65,6 +65,7 @@ namespace Giusti.Template.Business
 
             return RetornoAcao;
         }
+
         public void SalvaFuncionalidade(Funcionalidade itemGravar)
         {
             LimpaValidacao();

@@ -1,5 +1,7 @@
 ﻿using Giusti.Template.Business;
 using Giusti.Template.Business.Library;
+using Giusti.Template.Model;
+using Giusti.Template.Model.Dominio;
 using Giusti.Template.Model.Results;
 using Newtonsoft.Json;
 using System;
@@ -85,18 +87,12 @@ namespace Giusti.Template.Web.Library
 
         #region Authentication
 
-        /// <summary>
-        /// VerificaAutenticacao
-        /// </summary>
-        /// <param name="codigoFuncionalidade"></param>
-        /// <param name="funcionalidade"></param>
         protected void VerificaAutenticacao(string codigoFuncionalidade, string funcionalidade, BusinessBase biz)
         {
             biz.VerificaAutenticacao(RetornaToken(), codigoFuncionalidade, funcionalidade);
             if (!biz.IsValid())
                 throw new UnauthorizedAccessException();
         }
-
         protected string RetornaToken()
         {
             string token = string.Empty;
@@ -105,7 +101,19 @@ namespace Giusti.Template.Web.Library
 
             return token;
         }
+        private FormsAuthenticationTicket RetornaTokenDescriptografado(string token)
+        {
+            FormsAuthenticationTicket cookie = FormsAuthentication.Decrypt(token);
+            return cookie;
+        }
+        public string RetornaEmailAutenticado()
+        {
+            string token = RetornaToken();
+            if (string.IsNullOrEmpty(token))
+                return string.Empty;
 
+            return RetornaTokenDescriptografado(token).Name;
+        }
         protected string[] RetornaFuncionalidadesUsuario()
         {
             string token = RetornaToken();
@@ -118,6 +126,59 @@ namespace Giusti.Template.Web.Library
             string[] roles = userData.Split(',');
 
             return roles;
+        }
+
+        #endregion
+
+        #region Log
+
+        /// <summary>
+        /// GravaLog
+        /// </summary>
+        /// <param name="tipoAcao"></param>
+        /// <param name="emailAutenticado"></param>
+        protected void GravaLog(EnumTipoAcao tipoAcao, string emailAutenticado)
+        {
+            GravaLog(tipoAcao, emailAutenticado, null, null);
+        }
+
+        /// <summary>
+        /// GravaLog
+        /// </summary>
+        /// <param name="tipoAcao"></param>
+        /// <param name="emailAutenticado"></param>
+        /// <param name="funcionalidadeId"></param>
+        protected void GravaLog(EnumTipoAcao tipoAcao, string emailAutenticado, int? funcionalidadeId)
+        {
+            GravaLog(tipoAcao, emailAutenticado, funcionalidadeId, null);
+        }
+
+        /// <summary>
+        /// GravaLog
+        /// </summary>
+        /// <param name="tipoAcao"></param>
+        /// <param name="emailAutenticado"></param>
+        /// <param name="funcionalidadeId"></param>
+        /// <param name="registroId"></param>
+        protected void GravaLog(EnumTipoAcao tipoAcao, string emailAutenticado, int? funcionalidadeId, int? registroId)
+        {
+            try
+            {
+                LogBusiness biz = new LogBusiness();
+                string ipMaquina = string.Empty;
+                string nomeMaquina = Dns.GetHostName();
+                IPAddress[] ip = Dns.GetHostAddresses(nomeMaquina);
+                ipMaquina = ip[1].ToString();
+
+                UsuarioBusiness bizUsuario = new UsuarioBusiness();
+                Usuario usuario = bizUsuario.RetornaUsuario_Email(emailAutenticado);
+
+                biz.SalvaLog(new Log() { Acao = tipoAcao.ToString(), FuncionalidadeId = funcionalidadeId, DataInclusao = DateTime.Now, OrigemAcesso = nomeMaquina, RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
+            }
+            catch
+            {
+                //vazio, pois o erro de gravação de log não pode interromper o processamento.
+            }
         }
 
         #endregion

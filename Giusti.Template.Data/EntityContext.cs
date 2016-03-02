@@ -18,7 +18,7 @@ namespace Giusti.Template.Data
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Log> Loges { get; set; }
+        public DbSet<Log> Logs { get; set; }
         public DbSet<Funcionalidade> Funcionalidades { get; set; }
         public DbSet<Perfil> Perfis { get; set; }
         public DbSet<PerfilFuncionalidade> PerfilFuncionalidades { get; set; }
