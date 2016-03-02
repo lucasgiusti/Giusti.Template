@@ -115,6 +115,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Api\AlterarSenhaController.cs" />
     <Compile Include="Controllers\Api\FuncionalidadeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\UsuarioController.cs" />
@@ -128,12 +129,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\alterarSenhaController.js" />
     <Content Include="app\controllers\headerController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\modalConfirmController.js" />
     <Content Include="app\controllers\perfilController.js" />
     <Content Include="app\controllers\signinController.js" />
     <Content Include="app\controllers\usuarioController.js" />
+    <Content Include="app\templates\alterarSenha.html" />
     <Content Include="app\templates\home.html" />
     <Content Include="app\templates\perfil\perfil-add.html" />
     <Content Include="app\templates\perfil\perfil-edit.html" />

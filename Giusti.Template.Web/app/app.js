@@ -10,6 +10,7 @@
         $routeProvider.when('/usuario/add', { templateUrl: '/app/templates/usuario/usuario-add.html', controller: 'usuarioController' });
         $routeProvider.when('/usuario/:id/edit', { templateUrl: '/app/templates/usuario/usuario-edit.html', controller: 'usuarioController' });
         $routeProvider.when('/usuario/:id', { templateUrl: '/app/templates/usuario/usuario-view.html', controller: 'usuarioController' });
+        $routeProvider.when('/alterarsenha', { templateUrl: '/app/templates/alterarSenha.html', controller: 'alterarSenhaController' });
         $locationProvider.html5Mode(true);
     });
 

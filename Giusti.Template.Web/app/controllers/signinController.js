@@ -3,7 +3,6 @@
     var url = 'api/signin';
 
     $scope.heading = 'Login';
-    $scope.navbarCollapsed = true;
 
     //APIs
     $scope.postLogin = function () {

@@ -25,25 +25,25 @@ namespace Giusti.Template.Business
             if (IsValid())
             {
                 UsuarioBusiness bizUsuario = new UsuarioBusiness();
-                Usuario usuario = bizUsuario.RetornaUsuario_Email(email);
+                Usuario itemBase = bizUsuario.RetornaUsuario_Email(email);
 
-                if (usuario == null)
+                if (itemBase == null)
                     IncluiErroBusiness("Usuario_EmailInvalido");
 
-                if (IsValid() && !PasswordHash.ValidatePassword(senha, usuario.Senha))
+                if (IsValid() && !PasswordHash.ValidatePassword(senha, itemBase.Senha))
                     IncluiErroBusiness("Usuario_SenhaInvalida");
 
                 if (IsValid())
                 {
                     retorno = new UsuarioLogado();
-                    retorno.Id = usuario.Id.Value;
+                    retorno.Id = itemBase.Id.Value;
                     retorno.DataHoraAcesso = DateTime.Now;
-                    retorno.Email = usuario.Email;
-                    retorno.Nome = usuario.Nome;
+                    retorno.Email = itemBase.Email;
+                    retorno.Nome = itemBase.Nome;
                     retorno.WorkstationId = nomeMaquina;
 
                     FuncionalidadeBusiness bizFuncionalidade = new FuncionalidadeBusiness();
-                    IList<string> listFuncionalidade = bizFuncionalidade.RetornaFuncionalidades_UsuarioId((int)usuario.Id);
+                    IList<string> listFuncionalidade = bizFuncionalidade.RetornaFuncionalidades_UsuarioId((int)itemBase.Id);
 
                     retorno.Token = GeraToken(email, string.Join(",", listFuncionalidade));
                 }

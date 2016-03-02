@@ -313,6 +313,24 @@ namespace Giusti.Template.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O campo nova senha é obrigatório.
+        /// </summary>
+        internal static string Usuario_NovaSenha {
+            get {
+                return ResourceManager.GetString("Usuario_NovaSenha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo confirmação de nova senha é obrigatório.
+        /// </summary>
+        internal static string Usuario_NovaSenhaConfirmacao {
+            get {
+                return ResourceManager.GetString("Usuario_NovaSenhaConfirmacao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usuário salvo com sucesso.
         /// </summary>
         internal static string Usuario_SalvaUsuarioOK {
@@ -327,6 +345,15 @@ namespace Giusti.Template.Business.Resource {
         internal static string Usuario_Senha {
             get {
                 return ResourceManager.GetString("Usuario_Senha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Senha Alterada com sucesso.
+        /// </summary>
+        internal static string Usuario_SenhaAlteradaOK {
+            get {
+                return ResourceManager.GetString("Usuario_SenhaAlteradaOK", resourceCulture);
             }
         }
         

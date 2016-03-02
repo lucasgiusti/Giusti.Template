@@ -17,7 +17,7 @@ namespace Giusti.Template.Data
         }
         public Usuario RetornaUsuario_Email(string email)
         {
-            IQueryable<Usuario> query = Context.Usuarios;
+            IQueryable<Usuario> query = Context.Usuarios.Include("Perfis");
 
             if (!string.IsNullOrEmpty(email))
                 query = query.Where(d => d.Email == email);

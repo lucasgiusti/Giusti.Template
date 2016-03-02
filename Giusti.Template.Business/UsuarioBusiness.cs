@@ -83,6 +83,24 @@ namespace Giusti.Template.Business
                 }
             }
         }
+        public void AlteraSenha(Usuario itemGravar)
+        {
+            LimpaValidacao();
+            ValidaRegrasAlterarSenha(ref itemGravar);
+            if (IsValid())
+            {
+                ValidateService(itemGravar);
+                ValidaRegrasSalvar(itemGravar);
+                if (IsValid())
+                {
+                    using (UsuarioData data = new UsuarioData())
+                    {
+                        data.SalvaUsuario(itemGravar);
+                        IncluiSucessoBusiness("Usuario_SenhaAlteradaOK");
+                    }
+                }
+            }
+        }
 
         public void ValidaRegrasSalvar(Usuario itemGravar)
         {
@@ -169,6 +187,40 @@ namespace Giusti.Template.Business
                     IncluiErroBusiness("Usuario_CadastroUtilizado");
             }
 
+        }
+        public void ValidaRegrasAlterarSenha(ref Usuario itemGravar)
+        {
+            LimpaValidacao();
+            if (string.IsNullOrEmpty(itemGravar.Email))
+                IncluiErroBusiness("Usuario_Email");
+
+            if (string.IsNullOrEmpty(itemGravar.Senha))
+                IncluiErroBusiness("Usuario_Senha");
+
+            if (string.IsNullOrEmpty(itemGravar.NovaSenha))
+                IncluiErroBusiness("Usuario_NovaSenha");
+
+            if (string.IsNullOrEmpty(itemGravar.SenhaConfirmacao))
+                IncluiErroBusiness("Usuario_NovaSenhaConfirmacao");
+
+            if (IsValid())
+            {
+                UsuarioBusiness bizUsuario = new UsuarioBusiness();
+                Usuario itemBase = bizUsuario.RetornaUsuario_Email(itemGravar.Email);
+
+                if (itemBase == null)
+                    IncluiErroBusiness("Usuario_EmailInvalido");
+
+                if (IsValid() && !PasswordHash.ValidatePassword(itemGravar.Senha, itemBase.Senha))
+                    IncluiErroBusiness("Usuario_SenhaInvalida");
+
+                if(IsValid())
+                {
+                    itemBase.Senha = itemGravar.NovaSenha;
+                    itemBase.SenhaConfirmacao = itemGravar.SenhaConfirmacao;
+                    itemGravar = itemBase;
+                }
+            }
         }
         public void ValidaExistencia(Usuario itemGravar)
         {

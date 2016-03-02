@@ -40,5 +40,8 @@ namespace Giusti.Template.Model.Dominio
         public static readonly string FuncionalidadeNomeUsuarioEdicao = "Usuário Edição";
         public static readonly string FuncionalidadeNomeUsuarioInclusao = "Usuário Inclusão";
         public static readonly string FuncionalidadeNomeUsuarioExclusao = "Usuário Exclusão";
+
+        public static readonly string FuncionalidadeAlterarSenha = "14";
+        public static readonly string FuncionalidadeNomeAlterarSenha = "Alterar Senha";
     }
 }

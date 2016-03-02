@@ -46,6 +46,7 @@ namespace Giusti.Template.Model
                 results.AddResult(result);
             }
         }
+        public string NovaSenha { get; set; }
         public string SenhaConfirmacao { get; set; }
         public bool? Ativo { get; set; }
         public DateTime? DataInclusao { get; set; }
