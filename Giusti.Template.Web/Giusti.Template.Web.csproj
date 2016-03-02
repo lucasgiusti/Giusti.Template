@@ -137,9 +137,11 @@
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\logController.js" />
     <Content Include="app\controllers\modalConfirmController.js" />
+    <Content Include="app\controllers\paginaNaoEncontradaController.js" />
     <Content Include="app\controllers\perfilController.js" />
     <Content Include="app\controllers\signinController.js" />
     <Content Include="app\controllers\usuarioController.js" />
+    <Content Include="app\templates\paginaNaoEncontrada.html" />
     <Content Include="app\templates\usuario\usuario-alterarSenha.html" />
     <Content Include="app\templates\usuario\usuario-esquecisenha.html" />
     <Content Include="app\templates\home.html" />
@@ -960,6 +962,7 @@
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <Content Include="Content\toaster.scss" />
+    <None Include="Properties\PublishProfiles\Giusti.Template.Publish.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />

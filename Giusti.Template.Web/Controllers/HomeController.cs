@@ -15,4 +15,16 @@ namespace Giusti.Template.Web.Controllers
             return View();
         }
     }
+
+    public static class HtmlHelperExtensions
+    {
+        public static bool IsDebug(this HtmlHelper helper)
+        {
+#if DEBUG
+            return true;
+#else
+          return false;
+#endif
+        }
+    }
 }
