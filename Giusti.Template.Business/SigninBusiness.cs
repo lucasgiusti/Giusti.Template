@@ -16,13 +16,10 @@ namespace Giusti.Template.Business
         {
             LimpaValidacao();
             if (string.IsNullOrEmpty(email))
-            {
                 IncluiErroBusiness("Usuario_Email");
-            }
+
             if (string.IsNullOrEmpty(senha))
-            {
                 IncluiErroBusiness("Usuario_Senha");
-            }
 
             UsuarioLogado retorno = null;
             if (IsValid())
@@ -31,14 +28,10 @@ namespace Giusti.Template.Business
                 Usuario usuario = bizUsuario.RetornaUsuario_Email(email);
 
                 if (usuario == null)
-                {
                     IncluiErroBusiness("Usuario_EmailInvalido");
-                }
 
                 if (IsValid() && !PasswordHash.ValidatePassword(senha, usuario.Senha))
-                {
                     IncluiErroBusiness("Usuario_SenhaInvalida");
-                }
 
                 if (IsValid())
                 {
@@ -63,8 +56,7 @@ namespace Giusti.Template.Business
         {
             try
             {
-                FormsAuthenticationTicket authTicket =
-                                        new FormsAuthenticationTicket(1, nome, DateTime.Now, DateTime.Now.AddMinutes(60), false, funcionalidades);
+                FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, nome, DateTime.Now, DateTime.Now.AddMinutes(60), false, funcionalidades);
 
                 string ticketCriptografado = FormsAuthentication.Encrypt(authTicket);
                 return ticketCriptografado;

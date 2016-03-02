@@ -73,11 +73,8 @@ namespace Giusti.Template.Business
             {
                 using (FuncionalidadeData data = new FuncionalidadeData())
                 {
-
                     data.SalvaFuncionalidade(itemGravar);
-                    serviceResult = new ServiceResult();
-                    serviceResult.Success = true;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Funcionalidade_SalvaFuncionalidadeOK") });
+                    IncluiMensagemSucessoBusiness("Funcionalidade_SalvaFuncionalidadeOK");
                 }
             }
         }
@@ -90,11 +87,8 @@ namespace Giusti.Template.Business
             {
                 using (FuncionalidadeData data = new FuncionalidadeData())
                 {
-
                     data.ExcluiFuncionalidade(itemGravar);
-                    serviceResult = new ServiceResult();
-                    serviceResult.Success = true;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Funcionalidade_ExcluiFuncionalidadeOK") });
+                    IncluiMensagemSucessoBusiness("Funcionalidade_ExcluiFuncionalidadeOK");
                 }
             }
         }
@@ -110,12 +104,9 @@ namespace Giusti.Template.Business
             {
                 FuncionalidadeAssociadas = new List<Funcionalidade>(data.RetornaFuncionalidades_FuncionalidadeIdPai(itemGravar.Id));
             }
+
             if (PerfilFuncionalidadesAssociadas.Count > 0 || FuncionalidadeAssociadas.Count > 0)
-            {
-                serviceResult = new ServiceResult();
-                serviceResult.Success = false;
-                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Funcionalidade_FuncionalidadeUtilizada") });
-            }
+                IncluiErroBusiness("Funcionalidade_FuncionalidadeUtilizada");
         }
 
         public void RetiraFuncionalidadesPai(List<Funcionalidade> listFuncionalidades)

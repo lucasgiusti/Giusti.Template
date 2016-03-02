@@ -65,9 +65,7 @@ namespace Giusti.Template.Business
                 using (UsuarioData data = new UsuarioData())
                 {
                     data.SalvaUsuario(itemGravar);
-                    serviceResult = new ServiceResult();
-                    serviceResult.Success = true;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_SalvaUsuarioOK") });
+                    IncluiMensagemSucessoBusiness("Usuario_SalvaUsuarioOK");
                 }
             }
         }
@@ -81,9 +79,7 @@ namespace Giusti.Template.Business
                 using (UsuarioData data = new UsuarioData())
                 {
                     data.ExcluiUsuario(itemGravar);
-                    serviceResult = new ServiceResult();
-                    serviceResult.Success = true;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_ExcluiUsuarioOK") });
+                    IncluiMensagemSucessoBusiness("Usuario_ExcluiUsuarioOK");
                 }
             }
         }
@@ -91,23 +87,16 @@ namespace Giusti.Template.Business
         public void ValidaRegrasSalvar(Usuario itemGravar)
         {
             if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.Nome))
-            {
-                serviceResult.Success = false;
-                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_Nome") });
-            }
+                IncluiErroBusiness("Usuario_Nome");
+
             if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.Email))
-            {
-                serviceResult.Success = false;
-                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_Email") });
-            }
+                IncluiErroBusiness("Usuario_Email");
+
             if (IsValid())
             {
                 Usuario itemBase = RetornaUsuario_Email(itemGravar.Email);
                 if (itemBase != null && itemGravar.Id != itemBase.Id)
-                {
-                    serviceResult.Success = false;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_CadastroDuplicado") });
-                }
+                    IncluiMensagemErroBusiness("Usuario_CadastroDuplicado");
             }
             if (IsValid())
             {
@@ -125,24 +114,16 @@ namespace Giusti.Template.Business
                         else
                         {
                             if (string.IsNullOrWhiteSpace(itemGravar.Senha))
-                            {
-                                serviceResult.Success = false;
-                                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_Senha") });
-                            }
+                                IncluiErroBusiness("Usuario_Senha");
+
                             if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.SenhaConfirmacao))
-                            {
-                                serviceResult.Success = false;
-                                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_SenhaConfirmacao") });
-                            }
+                                IncluiErroBusiness("Usuario_SenhaConfirmacao");
+
                             if (IsValid() && !itemGravar.Senha.Equals(itemGravar.SenhaConfirmacao))
-                            {
-                                serviceResult.Success = false;
-                                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_SenhaConfirmacao_Incorreta") });
-                            }
+                                IncluiErroBusiness("Usuario_SenhaConfirmacao_Incorreta");
+
                             if (IsValid())
-                            {
                                 itemGravar.Senha = PasswordHash.HashPassword(itemGravar.Senha);
-                            }
                         }
                     }
                 }
@@ -152,24 +133,16 @@ namespace Giusti.Template.Business
                     itemGravar.Ativo = true;
 
                     if (string.IsNullOrWhiteSpace(itemGravar.Senha))
-                    {
-                        serviceResult.Success = false;
-                        serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_Senha") });
-                    }
+                        IncluiErroBusiness("Usuario_Senha");
+
                     if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.SenhaConfirmacao))
-                    {
-                        serviceResult.Success = false;
-                        serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_SenhaConfirmacao") });
-                    }
+                        IncluiErroBusiness("Usuario_SenhaConfirmacao");
+
                     if (IsValid() && !itemGravar.Senha.Equals(itemGravar.SenhaConfirmacao))
-                    {
-                        serviceResult.Success = false;
-                        serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_SenhaConfirmacao_Incorreta") });
-                    }
+                        IncluiErroBusiness("Usuario_SenhaConfirmacao_Incorreta");
+
                     if (IsValid())
-                    {
                         itemGravar.Senha = PasswordHash.HashPassword(itemGravar.Senha);
-                    }
                 }
             }
 
@@ -186,30 +159,21 @@ namespace Giusti.Template.Business
                 var PerfisAssociados = biz.RetornaPerfilUsuarios_PerfilId_UsuarioId(null, itemGravar.Id);
 
                 if (PerfisAssociados.Count > 0)
-                {
-                    serviceResult.Success = false;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_CadastroUtilizado") });
-                }
+                    IncluiErroBusiness("Usuario_CadastroUtilizado");
             }
 
             if (IsValid())
             {
                 LogBusiness biz = new LogBusiness();
                 if (biz.ExisteLog_UsuarioId((int)itemGravar.Id))
-                {
-                    serviceResult.Success = false;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_CadastroUtilizado") });
-                }
+                    IncluiErroBusiness("Usuario_CadastroUtilizado");
             }
 
         }
         public void ValidaExistencia(Usuario itemGravar)
         {
             if (itemGravar == null)
-            {
-                serviceResult.Success = false;
-                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Usuario_NaoEncontrado") });
-            }
+                IncluiErroBusiness("Usuario_NaoEncontrado");
         }
     }
 }

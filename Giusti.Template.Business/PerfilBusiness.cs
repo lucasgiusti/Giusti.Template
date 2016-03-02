@@ -48,9 +48,7 @@ namespace Giusti.Template.Business
                 using (PerfilData data = new PerfilData())
                 {
                     data.SalvaPerfil(itemGravar);
-                    serviceResult = new ServiceResult();
-                    serviceResult.Success = true;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_SalvaPerfilOK") });
+                    IncluiMensagemSucessoBusiness("Perfil_SalvaPerfilOK");
                 }
             }
         }
@@ -64,9 +62,7 @@ namespace Giusti.Template.Business
                 using (PerfilData data = new PerfilData())
                 {
                     data.ExcluiPerfil(itemGravar);
-                    serviceResult = new ServiceResult();
-                    serviceResult.Success = true;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_ExcluiPerfilOK") });
+                    IncluiMensagemSucessoBusiness("Perfil_ExcluiPerfilOK");
                 }
             }
         }
@@ -80,17 +76,10 @@ namespace Giusti.Template.Business
             }
 
             if (IsValid() && itemGravar.Id == (int)Constantes.PerfilMasterId)
-            {
-                serviceResult.Success = false;
-                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_SemPermissaoEdicaoExclusao") });
-            }
-
+                IncluiErroBusiness("Perfil_SemPermissaoEdicaoExclusao");
 
             if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.Nome))
-            {
-                serviceResult.Success = false;
-                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_Nome") });
-            }
+                IncluiErroBusiness("Perfil_Nome");
         }
         public void ValidaRegrasExcluir(Perfil itemGravar)
         {
@@ -98,10 +87,7 @@ namespace Giusti.Template.Business
                 ValidaExistencia(itemGravar);
 
             if (IsValid() && itemGravar.Id == (int)Constantes.PerfilMasterId)
-            {
-                serviceResult.Success = false;
-                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_SemPermissaoEdicaoExclusao") });
-            }
+                IncluiErroBusiness("Perfil_SemPermissaoEdicaoExclusao");
 
             if (IsValid())
             {
@@ -109,19 +95,13 @@ namespace Giusti.Template.Business
                 var UsuariosAssociados = biz.RetornaPerfilUsuarios_PerfilId_UsuarioId(itemGravar.Id, null);
 
                 if (UsuariosAssociados.Count > 0)
-                {
-                    serviceResult.Success = false;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_CadastroUtilizado") });
-                }
+                    IncluiErroBusiness("Perfil_CadastroUtilizado");
             }
         }
         public void ValidaExistencia(Perfil itemGravar)
         {
             if (itemGravar == null)
-            {
-                serviceResult.Success = false;
-                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("Perfil_NaoEncontrado") });
-            }
+                IncluiErroBusiness("Perfil_NaoEncontrado");
         }
     }
 }

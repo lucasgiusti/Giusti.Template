@@ -36,21 +36,38 @@ namespace Giusti.Template.Business.Library
         {
             return serviceResult.Success;
         }
-        protected void IncluiErroBusiness(string codigoMensagemErro)
+        protected void IncluiErroBusiness(string codigoMensagem)
         {
-            IncluiErroBusiness(codigoMensagemErro, false);
+            IncluiErroBusiness(codigoMensagem, false);
         }
-        protected void IncluiErroBusiness(string codigoMensagemErro, bool mensagemPersonalizada)
+        protected void IncluiErroBusiness(string codigoMensagem, bool mensagemPersonalizada)
         {
             if (mensagemPersonalizada)
-                IncluiMensagemErroBusiness(codigoMensagemErro);
+                IncluiMensagemErroBusiness(codigoMensagem);
             else
-                IncluiMensagemErroBusiness(MensagemBusiness.RetornaMensagens(codigoMensagemErro));
+                IncluiMensagemErroBusiness(MensagemBusiness.RetornaMensagens(codigoMensagem));
         }
-        protected void IncluiMensagemErroBusiness(string mensagemErro)
+        protected void IncluiMensagemErroBusiness(string mensagem)
         {
             serviceResult.Success = false;
-            serviceResult.Messages.Add(new ServiceResultMessage() { Message = mensagemErro });
+            serviceResult.Messages.Add(new ServiceResultMessage() { Message = mensagem });
+        }
+        protected void IncluiSucessoBusiness(string codigoMensagem)
+        {
+            IncluiSucessoBusiness(codigoMensagem, false);
+        }
+        protected void IncluiSucessoBusiness(string codigoMensagem, bool mensagemPersonalizada)
+        {
+            if (mensagemPersonalizada)
+                IncluiMensagemErroBusiness(codigoMensagem);
+            else
+                IncluiMensagemErroBusiness(MensagemBusiness.RetornaMensagens(codigoMensagem));
+        }
+        protected void IncluiMensagemSucessoBusiness(string mensagem)
+        {
+            serviceResult = new ServiceResult();
+            serviceResult.Success = true;
+            serviceResult.Messages.Add(new ServiceResultMessage() { Message = mensagem });
         }
 
         #endregion

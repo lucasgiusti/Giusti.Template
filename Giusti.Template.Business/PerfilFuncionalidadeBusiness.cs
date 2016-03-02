@@ -61,9 +61,7 @@ namespace Giusti.Template.Business
                 using (PerfilFuncionalidadeData data = new PerfilFuncionalidadeData())
                 {
                     data.SalvaPerfilFuncionalidade(itemGravar);
-                    serviceResult = new ServiceResult();
-                    serviceResult.Success = true;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("PerfilFuncionalidade_SalvaAcessoOK") });
+                    IncluiMensagemSucessoBusiness("PerfilFuncionalidade_SalvaAcessoOK");
                 }
             }
         }
@@ -77,9 +75,7 @@ namespace Giusti.Template.Business
                 using (PerfilFuncionalidadeData data = new PerfilFuncionalidadeData())
                 {
                     data.ExcluiPerfilFuncionalidade(itemGravar);
-                    serviceResult = new ServiceResult();
-                    serviceResult.Success = true;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("PerfilFuncionalidade_ExcluiAcessoOK") });
+                    IncluiMensagemSucessoBusiness("PerfilFuncionalidade_ExcluiAcessoOK");
                 }
             }
         }
@@ -95,10 +91,7 @@ namespace Giusti.Template.Business
         public void ValidaExistencia(PerfilFuncionalidade itemGravar)
         {
             if (itemGravar == null)
-            {
-                serviceResult.Success = false;
-                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("PerfilFuncionalidade_NaoEncontrado") });
-            }
+                IncluiErroBusiness("PerfilFuncionalidade_NaoEncontrado");
         }
     }
 }

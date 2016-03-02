@@ -61,9 +61,7 @@ namespace Giusti.Template.Business
                 using (PerfilUsuarioData data = new PerfilUsuarioData())
                 {
                     data.SalvaPerfilUsuario(itemGravar);
-                    serviceResult = new ServiceResult();
-                    serviceResult.Success = true;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("PerfilUsuario_SalvaPerfilUsuarioOK") });
+                    IncluiMensagemSucessoBusiness("PerfilUsuario_SalvaPerfilUsuarioOK");
                 }
             }
         }
@@ -77,9 +75,7 @@ namespace Giusti.Template.Business
                 using (PerfilUsuarioData data = new PerfilUsuarioData())
                 {
                     data.ExcluiPerfilUsuario(itemGravar);
-                    serviceResult = new ServiceResult();
-                    serviceResult.Success = true;
-                    serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("PerfilUsuario_ExcluiPerfilUsuarioOK") });
+                    IncluiMensagemSucessoBusiness("PerfilUsuario_ExcluiPerfilUsuarioOK");
                 }
             }
         }
@@ -95,10 +91,7 @@ namespace Giusti.Template.Business
         public void ValidaExistencia(PerfilUsuario itemGravar)
         {
             if (itemGravar == null)
-            {
-                serviceResult.Success = false;
-                serviceResult.Messages.Add(new ServiceResultMessage() { Message = MensagemBusiness.RetornaMensagens("PerfilUsuario_NaoEncontrado") });
-            }
+                IncluiErroBusiness("PerfilUsuario_NaoEncontrado");
         }
     }
 }
