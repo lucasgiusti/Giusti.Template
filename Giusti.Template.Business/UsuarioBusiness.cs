@@ -96,7 +96,7 @@ namespace Giusti.Template.Business
             {
                 Usuario itemBase = RetornaUsuario_Email(itemGravar.Email);
                 if (itemBase != null && itemGravar.Id != itemBase.Id)
-                    IncluiMensagemErroBusiness("Usuario_CadastroDuplicado");
+                    IncluiErroBusiness("Usuario_CadastroDuplicado");
             }
             if (IsValid())
             {

@@ -75,7 +75,7 @@ namespace Giusti.Template.Business
                 using (FuncionalidadeData data = new FuncionalidadeData())
                 {
                     data.SalvaFuncionalidade(itemGravar);
-                    IncluiMensagemSucessoBusiness("Funcionalidade_SalvaFuncionalidadeOK");
+                    IncluiSucessoBusiness("Funcionalidade_SalvaFuncionalidadeOK");
                 }
             }
         }
@@ -89,7 +89,7 @@ namespace Giusti.Template.Business
                 using (FuncionalidadeData data = new FuncionalidadeData())
                 {
                     data.ExcluiFuncionalidade(itemGravar);
-                    IncluiMensagemSucessoBusiness("Funcionalidade_ExcluiFuncionalidadeOK");
+                    IncluiSucessoBusiness("Funcionalidade_ExcluiFuncionalidadeOK");
                 }
             }
         }

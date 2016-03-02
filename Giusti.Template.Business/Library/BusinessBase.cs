@@ -59,9 +59,9 @@ namespace Giusti.Template.Business.Library
         protected void IncluiSucessoBusiness(string codigoMensagem, bool mensagemPersonalizada)
         {
             if (mensagemPersonalizada)
-                IncluiMensagemErroBusiness(codigoMensagem);
+                IncluiMensagemSucessoBusiness(codigoMensagem);
             else
-                IncluiMensagemErroBusiness(MensagemBusiness.RetornaMensagens(codigoMensagem));
+                IncluiMensagemSucessoBusiness(MensagemBusiness.RetornaMensagens(codigoMensagem));
         }
         protected void IncluiMensagemSucessoBusiness(string mensagem)
         {
