@@ -77,7 +77,7 @@
                 </ul>
             </li>
             <li ng-if="!menu.funcionalidadesFilho" ng-class="{ active: isActive('/{{menu.linkMenu}}')}">
-                <a class="btn btn-link" style="text-decoration: none;" href="/{{menu.linkMenu}}">{{menu.nome}}</a>
+                <a class="btn btn-link" style="text-decoration: none;" href="{{menu.linkMenu}}">{{menu.nome}}</a>
             </li>
         </ul>
     </script>
@@ -90,7 +90,7 @@
             </ul>
         </li>
         <li ng-if="!menu.funcionalidadesFilho" ng-class="{ active: isActive('/{{menu.linkMenu}}')}">
-            <a class="btn btn-link" style="text-decoration: none;" href="/{{menu.linkMenu}}">{{menu.nome}}</a>
+            <a class="btn btn-link" style="text-decoration: none;" href="{{menu.linkMenu}}">{{menu.nome}}</a>
         </li>
     </script>
     @RenderBody()
