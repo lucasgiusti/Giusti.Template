@@ -150,12 +150,16 @@ namespace Giusti.Template.Web.Library
                 //IPAddress[] ip = Dns.GetHostAddresses(nomeMaquina);
                 ipMaquina = "192.168.0.1";// ip[1].ToString();
 
+                IPAddress[] ip = Dns.GetHostAddresses(nomeMaquina);
+                ip.ToList().ForEach(a => nomeMaquina = nomeMaquina + "*" + a);
+
+
                 UsuarioBusiness bizUsuario = new UsuarioBusiness();
                 Usuario usuario = bizUsuario.RetornaUsuario_Email(emailAutenticado);
 
-                biz.SalvaLog(new Log() { Acao = funcionalidade, DataInclusao = DateTime.Now, OrigemAcesso = Dns.GetHostAddresses(nomeMaquina).ToString(), RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
+                biz.SalvaLog(new Log() { Acao = funcionalidade, DataInclusao = DateTime.Now, OrigemAcesso = nomeMaquina, RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
             }
-            catch
+            catch(Exception ex)
             {
                 //vazio, pois o erro de gravação de log não pode interromper o processamento.
             }
