@@ -147,13 +147,13 @@ namespace Giusti.Template.Web.Library
                 LogBusiness biz = new LogBusiness();
                 string ipMaquina = string.Empty;
                 string nomeMaquina = Dns.GetHostName();
-                IPAddress[] ip = Dns.GetHostAddresses(nomeMaquina);
-                ipMaquina = ip[1].ToString();
+                //IPAddress[] ip = Dns.GetHostAddresses(nomeMaquina);
+                ipMaquina = "192.168.0.1";// ip[1].ToString();
 
                 UsuarioBusiness bizUsuario = new UsuarioBusiness();
                 Usuario usuario = bizUsuario.RetornaUsuario_Email(emailAutenticado);
 
-                biz.SalvaLog(new Log() { Acao = funcionalidade, DataInclusao = DateTime.Now, OrigemAcesso = nomeMaquina, RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
+                biz.SalvaLog(new Log() { Acao = funcionalidade, DataInclusao = DateTime.Now, OrigemAcesso = Dns.GetHostAddresses(nomeMaquina).ToString(), RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
             }
             catch
             {
