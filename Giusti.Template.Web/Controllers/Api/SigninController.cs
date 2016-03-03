@@ -37,9 +37,10 @@ namespace Giusti.Template.Web.Controllers.Api
                         senha = usuario.Senha;
                 }
 
-                //IPAddress[] ip = Dns.GetHostAddresses(nomeMaquina);
-                ipMaquina = "192.168.0.1";// ip[1].ToString();
                 nomeMaquina = Dns.GetHostName();
+                //IPAddress[] ip = Dns.GetHostAddresses(nomeMaquina);
+                //ipMaquina = ip[1].ToString();
+                ipMaquina = "127.0.0.1";
 
                 usuarioLogado = biz.EfetuaLoginSistema(email, senha, ipMaquina, nomeMaquina);
 

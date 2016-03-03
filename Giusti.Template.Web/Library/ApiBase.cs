@@ -148,18 +148,15 @@ namespace Giusti.Template.Web.Library
                 string ipMaquina = string.Empty;
                 string nomeMaquina = Dns.GetHostName();
                 //IPAddress[] ip = Dns.GetHostAddresses(nomeMaquina);
-                ipMaquina = "192.168.0.1";// ip[1].ToString();
-
-                IPAddress[] ip = Dns.GetHostAddresses(nomeMaquina);
-                ip.ToList().ForEach(a => nomeMaquina = nomeMaquina + "*" + a);
-
+                //ipMaquina = ip[1].ToString();
+                ipMaquina = "127.0.0.1";
 
                 UsuarioBusiness bizUsuario = new UsuarioBusiness();
                 Usuario usuario = bizUsuario.RetornaUsuario_Email(emailAutenticado);
 
                 biz.SalvaLog(new Log() { Acao = funcionalidade, DataInclusao = DateTime.Now, OrigemAcesso = nomeMaquina, RegistroId = registroId, IpMaquina = ipMaquina, UsuarioId = usuario.Id });
             }
-            catch(Exception ex)
+            catch
             {
                 //vazio, pois o erro de gravação de log não pode interromper o processamento.
             }
