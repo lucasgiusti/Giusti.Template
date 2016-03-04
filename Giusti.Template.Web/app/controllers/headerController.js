@@ -1,6 +1,7 @@
 ﻿app.controller('headerController', function ($scope, $http, toasterAlert, $uibModal, UserService, $location) {
 
     $scope.usuario = null;
+    $scope.navbarCollapsed = true;
 
     $scope.$on('atualizaHeaderBroadcast', function (event, args) {
         $scope.atualizaHeader(args);
